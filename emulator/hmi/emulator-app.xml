@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Desktop AIR descriptor for running the stock Uconnect HMI (main.xml targets AIR-on-QNX). -->
+<application xmlns="http://ns.adobe.com/air/application/32.0">
+  <id>uconnect.hmi.emulator</id>
+  <filename>UconnectHMI</filename>
+  <name>Uconnect 8.4AN Emulator</name>
+  <versionNumber>17.43.1</versionNumber>
+  <supportedProfiles>extendedDesktop desktop</supportedProfiles>
+  <initialWindow>
+    <content>main.swf</content>
+    <title>Uconnect 8.4AN (RA4 17.43.01)</title>
+    <visible>true</visible>
+    <resizable>false</resizable>
+    <width>800</width>
+    <height>480</height>
+    <renderMode>gpu</renderMode>
+  </initialWindow>
+</application>

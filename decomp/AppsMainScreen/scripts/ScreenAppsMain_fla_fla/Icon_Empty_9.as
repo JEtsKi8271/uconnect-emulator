@@ -1,0 +1,21 @@
+package ScreenAppsMain_fla_fla
+{
+   import flash.display.MovieClip;
+   
+   [Embed(source="/_assets/assets.swf", symbol="symbol46")]
+   public dynamic class Icon_Empty_9 extends MovieClip
+   {
+      
+      public function Icon_Empty_9()
+      {
+         super();
+         addFrameScript(0,this.frame1);
+      }
+      
+      internal function frame1() : *
+      {
+         stop();
+      }
+   }
+}
+

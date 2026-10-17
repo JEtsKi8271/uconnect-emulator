@@ -1,0 +1,1956 @@
+{
+ "com\\harman\\moduleLink\\Aha.as": {
+  "dest": [
+   "AhaConnect"
+  ],
+  "events": [
+   "AHA"
+  ],
+  "paths": [
+   ".CategoryInformation",
+   ".ClientStatusUpdate.statusCode",
+   ".ContentDeleted.contentIds",
+   ".ContentDeleted.stationID",
+   ".ContentImage.contentID",
+   ".ContentImage.imagePath",
+   ".NewContentAvailable.stationID",
+   ".NewContentPlaybackState.contentID",
+   ".NewContentPlaybackState.playbackState",
+   ".PlaybackOfNewStation.playbackState",
+   ".PlaybackOfNewStation.stationID",
+   ".PlaybackProgress.contentID",
+   ".PlaybackProgress.currentElapsedTime",
+   ".PlaybackProgress.totalContentLength",
+   ".StationContentSelectionState.contentId",
+   ".StationContentSelectionState.playbackState",
+   ".StationContentSelectionState.stationId",
+   ".StationInformation",
+   ".code",
+   ".contentID",
+   ".contents",
+   ".dBusServiceAvailable",
+   ".description",
+   ".imagePath",
+   ".msg",
+   ".playbackState.contentID",
+   ".playbackState.playbackState",
+   ".playbackState.stationID",
+   ".playbackState.timeMarker",
+   ".session.appVersion",
+   ".session.deviceModel",
+   ".session.deviceSWVersion",
+   ".stationID",
+   ".stations",
+   ".status",
+   "[dBusApiGetStationRequest]",
+   "[dBusApiGetStations]",
+   "[dBusApiStartPeerSession]",
+   "[prop]"
+  ]
+ },
+ "com\\harman\\moduleLink\\AMS.as": {
+  "dest": [
+   "AMS"
+  ],
+  "events": [
+   "AMS",
+   "CONFIGURED"
+  ],
+  "paths": []
+ },
+ "com\\harman\\moduleLink\\AmsFileInfo.as": {
+  "dest": [],
+  "events": [
+   "AMS_FILE_INFO"
+  ],
+  "paths": [
+   ".getFiles"
+  ]
+ },
+ "com\\harman\\moduleLink\\AnnouncementMaster.as": {
+  "dest": [
+   "AnnouncementMaster"
+  ],
+  "events": [
+   "ANNOUNCEMENT_MASTER",
+   "CONFIGURED"
+  ],
+  "paths": [
+   ".advisoryMessage.category",
+   ".categories",
+   ".dBusServiceAvailable",
+   ".dabAnnCategoryStates",
+   ".dabAnnouncementSwitch.enable",
+   ".getProperties",
+   ".getProperties[property]",
+   ".getProperties[property].enable",
+   ".tunerAnnouncementSwitch.enable"
+  ]
+ },
+ "com\\harman\\moduleLink\\AntiTheft.as": {
+  "dest": [],
+  "events": [
+   "ANTI_THEFT"
+  ],
+  "paths": [
+   ".antiTheftLockTime.value",
+   ".antiTheftState.value",
+   ".battConnect",
+   ".getProperties",
+   ".getProperties.antiTheftLockTime",
+   ".getProperties.battConnect",
+   ".wakeupReason.value"
+  ]
+ },
+ "com\\harman\\moduleLink\\AppManager.as": {
+  "dest": [
+   "AppManager"
+  ],
+  "events": [
+   "APP_MANAGER",
+   "APP_PERSISTENCE_MANAGER",
+   "CONFIGURED"
+  ],
+  "paths": [
+   ".appPaused.errorCode",
+   ".appStarted.appId",
+   ".appStarted.errorCode",
+   ".appVRBarStatus.statusText",
+   ".appVRBarStatus.statusType",
+   ".appVR_isVRAppInFocus",
+   ".appVR_isVRAppInFocus.result",
+   ".dBusServiceAvailable",
+   ".isSuperAppSystem.superAppId",
+   ".isSuperAppSystem.superAppSystem",
+   ".operStatus.appId",
+   ".operStatus.daemon",
+   ".operStatus.hasGUI",
+   ".operStatus.medName",
+   ".operStatus.name",
+   ".operStatus.nameString",
+   ".operStatus.shortName",
+   ".operStatus.state",
+   ".operStatus.type",
+   ".read.res",
+   ".startApp.errorCode",
+   ".superAppSystem.superAppSystem",
+   "[\"read\"]"
+  ]
+ },
+ "com\\harman\\moduleLink\\AudioMixerManager.as": {
+  "dest": [
+   "AudioMixerManager"
+  ],
+  "events": [
+   "AUDIOMIXERMANAGER",
+   "CONFIGURED"
+  ],
+  "paths": [
+   ".abortInformationSource",
+   ".abortInformationSource.source",
+   ".dBusServiceAvailable",
+   ".dabSource.dabSource",
+   ".gainOffset.offset",
+   ".gainOffset.source",
+   ".getProperties",
+   ".getProperties.dabSource",
+   ".getProperties.dabSource.dabSource",
+   ".getProperties.gainOffset",
+   ".getProperties.gainOffset.aux",
+   ".getProperties.volumeLevel",
+   ".getProperties.volumeLevel.FRONT_L_SPKR",
+   ".getProperties.volumeLevel.FRONT_L_SPKR.NAV",
+   ".registerMuteClient",
+   ".registerMuteClient.id",
+   ".requestInformationSource",
+   ".requestInformationSource.action",
+   ".requestInformationSource.allowed",
+   ".setMixerMute",
+   ".setMixerMute.mute",
+   ".setSourceOffset",
+   ".setSourceOffset.gainOffset.offset",
+   ".setSourceOffset.gainOffset.source",
+   ".shfMicMute.mute",
+   ".volumeLevel",
+   ".volumeLevel.Level",
+   ".volumeLevel.output",
+   ".volumeLevel.source",
+   "[dbusInterruptSrc]"
+  ]
+ },
+ "com\\harman\\moduleLink\\BeaconDSRCHMI.as": {
+  "dest": [
+   "DNAVNTG5JpnBeaconDsrcHmi.NavCtrl_Driver"
+  ],
+  "events": [
+   "BEACONHMI"
+  ],
+  "paths": [
+   ".DSRSTTSAnnouncement[1]",
+   ".DSRSUplink[1]",
+   ".DisplayTime[1]",
+   ".InterruptCharacterInfo[1]",
+   ".InterruptFigureInfo[1]",
+   ".VICSVoiceGuidance[1]",
+   ".expDiagReceivedTime[1]",
+   ".expDiagTokenClearFlag[1]",
+   ".expTextReceivedTime[1]",
+   ".expTextTokenClearFlag[1]",
+   ".informationEventStartInterrupt",
+   ".interButton[1]",
+   ".menuButton[1]",
+   ".menuData[1]",
+   ".pubDiagReceivedTime[1]",
+   ".pubTextReceivedTime[1]"
+  ]
+ },
+ "com\\harman\\moduleLink\\CameraUpdate.as": {
+  "dest": [],
+  "events": [
+   "CAMERA_UPDATE"
+  ],
+  "paths": [
+   ".prndstatus.prndstatus"
+  ]
+ },
+ "com\\harman\\moduleLink\\ConnectionManager.as": {
+  "dest": [
+   "ConnectionManager"
+  ],
+  "events": [
+   "CONFIGURED",
+   "CONNECTION_MANAGER"
+  ],
+  "paths": [
+   ".connectInternet",
+   ".connectInternet.errorCode",
+   ".disconnectInternet",
+   ".disconnectInternetImmediately",
+   ".getAccessPoint.accessPoint",
+   ".getInternetPrecedence",
+   ".internetConnected",
+   ".internetDisconnected",
+   ".ipConflict",
+   ".setAccessPoint",
+   ".switchEmbeddedPhoneUsage"
+  ]
+ },
+ "com\\harman\\moduleLink\\CVPDemo.as": {
+  "dest": [
+   "CVPDemo"
+  ],
+  "events": [
+   "CONFIGURED",
+   "CVPDEMO"
+  ],
+  "paths": [
+   ".callState",
+   ".commitChanges",
+   ".dBusServiceAvailable",
+   ".debugAT",
+   ".deviceServiceState",
+   ".embeddedPhoneStatus",
+   ".getAccessOverloadClass",
+   ".getAspi",
+   ".getCallState",
+   ".getCdmaSystemStatus.code",
+   ".getCdmaSystemStatus.status",
+   ".getEmergencyNumbers",
+   ".getHspi",
+   ".getIMSI",
+   ".getIMSI.imsi",
+   ".getMEID",
+   ".getMEID.imei",
+   ".getMdn",
+   ".getMobileStationIp",
+   ".getModel",
+   ".getModel.hwVersion",
+   ".getModel.model",
+   ".getNai",
+   ".getPaTemperature.temperature",
+   ".getPri",
+   ".getPrimaryHaAddress",
+   ".getPrlVersion",
+   ".getPrlVersion.prlVersion",
+   ".getProfileInformation.profileInfo.nai",
+   ".getProperties",
+   ".getProperties.networkRegistrationState.state",
+   ".getProperties.signalQuality.rssi",
+   ".getReverseTunneling",
+   ".getSecondaryHaAddress",
+   ".getServingSystem",
+   ".getSlotCycleIndex",
+   ".getSubscriberNumber.numberList[0]",
+   ".getSwRevision",
+   ".getSwRevision.swApplVer",
+   ".getSwRevision.swBootVer",
+   ".getTemperature.temperature",
+   ".getUsbPorts.description",
+   ".getUsbPorts.ports",
+   ".networkRegistrationState.state",
+   ".paTempChanged.temperature",
+   ".selectProfile",
+   ".setAccessOverloadClass",
+   ".setAspi",
+   ".setHspi",
+   ".setImsi",
+   ".setMnAaaSharedSecrets",
+   ".setMnHaSharedSecrets",
+   ".setNai",
+   ".setPrimaryHaAddress",
+   ".setReverseTunneling",
+   ".setSecondaryHaAddress",
+   ".setSpc",
+   ".signalQuality.rssi",
+   ".wakeupReason.wakeupReason",
+   ".wcntReason.reason"
+  ]
+ },
+ "com\\harman\\moduleLink\\DABTunerControl.as": {
+  "dest": [],
+  "events": [
+   "DAB_TUNER_CONTROL"
+  ],
+  "paths": [
+   ".DAB2DABLinkingSwitch.DAB2DABLinkingSwitch",
+   ".dBusServiceAvailable",
+   ".deviceState.deviceState",
+   ".requestGetFirmwareVersions",
+   ".requestGetFirmwareVersions.versionNumbers",
+   ".requestGetFrequencyLabel",
+   ".requestGetFrequencyLabel.label",
+   ".requestGetPoolVersion",
+   ".requestGetPoolVersion.versionNumber",
+   ".requestGetRequiredFirmwareVersion",
+   ".requestGetRequiredFirmwareVersion.versionNumber"
+  ]
+ },
+ "com\\harman\\moduleLink\\DABTunerFollowMaster.as": {
+  "dest": [],
+  "events": [
+   "DAB_TUNER_FOLLOW_MASTER"
+  ],
+  "paths": [
+   ".dBusServiceAvailable",
+   ".followingState.followingState.master",
+   ".followingState.followingState.slave",
+   ".followingSwitch.followingSwitch"
+  ]
+ },
+ "com\\harman\\moduleLink\\DABTunerStation.as": {
+  "dest": [],
+  "events": [
+   "DAB_TUNER_STATION"
+  ],
+  "paths": [
+   ".informationCurrentStation",
+   ".informationEnsembleList",
+   ".informationPresetList",
+   ".informationStationList"
+  ]
+ },
+ "com\\harman\\moduleLink\\DBusTraceMonitor.as": {
+  "dest": [
+   "DBusTraceMonitor"
+  ],
+  "events": [
+   "CONFIGURED",
+   "DBUS_TRACE_MONITOR"
+  ],
+  "paths": [
+   ".getCurrentScopes",
+   ".getCurrentScopes.scopes"
+  ]
+ },
+ "com\\harman\\moduleLink\\Diagnostics.as": {
+  "dest": [
+   "XMDiagnostics"
+  ],
+  "events": [
+   "CONFIGURED",
+   "DIAGNOSTICS"
+  ],
+  "paths": [
+   ".getSMSLibVersion",
+   ".requestAntennaSignalInfo",
+   ".requestAntennaSignalInfo.antennaSignalInfo.antennaStatus",
+   ".requestAntennaSignalInfo.antennaSignalInfo.compositeSignal",
+   ".requestAntennaSignalInfo.antennaSignalInfo.satelliteSignal",
+   ".requestAntennaSignalInfo.antennaSignalInfo.terrestrialSignal",
+   ".requestDetailedOverlaySignalStats",
+   ".requestDetailedOverlaySignalStats.signalStats",
+   ".requestDetailedSignalStats",
+   ".requestDetailedSignalStats.signalStats",
+   ".requestSignalQuality",
+   ".requestSignalQuality.signalQuality",
+   ".requestSignalQuality.signalQuality.signalState",
+   ".requestX65ModuleVersion",
+   ".requestX65ModuleVersion.versionInfo.swRev",
+   ".requestX65ModuleVersion.versionInfo.type"
+  ]
+ },
+ "com\\harman\\moduleLink\\DisplayManager.as": {
+  "dest": [
+   "DisplayManager"
+  ],
+  "events": [
+   "DISPLAY_MANAGER"
+  ],
+  "paths": [
+   ".getProperties",
+   ".getProperties.rearCameraStatus",
+   ".requestDisplay",
+   ".requestDisplay.layer",
+   ".requestDisplay.visible",
+   "[dBusSignalActivatedLayer][dBusSignalActivatedLayer]",
+   "[dBusSignalDeactivatedLayer][dBusSignalDeactivatedLayer]",
+   "[dBusSignalRearCameraStatus][dBusSignalRearCameraStatus]"
+  ]
+ },
+ "com\\harman\\moduleLink\\DriveMode.as": {
+  "dest": [],
+  "events": [
+   "DRIVE_MODE"
+  ],
+  "paths": [
+   ".dBusServiceAvailable",
+   "[dBusApiGetAllProperties]",
+   "[dBusApiGetProperties]",
+   "[dBusApiGetProperties].code",
+   "[dBusApiGetProperties].description",
+   "[dBusApiSetProperties]",
+   "[dBusApiSetProperties].code",
+   "[dBusApiSetProperties].description",
+   "[dBusApiSetProperties][sig]",
+   "[dBusApiSetProperties][sig].value",
+   "[obj]"
+  ]
+ },
+ "com\\harman\\moduleLink\\DriverAB.as": {
+  "dest": [],
+  "events": [
+   "DRIVER_AB"
+  ],
+  "paths": [
+   ".dBusServiceAvailable",
+   ".driverSettingsAB.driver",
+   ".driverSettingsAB.driverSetting",
+   ".getProperties.driverType"
+  ]
+ },
+ "com\\harman\\moduleLink\\ECallSvc.as": {
+  "dest": [
+   "ECallSvc"
+  ],
+  "events": [
+   "CONFIGURED",
+   "ECALLSVC"
+  ],
+  "paths": []
+ },
+ "com\\harman\\moduleLink\\HEV.as": {
+  "dest": [],
+  "events": [
+   "HEV"
+  ],
+  "paths": [
+   ".dBusServiceAvailable",
+   "[dBusApiGetAllProperties]",
+   "[dBusApiGetLoggingConfig]",
+   "[dBusApiGetProperties]",
+   "[obj]"
+  ]
+ },
+ "com\\harman\\moduleLink\\HMIRequest.as": {
+  "dest": [
+   "Audio"
+  ],
+  "events": [
+   "APP_MANAGER",
+   "AUDIO",
+   "CONFIGURED",
+   "HMI_REQUEST"
+  ],
+  "paths": [
+   ".goto",
+   ".setLDProperties.type",
+   ".updateHMIVolume"
+  ]
+ },
+ "com\\harman\\moduleLink\\IPAddressInfo.as": {
+  "dest": [],
+  "events": [
+   "IPADDRESS_INFO"
+  ],
+  "paths": [
+   ".QXDMConnStatus",
+   ".displayHotWarning.displayHot",
+   ".getIPAddressInfo",
+   ".temperature"
+  ]
+ },
+ "com\\harman\\moduleLink\\KanjiHMI.as": {
+  "dest": [
+   "KanaKanJi"
+  ],
+  "events": [
+   "KANAKANJI"
+  ],
+  "paths": []
+ },
+ "com\\harman\\moduleLink\\Location.as": {
+  "dest": [],
+  "events": [
+   "LOCATION"
+  ],
+  "paths": [
+   ".getProperties",
+   ".getProperties.direction",
+   ".getProperties.direction.status",
+   ".locationProperty",
+   ".locationProperty.direction",
+   ".locationProperty.direction.status"
+  ]
+ },
+ "com\\harman\\moduleLink\\OmapTemp.as": {
+  "dest": [],
+  "events": [
+   "OMAP_TEMP"
+  ],
+  "paths": [
+   ".getOmapTemperature.omapTemp"
+  ]
+ },
+ "com\\harman\\moduleLink\\OtaService.as": {
+  "dest": [
+   "OtaService"
+  ],
+  "events": [
+   "CONFIGURED",
+   "OTA_SERVICE"
+  ],
+  "paths": [
+   ".dBusServiceAvailable",
+   ".ota_scomo_ins_confirm_ui",
+   ".ota_scomo_install_done"
+  ]
+ },
+ "com\\harman\\moduleLink\\PerformanceInfo.as": {
+  "dest": [],
+  "events": [
+   "PERFORMANCE_INFO"
+  ],
+  "paths": [
+   ".getPerformanceInfo"
+  ]
+ },
+ "com\\harman\\moduleLink\\Persistency.as": {
+  "dest": [],
+  "events": [
+   "PERSISTENCY"
+  ],
+  "paths": [
+   ".read",
+   ".read.err",
+   ".read.key",
+   ".read.res",
+   ".read.res.key",
+   ".read.res.value",
+   ".write.res"
+  ]
+ },
+ "com\\harman\\moduleLink\\PhoneProjection.as": {
+  "dest": [
+   "phoneProjectionService"
+  ],
+  "events": [
+   "CONFIGURED",
+   "DCM",
+   "PHONE_PROJECTION"
+  ],
+  "paths": [
+   ".dBusServiceAvailable",
+   ".getProjectionDeviceList.deviceList",
+   ".projectionDeviceStatus",
+   ".projectionDeviceStatus.connected"
+  ]
+ },
+ "com\\harman\\moduleLink\\PPS.as": {
+  "dest": [
+   "readPPS"
+  ],
+  "events": [
+   "CONFIGURED",
+   "PPS"
+  ],
+  "paths": [
+   ".dBusServiceAvailable",
+   ".getPPSValue",
+   ".getPPSValue.DEST",
+   ".getPPSValue.ECUPartNo"
+  ]
+ },
+ "com\\harman\\moduleLink\\RemoteStart.as": {
+  "dest": [],
+  "events": [
+   "REMOTESTART"
+  ],
+  "paths": [
+   "[dBusApiGetProperties]",
+   "[dBusApiGetProperties].status",
+   "[obj]"
+  ]
+ },
+ "com\\harman\\moduleLink\\Rse.as": {
+  "dest": [],
+  "events": [
+   "RSE"
+  ],
+  "paths": [
+   ".VideoLockoutEnable.status",
+   ".accessibilitySupport.status",
+   ".cdSyncComplete.cdSyncComplete",
+   ".currentTrackInfo.currentAlbum",
+   ".currentTrackInfo.currentArtist",
+   ".currentTrackInfo.currentTrackName",
+   ".dBusServiceAvailable",
+   ".discErrorValue.discErrorValue",
+   ".dvdDiscStatValue.dvdDiscStatValue",
+   ".dvdOutStatValue.dvdOutStatValue",
+   ".exitFullScreen.exitFullScreen",
+   ".externalSourceStatus.cam",
+   ".externalSourceStatus.cd",
+   ".externalSourceStatus.vrm",
+   ".fullScreenButton.fullScreenButton",
+   ".fullScreenButton.source",
+   ".getAccessibilitySupport.status",
+   ".getFullScreenButtonStat.fullScreenButton",
+   ".getFullScreenButtonStat.source",
+   ".getItems",
+   ".getItems.items",
+   ".getProperties",
+   ".getProperties.cdSyncComplete",
+   ".getProperties.currentTrackNumber",
+   ".getProperties.currentTrkInfo",
+   ".getProperties.dvdDiscStatValue",
+   ".getProperties.dvdOutStatValue",
+   ".getProperties.repeatStatus",
+   ".getProperties.shuffleStatus",
+   ".getProperties.startDiscPlay",
+   ".getProperties.totalNumRecords",
+   ".playTimeValue",
+   ".playTimeValue.playDurationValue",
+   ".playTimeValue.timevalue",
+   ".rdc2ModeStarted.rdc2Mode",
+   ".rearVideoStatus.rearVideoStatus",
+   ".repeatValue.repeatValue",
+   ".requestICSTuning.requestICSTuning",
+   ".rseTrackState.currentTrack",
+   ".rseTrackState.totalCount",
+   ".selectItem.count",
+   ".selectItem.path",
+   ".shuffleValue.shuffleValue",
+   ".startDiscPlay.startDiscPlay",
+   ".startingRdc2Video.status"
+  ]
+ },
+ "com\\harman\\moduleLink\\SierraUpdate.as": {
+  "dest": [],
+  "events": [
+   "SIERRA_UPDATE"
+  ],
+  "paths": [
+   ".progress.unitPercentComplete",
+   ".status.errorMsg",
+   ".status.state"
+  ]
+ },
+ "com\\harman\\moduleLink\\SoftwareUpdate.as": {
+  "dest": [],
+  "events": [
+   "SOFTWARE_INSTALLER",
+   "SOFTWARE_UPDATE"
+  ],
+  "paths": [
+   "[property]"
+  ]
+ },
+ "com\\harman\\moduleLink\\SoftwareUpdateDatabase.as": {
+  "dest": [],
+  "events": [],
+  "paths": [
+   ".setActivationCode",
+   ".setActivationCode.activationStatus",
+   ".updateStatus"
+  ]
+ },
+ "com\\harman\\moduleLink\\VehicleStatus.as": {
+  "dest": [
+   "VehicleStatus"
+  ],
+  "events": [
+   "CONFIGURED",
+   "VEHICLE_STATUS"
+  ],
+  "paths": [
+   ".EPBServiceActivePopup.EPBServiceActivePopup",
+   ".KeySenseTimerValue.KeySenseTimerValue",
+   ".TeenKeyIsPresent.TeenKeyIsPresent",
+   ".currentGear.currentGear",
+   ".dBusServiceAvailable",
+   ".driverDoorStatus.driverDoorStatus",
+   ".fuelSaverModeActual.fuelSaverModeActual",
+   ".gearDisplay.gearDisplay",
+   ".getAllProperties",
+   ".getAllProperties.EPBServiceActivePopup",
+   ".getAllProperties.KeySenseTimerValue",
+   ".getAllProperties.TeenKeyIsPresent",
+   ".getAllProperties.currentGear",
+   ".getAllProperties.driverDoorStatus",
+   ".getAllProperties.fuelSaverModeActual",
+   ".getAllProperties.gearDisplay",
+   ".getAllProperties.headlightsOn",
+   ".getAllProperties.ignition",
+   ".getAllProperties.langUnitMstrOverride",
+   ".getAllProperties.language",
+   ".getAllProperties.rearCameraSpeedDelay",
+   ".getAllProperties.resumeModeTimeout",
+   ".getAllProperties.selecTerrainModePrevTheme",
+   ".getAllProperties.selecTerrainModeStatus",
+   ".getAllProperties.speedLockOut",
+   ".getAllProperties.speedLockOutFeature",
+   ".getAllProperties.testToolPresent",
+   ".getAllProperties.themeFileOverride",
+   ".getAllProperties.vehicleInMotion",
+   ".getAllProperties.vehicleInPark",
+   ".getKeySenseSecurityPIN",
+   ".getKeySenseSecurityPIN.KeySensePIN",
+   ".getProperities.KeySenseTimerValue",
+   ".getProperities.gearDisplay",
+   ".getProperities.selecTerrainModePrevTheme",
+   ".getProperties",
+   ".getProperties.EPBServiceActivePopup",
+   ".getProperties.TeenKeyIsPresent",
+   ".getProperties.rearCameraSpeedDelay",
+   ".getProperties.resumeModeTimeout",
+   ".getProperties.speedLockOutFeature",
+   ".headlightsOn.headlightsOn",
+   ".ignitionState.state",
+   ".isVehicleMoving",
+   ".keySenseSecurityPINReset.keySenseSecurityPINReset",
+   ".langUnitMstrOverride.langUnitMstrOverride",
+   ".language",
+   ".language.language",
+   ".rearCameraSpeedDelay.rearCameraSpeedDelay",
+   ".resumeModeTimeout.resumeModeTimeout",
+   ".selecTerrainModePrevTheme.selecTerrainModePrevTheme",
+   ".selecTerrainModeStatus.selecTerrainModeStatus",
+   ".setKeySenseSecurityPIN",
+   ".setKeySenseSecurityPIN.Success",
+   ".setSpeedLockOutFeature.setting",
+   ".speedLockOut.speedLockOut",
+   ".speedLockOutFeature.setting",
+   ".testToolPresent.testToolPresent",
+   ".themeFileOverride.themeFileOverride",
+   ".vehicleInMotion.vehicleInMotion",
+   ".vehicleInPark.vehicleInPark"
+  ]
+ },
+ "com\\harman\\moduleLink\\VersionInfo.as": {
+  "dest": [],
+  "events": [
+   "PLATFORM"
+  ],
+  "paths": [
+   ".eq_version.eq_version",
+   ".flagsToTouchInEnggMenu",
+   ".get_all_versions.app_version",
+   ".get_all_versions.eq_version",
+   ".get_all_versions.ioc_app_version",
+   ".get_all_versions.ioc_boot_version",
+   ".get_all_versions.nav_version",
+   ".get_all_versions.translation_version",
+   ".get_eq_version.eq_version",
+   ".get_partnumber.partnumber",
+   ".get_serialnumber.serialnumber",
+   ".get_service_flags.eng_menu",
+   ".get_translation_version.translation_version",
+   ".get_variantinfo",
+   ".partnumber.partnumber",
+   ".serialNumber.serialnumber",
+   ".variantinfo",
+   "[dBusServiceAvailable]"
+  ]
+ },
+ "com\\harman\\moduleLink\\VicsDiagEngMenuHMI.as": {
+  "dest": [
+   "DNAVNTG5JpnDiagEngMenu.JpnDiagEngMenu"
+  ],
+  "events": [
+   "VICSDIAGENGMENUHMI"
+  ],
+  "paths": [
+   ".StatusEtcDsrc[1]"
+  ]
+ },
+ "com\\harman\\moduleLink\\VicsDSRCEtcDiagHMI.as": {
+  "dest": [
+   "DNAVNTG5JpnDsrcVicsEtcDiag.NavCtrl_Driver"
+  ],
+  "events": [
+   "VICSDSRCETCDIAGHMI"
+  ],
+  "paths": [
+   ".EtcAntennaFailed[1]",
+   ".EtcDeviceFailed[1]",
+   ".EtcDeviceStatus[1]"
+  ]
+ },
+ "com\\harman\\moduleLink\\VicsEtcHMI.as": {
+  "dest": [
+   "DNAVNTG5JpnEtcHmi.NavCtrl_Driver"
+  ],
+  "events": [
+   "VICSETCHMI"
+  ],
+  "paths": [
+   ".CardExpirationDate[1]",
+   ".EtcState[1]",
+   ".EtcTokenClearFlag[1]",
+   ".PaymentHistory[1]",
+   ".Status[1]",
+   ".WarningMessage[1]",
+   ".WarningVoiceGuidance[1]",
+   ".dBusServiceAvailable"
+  ]
+ },
+ "com\\harman\\moduleLink\\VicsFMHMI.as": {
+  "dest": [
+   "DNAVNTG5JpnVicsFmHmi.NavCtrl_Driver"
+  ],
+  "events": [
+   "FMHMI"
+  ],
+  "paths": [
+   ".interButton[1]",
+   ".isMenuDataUpdated[1]",
+   ".isSubmenuDisplayed[1]",
+   ".menuButton[1]",
+   ".menuData[1]"
+  ]
+ },
+ "com\\harman\\moduleLink\\VicsTunerHMI.as": {
+  "dest": [
+   "DNAVNTG5JpnTunerHmi.NavCtrl_Driver"
+  ],
+  "events": [
+   "VICSTUNERHMI"
+  ],
+  "paths": [
+   ".Frequency[1]",
+   ".PrefectureAuto[1]",
+   ".PrefectureManual[1]",
+   ".State[1]",
+   ".TuningType[1]"
+  ]
+ },
+ "com\\harman\\moduleLink\\WiFiService.as": {
+  "dest": [
+   "WiFiService"
+  ],
+  "events": [
+   "APP_MANAGER",
+   "CONFIGURED",
+   "WIFI_PERSISTENCY",
+   "WIFI_SERVICE"
+  ],
+  "paths": [
+   ".appManagerStatus.status",
+   ".dBusServiceAvailable",
+   ".read.res",
+   ".verifyDRM.errorCode",
+   ".write.res"
+  ]
+ },
+ "com\\harman\\navigation\\Navigation.as": {
+  "dest": [
+   "Navigation"
+  ],
+  "events": [
+   "CONFIGURED",
+   "NAVIGATION",
+   "PLATFORM"
+  ],
+  "paths": [
+   ".ADA_SetEnabled",
+   ".ADA_SetEnabled.enable",
+   ".ETC_HighwayModeUpdate",
+   ".ETC_IsActivated.isActivated",
+   ".ETC_IsDemoModeEnabled",
+   ".ETC_IsDemoModeEnabled.isEnabled",
+   ".ETC_IsOperable.isEnabled",
+   ".ETC_LanguageInfo",
+   ".ETC_SetAlertProperties",
+   ".ETC_SetDemoMode",
+   ".ETC_SetDemoMode.enableDemoMode",
+   ".ETC_SetDemoMode.startLocation",
+   ".ETC_SetLanguage",
+   ".ETC_SetMetricSystem.metricSystem",
+   ".ETC_SetSafetyCameraMode",
+   ".ETC_SetVehicleSpeedWarningMode",
+   ".ETC_SetVehicleSpeedWarningMode.mode",
+   ".ETC_SetVehicleSpeedWarningMode.speed",
+   ".Info_GetAvailableInformation",
+   ".Info_GetAvailableInformation.respEIS",
+   ".Info_GetDetails",
+   ".Info_GetDetails.respEIS",
+   ".Info_GetList",
+   ".Info_GetList.respEIS",
+   ".Info_GetSpell",
+   ".Info_GetSpell.respEIS",
+   ".JSON_GetProperties",
+   ".JSON_GetProperties.outprop",
+   ".OTA_DownloadUpdatePackage",
+   ".OTA_DownloadUpdateReady",
+   ".OTA_DownloadUpdateStatus",
+   ".POS_PositionInformation",
+   ".RT_NextHighwayManeuverInfo",
+   ".RT_RecordingActive",
+   ".RT_RecordingComplete",
+   ".RT_StartRecording",
+   ".UPD_ActivationCheck"
+  ]
+ },
+ "com\\harman\\navigation\\authentication\\AuthenticationServiceManager.as": {
+  "dest": [],
+  "events": [],
+  "paths": [
+   ".deviceID",
+   ".deviceID.deviceID",
+   ".productID",
+   ".productID.productID"
+  ]
+ },
+ "com\\harman\\navigation\\Controller\\NDR\\NDRControl.as": {
+  "dest": [
+   "NDR"
+  ],
+  "events": [
+   "CONFIGURED",
+   "NDR"
+  ],
+  "paths": [
+   ".ETC_TripComputer",
+   ".JSON_GetProperties",
+   ".JSON_GetProperties.outprop",
+   ".JSON_GetProperties.outprop.ETC_TripComputer",
+   ".JSON_GetProperties.outprop.POS_CalibrationLevel",
+   ".JSON_GetProperties.outprop.POS_CalibrationLevel.level",
+   ".JSON_GetProperties.outprop.POS_Position",
+   ".JSON_GetProperties.outprop.POS_VehicleSpeed.vehicleSpeed",
+   ".JSON_GetProperties.outprop.SEN_GPSInfo",
+   ".JSON_GetProperties.outprop.SEN_GPSSatInfo",
+   ".JSON_GetProperties.outprop.SEN_GyroSum",
+   ".JSON_GetProperties.outprop.SEN_ReverseGear",
+   ".JSON_enableSignalOutput",
+   ".JSON_enableSignalOutput.outSendSignals",
+   ".POS_CalibrationLevel",
+   ".POS_CalibrationLevel.level",
+   ".POS_Position",
+   ".POS_VehicleSpeed.vehicleSpeed",
+   ".SEN_GPSInfo",
+   ".SEN_GPSSatInfo"
+  ]
+ },
+ "com\\harman\\navigation\\Controller\\Persistence\\PersistenceController.as": {
+  "dest": [
+   "NavigationPersistency"
+  ],
+  "events": [
+   "NAVIGATION_PERSISTENCY"
+  ],
+  "paths": [
+   ".read.res",
+   ".read.res[i]",
+   ".write.res"
+  ]
+ },
+ "com\\harman\\navigation\\dbService\\DBServiceManager.as": {
+  "dest": [],
+  "events": [],
+  "paths": [
+   "[thisMethodcall]"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\AudioManager.as": {
+  "dest": [
+   "Audio"
+  ],
+  "events": [
+   "AUDIO",
+   "AUDIOMIXERMANAGER"
+  ],
+  "paths": [
+   ".audioSource",
+   ".audioSource.service",
+   ".audioSource.source",
+   ".audioSource[_source].id",
+   ".audioSource[_source].name",
+   ".availableAudioSources",
+   ".dBusServiceAvailable",
+   ".getAudioSource",
+   ".getAudioSource.source",
+   ".getAvailableAudioSources",
+   ".getProperties",
+   ".getProperties.activeAudioSrc",
+   ".getProperties.lastMediaMode",
+   ".getProperties.lastMediaMode.sourceType",
+   ".getProperties.lastTunerMode",
+   ".getProperties.lastTunerMode.sourceType",
+   ".getProperties.volumeLevel.FRONT_L_SPKR",
+   ".userMuteState.state"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\AudioSettings.as": {
+  "dest": [
+   "AudioSettings"
+  ],
+  "events": [
+   "AUDIOPAL",
+   "AUDIOSETTINGS",
+   "CONFIGURED"
+  ],
+  "paths": [
+   ".MuteValue.mutevalue",
+   ".balanceFade",
+   ".balanceFade.balance",
+   ".balanceFade.fade",
+   ".equalizer",
+   ".equalizer.bass",
+   ".equalizer.mid",
+   ".equalizer.treble",
+   ".getAllProperties",
+   ".getBalanceFade.balance",
+   ".getBalanceFade.fade",
+   ".getBoosterAmp.booster_amp",
+   ".getEqualizer.bass",
+   ".getEqualizer.mid",
+   ".getEqualizer.treble",
+   ".getLoudness.loudness",
+   ".getProperties",
+   ".getSpeedAdjustedVolume.on",
+   ".getSpeedAdjustedVolume.variance",
+   ".getSurroundSoundAvailable.on",
+   ".getSurroundSoundStatus.on",
+   ".getTwoChannel.two_channel",
+   ".getVolume",
+   ".getVolume.volume",
+   ".interruptStatus.active",
+   ".loudness.loudness",
+   ".ready.ready",
+   ".speedAdjustedVolume.on",
+   ".speedAdjustedVolume.variance",
+   ".surroundSoundAvailable.on",
+   ".surroundSoundStatus.on",
+   ".volume",
+   ".volume.cap",
+   ".volume.volume"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\Bluetooth.as": {
+  "dest": [
+   "BluetoothGAP"
+  ],
+  "events": [
+   "BLUETOOTH_MANAGER",
+   "BLUETOOTH_MANAGER_PERSISTENCY"
+  ],
+  "paths": [
+   ".bluetoothAddress.address",
+   ".bluetoothStatus.status",
+   ".code",
+   ".dBusServiceAvailable",
+   ".deviceSearchList.deviceSearchList",
+   ".deviceUnpaired.address",
+   ".getBTChipBTID.description",
+   ".getPairedDeviceList.description",
+   ".getPairedDeviceList.pairedDeviceList",
+   ".getProperties",
+   ".getProperties.bluetoothAddress.address",
+   ".getProperties.localDeviceName.localDeviceName",
+   ".getProperties.passkey.pin",
+   ".localDeviceName.localDeviceName",
+   ".pairingStatus.address",
+   ".pairingStatus.name",
+   ".pairingStatus.pairStatus",
+   ".pimObjectSyncState",
+   ".securePairingRequest.address",
+   ".securePairingRequest.pin",
+   ".serviceConnectError.address",
+   ".serviceConnectError.service",
+   ".serviceConnected.address",
+   ".serviceConnected.service",
+   ".serviceConnectionRequest.address",
+   ".serviceConnectionRequest.service",
+   ".serviceDisconnected.address",
+   ".serviceDisconnected.reason",
+   ".serviceDisconnected.service",
+   ".serviceSearchList",
+   ".setAccessMode.description",
+   ".setBTChipMode.description",
+   ".setBluetoothStatus.description",
+   ".setPin.code",
+   ".setPin.description",
+   ".standardPairingReply.description",
+   ".standardPairingRequest.address",
+   ".startDeviceSearch.description",
+   ".startServiceConnect.description",
+   ".startServiceDisconnect.description",
+   ".stopDeviceSearch.description"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\BluetoothHFP.as": {
+  "dest": [
+   "BluetoothHFP"
+  ],
+  "events": [
+   "BLUETOOTH_HFP"
+  ],
+  "paths": [
+   ".acceptIncomingCall.description",
+   ".acceptIncomingCall.reason",
+   ".audioStatus",
+   ".audioStatus.status",
+   ".batteryCharge.level",
+   ".callState",
+   ".conferenceCall.description",
+   ".conferenceCall.reason",
+   ".dial.callId",
+   ".dial.description",
+   ".dial.reason",
+   ".endActiveCall.description",
+   ".endActiveCall.reason",
+   ".endAllCalls.description",
+   ".endAllCalls.reason",
+   ".endCall.description",
+   ".endCall.reason",
+   ".getMuteState.description",
+   ".getMuteState.muteState",
+   ".getNetworkRegistrationStatus.description",
+   ".getNetworkRegistrationStatus.state",
+   ".getProperties",
+   ".getProperties.audioStatus",
+   ".getProperties.audioStatus.audioStatus",
+   ".getProperties.batteryCharge.batteryCharge",
+   ".getProperties.handsFreeMode",
+   ".getProperties.handsFreeMode.hfMode",
+   ".getProperties.networkOperatorChanged.operatorAccTech",
+   ".getProperties.networkOperatorChanged.operatorCode",
+   ".getProperties.networkOperatorChanged.operatorLongName",
+   ".getProperties.networkOperatorChanged.operatorMode",
+   ".getProperties.networkOperatorChanged.operatorShortName",
+   ".getProperties.networkRegistrationState.state",
+   ".getProperties.signalQuality.signalQuality",
+   ".getProperties.siriStatus.available",
+   ".getProperties.siriStatus.enabled",
+   ".getProperties.subscriberNumber.number",
+   ".handsFreeMode",
+   ".handsFreeMode.hfMode",
+   ".holdActiveCall.description",
+   ".holdActiveCall.reason",
+   ".networkOperatorChanged.operatorAccTech",
+   ".networkOperatorChanged.operatorCode",
+   ".networkOperatorChanged.operatorLongName",
+   ".networkOperatorChanged.operatorMode",
+   ".networkOperatorChanged.operatorShortName",
+   ".networkRegistrationState.state",
+   ".phoneVrMode",
+   ".reDial.callId",
+   ".reDial.description",
+   ".reDial.reason",
+   ".read.res",
+   ".rejectIncomingCall.description",
+   ".rejectIncomingCall.reason",
+   ".resumeHeldCall.description",
+   ".resumeHeldCall.reason",
+   ".sendDtmfTone.description",
+   ".setDNDStatus.code",
+   ".setDNDStatus.description",
+   ".setHfMode.description",
+   ".setMuteState.description",
+   ".signalQuality.rssi",
+   ".siriStatus.available",
+   ".siriStatus.enabled",
+   ".smsBrowsingListSelection.smsBody",
+   ".supportedFeaturesList",
+   ".supportedFeaturesList.features",
+   ".swapCalls.description",
+   ".write.res"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\Climate.as": {
+  "dest": [],
+  "events": [
+   "CLIMATE",
+   "CONFIGURED"
+  ],
+  "paths": [
+   ".dBusServiceAvailable",
+   ".getInternalTemp.insideTemp",
+   ".getProperties",
+   ".insideTemp.insideTemp",
+   ".outsideTemp.outsideTemp",
+   "[property]"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\Clock.as": {
+  "dest": [
+   "Clock"
+  ],
+  "events": [
+   "CLOCK",
+   "CONFIGURED"
+  ],
+  "paths": [
+   ".dBusServiceAvailable",
+   ".daylightSavings.daylightSavings",
+   ".dsOffset.dsOffset",
+   ".enableClock.enableClock",
+   ".getAllProperties",
+   ".getAllProperties.daylightSavings",
+   ".getAllProperties.enableClock",
+   ".getAllProperties.gpsTime",
+   ".getAllProperties.timeFormat24",
+   ".getOffsetValues",
+   ".getOffsetValues.daylightOffset",
+   ".getOffsetValues.manualOffset",
+   ".getOffsetValues.timeZone",
+   ".getOffsetValues.timeZoneOffset",
+   ".getProperties",
+   ".getProperties.daylightSavings",
+   ".getProperties.enableClock",
+   ".getProperties.gpsTime",
+   ".getProperties.timeFormat24",
+   ".getTime",
+   ".gpsTime.gpsTime",
+   ".time",
+   ".timeFormat24.timeFormat24",
+   ".timeZone.timeZone",
+   ".tzOffset.tzOffset",
+   ".utcOffset.utcOffset"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\DMBManager.as": {
+  "dest": [
+   "dmbApp"
+  ],
+  "events": [
+   "CONFIGURED",
+   "DMBAPP"
+  ],
+  "paths": [
+   ".DMB_CurrChannel.Freq",
+   ".DMB_CurrChannel.SIndex",
+   ".DMB_OPERABLE",
+   ".DMB_Scan.ChannelName[i]",
+   ".DMB_Scan.Freq[i]",
+   ".DMB_Scan.ServiceIndex[i]",
+   ".DMB_Scan.TotalIndex",
+   ".DMB_StartSeek.startSeek",
+   ".DMB_VIDEOREADY",
+   ".JSON_GetProperties",
+   ".JSON_GetProperties.outprop",
+   ".TPEG_GetCttsum.Path",
+   ".TPEG_GetPoiDetail.Address",
+   ".TPEG_GetPoiDetail.CenterLa",
+   ".TPEG_GetPoiDetail.CenterLo",
+   ".TPEG_GetPoiDetail.ImagePath",
+   ".TPEG_GetPoiDetail.Name",
+   ".TPEG_GetPoiDetail.PhoneNr",
+   ".TPEG_GetPoiDetail.Type",
+   ".TPEG_GetPoiDetail.description",
+   ".TPEG_GetPoiList.CenterLa[i]",
+   ".TPEG_GetPoiList.CenterLo[i]",
+   ".TPEG_GetPoiList.Title[i]",
+   ".TPEG_GetPoiList.TotalIndex",
+   ".TPEG_GetPoiList.Type[i]",
+   ".TPEG_GetRtmList.CenterLa[i]",
+   ".TPEG_GetRtmList.CenterLo[i]",
+   ".TPEG_GetRtmList.CityType[i]",
+   ".TPEG_GetRtmList.Info[i]",
+   ".TPEG_GetRtmList.Title[i]",
+   ".TPEG_GetRtmList.TotalIndex",
+   ".TPEG_GetRtmList.Type[i]"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\Fiat330.as": {
+  "dest": [
+   "S330"
+  ],
+  "events": [
+   "CONFIGURED"
+  ],
+  "paths": [
+   ".ConsumptionUnit",
+   ".DistanceUnit",
+   ".SpeedLockDoorEnable",
+   ".TemperatureUnit",
+   ".dBusServiceAvailable",
+   ".getAllProperties"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\HdTuner.as": {
+  "dest": [],
+  "events": [],
+  "paths": [
+   ".currentHdProgram.programAvailable",
+   ".getProperties",
+   ".getProperties.hdMode",
+   ".getProperties.hdStationInfo",
+   ".getProperties.hdStatusInfo",
+   ".getProperties.hdSwVersion",
+   ".hdBERErrorRate.value",
+   ".hdMode.value",
+   ".hdPerformance.value",
+   ".hdStationInfo.value",
+   ".hdStationInfo.value.hdTagId",
+   ".hdStationInfo.value.hdTagged",
+   ".hdStatusInfo.value",
+   ".hdSwVersion.value"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\Hvac.as": {
+  "dest": [
+   "HVAC"
+  ],
+  "events": [
+   "CONFIGURED",
+   "HVAC"
+  ],
+  "paths": [
+   ".dBusServiceAvailable",
+   ".getControlProperties.controls",
+   ".getControlProperties.zone",
+   ".getZoneProperties.zones",
+   ".zone.controls",
+   ".zone.zone"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\ICS.as": {
+  "dest": [
+   "ICS"
+  ],
+  "events": [
+   "CONFIGURED",
+   "ICS"
+  ],
+  "paths": [
+   ".UpdateVolume",
+   ".UpdateVolume.vol",
+   ".icsknob3.value",
+   ".key.key",
+   ".key.pressed",
+   ".knob.knob",
+   ".knob.value"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\MediaPlayer.as": {
+  "dest": [],
+  "events": [
+   "CONFIGURED",
+   "MEDIA_PLAYER"
+  ],
+  "paths": [
+   ".DeviceCapability.randomSupported",
+   ".DeviceCapability.repeatSupported",
+   ".activeDevice",
+   ".activeDevice.device",
+   ".activeDevice.device.id",
+   ".alphaJumpResult",
+   ".dBusServiceAvailable",
+   ".devicePlayable",
+   ".devicePlayable.devicePlayable",
+   ".deviceState",
+   ".filterTextResult",
+   ".filterTextResult.count",
+   ".filterTextResult.filterList",
+   ".getAlbumArt",
+   ".getCurrentTrackList",
+   ".getCurrentTrackList.code",
+   ".getCurrentTrackList.items",
+   ".getDevices.devices",
+   ".getItems.items",
+   ".getItems.request",
+   ".getItemsChar",
+   ".getItemsChar.items",
+   ".getPlaylistsCount",
+   ".getProperties",
+   ".getProperties.activeDevice",
+   ".getProperties.activeDevice.device",
+   ".getProperties.devicePlayable",
+   ".getProperties.devicePlayable.devicePlayable",
+   ".getProperties.deviceState",
+   ".getProperties.nowPlaying",
+   ".getProperties.playState",
+   ".getProperties.playTime",
+   ".getProperties.random",
+   ".getProperties.readyToBrowse",
+   ".getProperties.repeat",
+   ".getProperties.syncState",
+   ".getProperties.trackState",
+   ".gotoPrevious",
+   ".gotoRoot",
+   ".mediaError",
+   ".mediaFilterListShow.alphaJumpAvailable",
+   ".mediaFilterListShow.code",
+   ".mediaFilterListShow.items",
+   ".mediaFilterListShow.itemsCount",
+   ".mediaFilterListShow.request",
+   ".nowPlaying",
+   ".playState",
+   ".playTime",
+   ".random",
+   ".readyToBrowse",
+   ".repeat",
+   ".selectAll",
+   ".selectDevice.description",
+   ".selectItem",
+   ".selection",
+   ".setProperties",
+   ".setProperties.failed",
+   ".syncState",
+   ".trackState"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\PersonalConfig.as": {
+  "dest": [
+   "PersonalConfig"
+  ],
+  "events": [
+   "PERSONALCONFIG"
+  ],
+  "paths": [
+   ".aeroMode.aeroMode",
+   ".ambientLightingLevel.ambientLightingLevel",
+   ".autoBrakeHoldStatus.autoBrakeHoldStatus",
+   ".autoDimHiBeam.autoDimHiBeam",
+   ".autoLock.autoLock",
+   ".autoOnDCS.autoOnDCS",
+   ".autoParkBrakeStatus.autoParkBrakeStatus",
+   ".autoRelock.autoRelock",
+   ".autoUnlock.autoUnlock",
+   ".blindSpotAlert.blindSpotAlert",
+   ".brakeServiceStatus.brakeServiceStatus",
+   ".brakeServiceTextDisplay.brakeServiceTextDisplay",
+   ".brightnessHeadlightsOff.brightnessHeadlightsOff",
+   ".brightnessHeadlightsOn.brightnessHeadlightsOn",
+   ".capacityUnits.capacityUnits",
+   ".collisionSens.collisionSens",
+   ".color.color",
+   ".compassVariance.compassVariance",
+   ".controlsTimeoutEnabled.controlsTimeoutEnabled",
+   ".dBusServiceAvailable",
+   ".daytimeLights.daytimeLights",
+   ".displayMode",
+   ".displayMode.displayMode",
+   ".displayModeSetting.displayModeSetting",
+   ".distanceUnits.distanceUnits",
+   ".easyExitSuspension.easyExitSuspension",
+   ".enablePhoneRepetition.enablePhoneRepetition",
+   ".engineOffDelay.engineOffDelay",
+   ".exitSeat.exitSeat",
+   ".fcwBrakeStatus.fcwBrakeStatus",
+   ".flashHeadlightLock.flashHeadlightLock",
+   ".flashLightLower.flashLightLower",
+   ".flashLightSlideDoorStatus.flashLightSlideDoorStatus",
+   ".frontSensorsActiveDrive.frontSensorsActiveDrive",
+   ".fuelConsumpUnits.fuelConsumpUnits",
+   ".fuelSaveDisp.fuelSaveDisp",
+   ".getAllProperties",
+   ".getProperties",
+   ".headlightDip.headlightDip",
+   ".headlightIllum.headlightIllum",
+   ".headlightOff.headlightOff",
+   ".headlightWiper.headlightWiper",
+   ".hillAssist.hillAssist",
+   ".hornRemoteStart.hornRemoteStart",
+   ".horsepowerUnits.horsepowerUnits",
+   ".itbmBrkStyle.itbmBrkStyle",
+   ".keyUnlock.keyUnlock",
+   ".laneDepartureWarnSetting.laneDepartureWarnSetting",
+   ".laneSenseTorqueIntensity.laneSenseTorqueIntensity",
+   ".laneSenseWarnSensitivity.laneSenseWarnSensitivity",
+   ".lang.lang",
+   ".moodLightingInts.moodLightingInts",
+   ".navCluster.navCluster",
+   ".parkAssist.parkAssist",
+   ".parkviewCam.parkviewCam",
+   ".parkviewCamDelay.parkviewCamDelay",
+   ".parkviewDynamicGridLines.parkviewDynamicGridLines",
+   ".parkviewStaticGridLines.parkviewStaticGridLines",
+   ".passiveEntry.passiveEntry",
+   ".personalSettingsLinked.personalSettingsLinked",
+   ".powerFoldingMirrors.powerFoldingMirrors",
+   ".powerSteeringMode.powerSteeringMode",
+   ".pressureUnits.pressureUnits",
+   ".pwrLiftgateChime.pwrLiftgateChime",
+   ".pwrLiftgateStatus.pwrLiftgateStatus",
+   ".rainWipers.rainWipers",
+   ".readyToDriveStatus.readyToDriveStatus",
+   ".rearParkAssistBraking.rearParkAssistBraking",
+   ".resetTripA.resetTripA",
+   ".resetTripB.resetTripB",
+   ".slidingDoorAlert.slidingDoorAlert",
+   ".slidingDoorStatus.slidingDoorStatus",
+   ".soundHornLock.soundHornLock",
+   ".soundHornLock1st2nd.soundHornLock1st2nd",
+   ".soundHornRemoteLower.soundHornRemoteLower",
+   ".speedUnits.speedUnits",
+   ".steeringLights.steeringLights",
+   ".surroundCamLock.surroundCamLock",
+   ".suspensionMessages.suspensionMessages",
+   ".teleprompterMode.teleprompterMode",
+   ".temperatureUnits.temperatureUnits",
+   ".tilt.tilt",
+   ".tireJackMode.tireJackMode",
+   ".torqueUnits.torqueUnits",
+   ".touchScreenBeep.touchScreenBeep",
+   ".transportMode.transportMode",
+   ".trlr1BrkStyle.trlr1BrkStyle",
+   ".trlr1Style.trlr1Style",
+   ".trlr2BrkStyle.trlr2BrkStyle",
+   ".trlr2Style.trlr2Style",
+   ".trlr3BrkStyle.trlr3BrkStyle",
+   ".trlr3Style.trlr3Style",
+   ".trlr4BrkStyle.trlr4BrkStyle",
+   ".trlr4Style.trlr4Style",
+   ".trlrNum.trlrNum",
+   ".trlrStyle.trlrStyle",
+   ".units.units",
+   ".voiceResLen.voiceResLen",
+   ".wheelAlignment.wheelAlignment",
+   "[dBusApiGetCustomUnitProperties]"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\PhoneBook.as": {
+  "dest": [
+   "VehicleConfig"
+  ],
+  "events": [
+   "BLUETOOTH_HFP_PERSISTENCY",
+   "BLUETOOTH_MANAGER",
+   "PHONEBOOK",
+   "PIM_SERVICE",
+   "PLATFORM",
+   "VEHICLE_CONFIG"
+  ],
+  "paths": [
+   ".getItems",
+   ".pimObjectSyncState",
+   ".serviceDisconnected.service",
+   "[property]"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\PhoneCallList.as": {
+  "dest": [],
+  "events": [
+   "BLUETOOTH_MANAGER",
+   "PHONE_CALL_LIST",
+   "PIM_SERVICE"
+  ],
+  "paths": [
+   ".getAllCallLists",
+   ".getAllCallsCount.callstackCount",
+   ".getDialedCallList",
+   ".getDialedCallsCount.callstackCount",
+   ".getMissedCallList",
+   ".getMissedCallsCount.callstackCount",
+   ".getProperties",
+   ".getProperties.pimObjectSyncState",
+   ".getProperties.pimObjectSyncState[j].objectType",
+   ".getProperties.pimObjectSyncState[j].syncState",
+   ".getReceivedCallList",
+   ".getReceivedCallsCount.callstackCount",
+   ".newCallList.phoneNumber",
+   ".newCallList.storageType",
+   ".objectType",
+   ".pimObjectSyncState",
+   ".pimObjectSyncState.objectType",
+   ".pimObjectSyncState.syncStatus",
+   ".serviceDisconnected.service",
+   ".syncState"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\PresetPersistencyManager.as": {
+  "dest": [],
+  "events": [
+   "SATELLITE_PRESETS",
+   "TUNER"
+  ],
+  "paths": [
+   ".dBusServiceAvailable",
+   ".getProperties",
+   ".getProperties.localXMPresetList",
+   ".getProperties.presetList",
+   ".localXMPresetList",
+   ".packet[commandName]",
+   ".packet[commandName][commandParamName]",
+   ".presetList",
+   ".presetUpdate",
+   ".presetUpdate.presetData"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\SatelliteRadio.as": {
+  "dest": [],
+  "events": [
+   "SATELLITE_FAVORITES",
+   "SATELLITE_GAMEZONE",
+   "SATELLITE_PERSISTENCY",
+   "SATELLITE_RADIO",
+   "SATELLITE_TRAFFIC_JUMP",
+   "VEHICLE_CONFIG",
+   "VEHICLE_STATUS"
+  ],
+  "paths": [
+   ".CmdResponse.errCode",
+   ".ESN.ESN",
+   ".TeenKeyIsPresent.TeenKeyIsPresent",
+   ".activeScores",
+   ".advisoryMsg.advisoryMsg",
+   ".allFavorites",
+   ".appStatus.appStatus",
+   ".audioSubscriptionStatus",
+   ".availableChannelList",
+   ".categoryList",
+   ".channelArtSubStatus",
+   ".currentTeamFavorites",
+   ".dBusServiceAvailable",
+   ".dataServicesState.sortOn",
+   ".dataServicesSubscriptionStatus",
+   ".favoriteAlert.alertType",
+   ".featureFavorite.list",
+   ".featuredFavoritesList.list",
+   ".fuelSubStatus",
+   ".getProperties",
+   ".getProperties.TeenKeyIsPresent",
+   ".getProperties.advisoryMsg.advisoryMsg",
+   ".getProperties.appStatus.appStatus",
+   ".getProperties.smartFavoritesStatus.smartFavoritesStatus",
+   ".getProperties.teenKeyFeaturePresent",
+   ".getProperties.xmAppVersion",
+   ".getProperties[property]",
+   ".graphicalWeatherSubStatus",
+   ".isArtistAllowed",
+   ".isSongAllowed",
+   ".landWeatherSubStatus",
+   ".leagueList.sortOn",
+   ".moviesSubStatus",
+   ".read.res",
+   ".securityAlertsSubStatus",
+   ".signalStrength.signalStrength",
+   ".smartFavoritesStatus.smartFavoritesStatus",
+   ".songArtistSeekEnabled",
+   ".sportsSubStatus",
+   ".stationInfoList",
+   ".teamList",
+   ".teenKeyFeaturePresent.teenKeyFeaturePresent",
+   ".trafficSubStatus",
+   ".write.res",
+   "[prop]"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\SatelliteRadioInstantReplay.as": {
+  "dest": [
+   "XMInstantReplay"
+  ],
+  "events": [
+   "SATELLITE_RADIO_INSTANT_REPLAY"
+  ],
+  "paths": [
+   ".currentOffset",
+   ".numPlaylistItems",
+   ".playlist",
+   ".replayBufferStatus.fillPct",
+   ".replayBufferStatus.hours",
+   ".replayBufferStatus.minutes",
+   ".replayBufferStatus.playbackPct",
+   ".replayBufferStatus.seconds",
+   ".replayPlayStatus",
+   ".replayPlayStatus.fastForwardActive",
+   ".replayPlayStatus.isLive",
+   ".replayPlayStatus.pauseStatus",
+   ".replayPlayStatus.rewindActive",
+   ".replayPlayStatus.scanActive"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\SMSMessaging.as": {
+  "dest": [],
+  "events": [
+   "BLUETOOTH_MANAGER",
+   "PHONEBOOK",
+   "PIM_SERVICE"
+  ],
+  "paths": [
+   ".getItems.result",
+   ".getItems.result[0]",
+   ".getItems.result[0].smsBody",
+   ".getItems.result[0].smsTemplateId",
+   ".serviceDisconnected.service",
+   "[property]"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\SpellerManager.as": {
+  "dest": [],
+  "events": [
+   "HWR",
+   "PINYIN"
+  ],
+  "paths": [
+   ".FeedbackSelectedWord",
+   ".TryRetrieveCharacter",
+   ".onRecogRange",
+   ".onRecognitionResult",
+   ".response"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\SWC.as": {
+  "dest": [
+   "SWC"
+  ],
+  "events": [
+   "CONFIGURED",
+   "SWC"
+  ],
+  "paths": [
+   ".PTT_Press.press",
+   ".UpdateVolume",
+   ".UpdateVolume.vol",
+   ".volume.volume"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\TextToSpeech.as": {
+  "dest": [],
+  "events": [
+   "TEXT_TO_SPEECH"
+  ],
+  "paths": [
+   "[property]"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\TravelLinkFuel.as": {
+  "dest": [],
+  "events": [],
+  "paths": [
+   ".closestStations",
+   ".defaultFuelType",
+   ".detailedStationInfo",
+   ".favoriteStation.stationID",
+   ".fuelTypes",
+   ".fuelTypes[i].description",
+   ".fuelTypes[i].id",
+   ".status"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\TravelLinkLandWeather.as": {
+  "dest": [],
+  "events": [],
+  "paths": [
+   ".favorite.locationID",
+   ".getForecast",
+   ".getProperties",
+   ".isFavorite",
+   ".locationID",
+   ".locationList",
+   ".locationList.list.sortOn",
+   ".locationList.skiArea",
+   ".name",
+   ".setForecastType",
+   ".skiCondition",
+   ".stateList.list",
+   ".stateList.skiArea",
+   ".weather"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\TravelLinkMovies.as": {
+  "dest": [
+   "XMMovies"
+  ],
+  "events": [
+   "CONFIGURED",
+   "TRAVELLINK_MOVIES"
+  ],
+  "paths": [
+   ".currentLocation.latitude",
+   ".currentLocation.longitude",
+   ".dBusServiceAvailable",
+   ".movieInfo",
+   ".movieTimes",
+   ".status",
+   ".theaterInfo",
+   ".theaters",
+   ".theatersForMovie"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\TravelLinkSports.as": {
+  "dest": [
+   "XMSports"
+  ],
+  "events": [
+   "TRAVELLINK_SPORTS"
+  ],
+  "paths": [
+   ".CmdResponse",
+   ".currentScreen",
+   ".dBusServiceAvailable",
+   ".enterSports",
+   ".enterSports.CmdResponse",
+   ".enterSports.CmdResponse.errCode",
+   ".favorites.favorites",
+   ".getTeamEventDateList",
+   ".getTeamEventDateList.CmdResponse",
+   ".getTeamEventDateList.CmdResponse.errCode",
+   ".listButtonPress",
+   ".listButtonPress.CmdResponse",
+   ".listButtonPress.CmdResponse.errCode",
+   ".requestLeaderboard",
+   ".requestLeaderboard.CmdResponse",
+   ".requestLeaderboard.CmdResponse.errCode",
+   ".requestTeamInfo",
+   ".requestTeamInfo.CmdResponse",
+   ".requestTeamInfo.CmdResponse.errCode",
+   ".status"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\Tuner.as": {
+  "dest": [
+   "Tuner"
+  ],
+  "events": [
+   "CONFIGURED",
+   "TUNER"
+  ],
+  "paths": [
+   ".acfStatusInfo.value",
+   ".advisoryMessage.value",
+   ".afEnabled",
+   ".appStatus.value",
+   ".availStationList.listSize",
+   ".availStationList.stations[i].freq",
+   ".availStationList.stations[i].pi",
+   ".availStationList.stations[i].pty",
+   ".availStationList.stations[i].senderName",
+   ".dBusServiceAvailable",
+   ".dabfmLinkStationInfo",
+   ".diag6xPartInfo.value",
+   ".diagFuncInfo.value",
+   ".dtStationsFreq.listSize",
+   ".dtStationsFreq.stations[i].freq",
+   ".dtStationsFreq.stations[i].pi",
+   ".dtStationsFreq.stations[i].pty",
+   ".dtStationsFreq.stations[i].senderName",
+   ".engDataBasic",
+   ".getDiagFieldstrength",
+   ".getDiagRdsData",
+   ".getProperties",
+   ".getProperties.dabfmLinkStationInfo",
+   ".getProperties.regionCode",
+   ".getProperties.regionCodeInfo",
+   ".getProperties.seekStatus.seekType",
+   ".getProperties.stationInfo",
+   ".getProperties[property]",
+   ".presetUpdate.presetId",
+   ".presetUpdate.wb",
+   ".radioText",
+   ".radioText.radiotext",
+   ".radioTextPlus.Artist",
+   ".radioTextPlus.Title",
+   ".regEnabled",
+   ".rsqStatusInfo.value",
+   ".seekStatus",
+   ".seekStatus.seekType",
+   ".stationInfo",
+   ".stationInfo.frequency",
+   ".stationInfo.value",
+   ".stationInfo.waveband",
+   ".stereo",
+   ".stereo.stereo",
+   ".tmcStations.listSize",
+   ".tmcStations.stations",
+   ".tpEnabled",
+   ".tunerJSONFileHandler.tunerJSONFileHandler.action",
+   ".tunerJSONFileHandler.tunerJSONFileHandler.version",
+   ".tunerVersionInfo",
+   ".tunerVersionInfo.tunerVersionInfo"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\VehConfig.as": {
+  "dest": [
+   "VehicleConfig"
+  ],
+  "events": [
+   "CONFIGURED",
+   "VEHICLE_CONFIG"
+  ],
+  "paths": [
+   ".dBusServiceAvailable",
+   ".getAllProperties",
+   ".getProperties"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\VehSettings.as": {
+  "dest": [
+   "VehSetting"
+  ],
+  "events": [
+   "CONFIGURED",
+   "VEHICLE_SETTINGS"
+  ],
+  "paths": [
+   ".EC_MirrStat",
+   ".awdMode",
+   ".cargoCamera",
+   ".comfortFeaturesDisabled.comfortFeaturesDisabled",
+   ".dBusServiceAvailable",
+   ".driveStyleStatus",
+   ".ecoMode",
+   ".getAllProperties",
+   ".getProperties",
+   ".getProperties.ready",
+   ".heatSeatFLFailPopUp",
+   ".heatSeatFLFailPrsnt",
+   ".heatSeatFRFailPopUp",
+   ".heatSeatFRFailPrsnt",
+   ".heatSeatFrontLeft",
+   ".heatSeatFrontRight",
+   ".heatWheel",
+   ".heatWheelFailPopUp",
+   ".heatWheelFailPrsnt",
+   ".powerOutlet",
+   ".rearCamera",
+   ".screenEnable",
+   ".sunShade",
+   ".surroundCamera",
+   ".ventSeatFLFailPopUp",
+   ".ventSeatFLFailPrsnt",
+   ".ventSeatFRFailPopUp",
+   ".ventSeatFRFailPrsnt",
+   ".ventSeatFrontLeft",
+   ".ventSeatFrontRight"
+  ]
+ },
+ "com\\nfuzion\\moduleLink\\VoiceRecognition.as": {
+  "dest": [
+   "VoiceRecognition"
+  ],
+  "events": [
+   "CONFIGURED",
+   "UI_SPEECH_SERVICE",
+   "VOICE_RECOGNITION"
+  ],
+  "paths": [
+   ".getProperties",
+   ".getProperties[property]",
+   "[prop]"
+  ]
+ }
+}

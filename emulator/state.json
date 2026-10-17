@@ -1,0 +1,249 @@
+{
+ "_unavailable": [],
+ "_replies": {
+  "Audio": {
+   "getAudioSource": {
+    "source": "fm"
+   },
+   "getAvailableAudioSources": {
+    "fm": {
+     "available": true
+    },
+    "am": {
+     "available": true
+    },
+    "sat": {
+     "available": true
+    },
+    "btsa": {
+     "available": true,
+     "id": 2,
+     "name": "Iphone 26 Pro Max"
+    },
+    "aux": {
+     "available": true,
+     "id": 3,
+     "name": "AUX"
+    },
+    "usb1": {
+     "available": true,
+     "id": 1,
+     "name": "SANDISK 16GB"
+    }
+   }
+  },
+  "AudioSettings": {
+   "getVolume": {
+    "volume": 14
+   },
+   "getBalanceFade": {
+    "balance": 0,
+    "fade": 0
+   },
+   "getBoosterAmp": {
+    "booster_amp": 0
+   },
+   "getEqualizer": {
+    "bass": 0,
+    "mid": 0,
+    "treble": 0
+   },
+   "getLoudness": {
+    "loudness": false
+   },
+   "getSpeedAdjustedVolume": {
+    "on": true,
+    "variance": 2
+   },
+   "getSurroundSoundAvailable": {
+    "on": false
+   },
+   "getSurroundSoundStatus": {
+    "on": false
+   },
+   "getTwoChannel": {
+    "two_channel": false
+   },
+   "getReady": {
+    "ready": true
+   }
+  },
+  "AppManager": {
+   "isSuperAppSystem": {
+    "superAppSystem": false,
+    "superAppId": ""
+   },
+   "getAppManagerStatus": {},
+   "getXletsDir": {}
+  }
+ },
+ "Audio": {
+  "audioSource": {
+   "source": "fm",
+   "service": "hmi"
+  },
+  "availableAudioSources": {
+   "fm": {
+    "available": true
+   },
+   "am": {
+    "available": true
+   },
+   "sat": {
+    "available": true
+   },
+   "btsa": {
+    "available": true,
+    "id": 2,
+    "name": "Pixel 8"
+   },
+   "aux": {
+    "available": true,
+    "id": 3,
+    "name": "AUX"
+   },
+   "usb1": {
+    "available": true,
+    "id": 1,
+    "name": "SANDISK 16GB"
+   }
+  },
+  "userMuteState": {
+   "state": false
+  }
+ },
+ "AudioSettings": {
+  "ready": {
+   "ready": true
+  },
+  "volume": {
+   "volume": 14,
+   "cap": 38
+  }
+ },
+ "Tuner": {
+  "region": {
+   "value": "NA"
+  },
+  "waveband": {
+   "waveband": "FM"
+  },
+  "stationInfo": {
+   "frequency": 101100,
+   "waveband": "FM",
+   "senderName": "",
+   "pi": 0,
+   "rxQual": 5,
+   "pty": ""
+  },
+  "regionCodeInfo": {
+   "amUpper": 1710,
+   "amLower": 530,
+   "amStep": 10,
+   "fmUpper": 107900,
+   "fmLower": 87900,
+   "fmStep": 200
+  },
+  "freqInfoTbl": {
+   "FM": {
+    "min": 87900,
+    "max": 107900,
+    "step": 200
+   },
+   "AM": {
+    "min": 530,
+    "max": 1710,
+    "step": 10
+   }
+  },
+  "stereo": {
+   "stereo": true
+  },
+  "seekStatus": {
+   "seekType": "stop"
+  }
+ },
+ "_persist": {
+  "AppPersistenceManager": {
+   "AppsExist": "false"
+  },
+  "Persistency": {
+   "DisclaimerAccepted": {
+    "value": "false"
+   }
+  }
+ },
+ "_props": {
+  "Clock": {
+   "enableClock": "true",
+   "timeFormat24": "false",
+   "daylightSavings": "false",
+   "gpsTime": "false"
+  },
+  "VehicleConfig": {
+   "navPresent": "true",
+   "AMP_Present": "true",
+   "ICS_Present": "true",
+   "heatedSeatsPresent": "true",
+   "ventedSeatsPresent": "true",
+   "heatedSteeringWheelPresent": "true",
+   "rearCameraPresent": "true",
+   "hillStartAssistPresent": "true",
+   "DRL_Present": "true",
+   "personalSettingsAvailable": "true",
+   "RKEPresent": "true",
+   "RKEUnlockPresent": "true",
+   "parkAssistPresent": "true",
+   "powerDoorLocksPresent": "true",
+   "autoDoorLockPresent": "true",
+   "passiveEntryPresent": "true",
+   "relockPresent": "true",
+   "autoHeadLampPresent": "true",
+   "headLampDipPresent": "true",
+   "displayOutsideTempPresent": "true",
+   "digitalClockPresent": "true",
+   "remoteStartPresent": "true",
+   "autoHighBeamPresent": "true",
+   "BSM_Present": "true",
+   "forwardCollisionWarningPresent": "true",
+   "rainSensorPresent": "true",
+   "performancePagesPresent": "true",
+   "vehicleBrand": "2",
+   "vehiclePlatform": "LA",
+   "modelYear": "15",
+   "HVACConfiguration": "2",
+   "destination": "1",
+   "destinationName": "US",
+   "variant_market": "NAFTA",
+   "countryCode": "1",
+   "soundHornWithLocksPresent": "1option",
+   "parkAssistConfiguration": "rear",
+   "externalPortType": "usb_aux",
+   "compactAudioSysType": "0",
+   "bodyStyle": "0",
+   "driveConfiguration": "0",
+   "vehicleDriveConfiguration": "0",
+   "specialPackageTheme": "0"
+  },
+  "Audio": {
+   "lastMediaMode": {
+    "sourceType": "usb1"
+   },
+   "lastTunerMode": {
+    "sourceType": "fm"
+   },
+   "activeAudioSrc": "fm"
+  }
+ },
+ "Clock": {
+  "enableClock": {
+   "enableClock": "true"
+  },
+  "timeFormat24": {
+   "timeFormat24": "false"
+  },
+  "daylightSavings": {
+   "daylightSavings": "false"
+  }
+ }
+}

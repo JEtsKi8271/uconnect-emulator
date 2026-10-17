@@ -1,0 +1,18 @@
+# Firmware images go up as GitHub Release assets (too big for git)
+*.iso
+*.upd
+swdl/
+extracted/
+# Adobe AIR SDK + FFDec: download them yourself (see README)
+tools/
+# Runtime state / logs / dev instances
+__pycache__/
+*.log
+backend.out
+emulator/dev/*/
+emulator/fs/
+emulator/persistency.json
+emulator/settings.json
+emulator/hmi/hmiVars
+emulator/backend_probe.py
+emulator/snap.ps1
