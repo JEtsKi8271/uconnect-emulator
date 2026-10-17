@@ -95,12 +95,11 @@ Change brand/theme/language in `emulator/config.json`, vehicle equipment in `emu
 8. **CAN.** The QNX boot image (`ifs-cmc.bin`, LZO-compressed) was unpacked with a small pure-Python unpacker, its Lua
    services decompiled with unluac, and the signal tables in `canservice` decoded and checked against `ChimeControl.lua`.
 
-Built with [Claude Code](https://claude.com/claude-code).
-
 ## Contributors
 
 - [@JEtsKi8271](https://github.com/JEtsKi8271)
 - [@exycalll](https://github.com/exycalll)
+- Claude (Anthropic)
 
 ## Firmware downloads
 
