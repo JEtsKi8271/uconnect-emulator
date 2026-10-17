@@ -1,0 +1,262 @@
+can_id,in_tables,pps_objects,n_signals,signals
+0x000,0 1 2 3 4 5 6 7 8,unknown,2,zzz-null zzz-NULL
+0x001,0 1 2 3 4 5 6 7 8,tester,1,TestToolPresent
+0x008,7,vehcfg0,1,EC_MIRROR_HK_PRSNT
+0x0FC,3 5,can_c,1,EngineSpeed_C
+0x101,0 1 2 3 4 5 6 7 8,can_c,5,DPFRgnMode RechargeSts RearLockLastElSts RAD_FAN1_STAT EngLoad_OBD
+0x102,0 1 2 3 4 5 6 7 8,can_c,7,LRW_PLRTY VLRW LRWS_ST Pad_Shft LRW_RHP MC_STW_Angle_STAT CRC_STW_Angle_STAT
+0x10C,0 1 2 3 4 6 7 8,can_c,1,EngTrq_Rq_ESC
+0x112,0 1 2 3 4 5 6 7 8,can_c,2,TeenKeyPrsnt TeenKeyIsPresent
+0x120,0 1 2 3 4 5 6 7 8,can_c,1,AccelPdlPosn
+0x122,0 1 2 3 4 5 6 7 8,teenkey vehcfg vehctl vehstat,6,KeyInIgn RedKeyPrsnt RemStActv StTyp CmdIgnStat TeenKeyIsPresent
+0x134,0 1 2 3 4 5 6 7 8,can_c,2,MAP_ENG BARO_ENG
+0x140,0 1 2 3 4 5 6 7 8,can_c,3,BrkPdl_Stat SelSpdSts_CANC ABS_BrkEvt
+0x14B,0 1 2 3 4 5 6 7 8,can_c,2,BrkPrss_TMC HSA_BrkPrss
+0x14C,0 1 2 3 4 5 6 7 8,can_c,4,VehYawRate_Offset VehAccel_X_Offset MC_VEH_DYN_STAT VehAccel_Y_Offset
+0x178,0 1 2 3 4 6 7 8,can_c,2,TxTemp_Excess RoboticTransmissionWarnings
+0x180,0 1 2 3 4 5 6 7 8,can_c,3,IntkAirTemp CHRG_FAIL AirPress_Outsd
+0x1C0,0 1 2 3 4 5 6 7 8,personal,1,PE_ENABLE
+0x1C8,0 1 2 3 4 5 6 7 8,can_c,5,VTA_STAT MOT_DSBL_RQ DLY_5_SEC LKOUT_1_MIN VTA_AUTH
+0x1D0,0 1 2 3 4 5 6 7 8,can_c,28,EPP_FAULT SRS_IndLmp_Rq DSBL_PSG_LMP PsngrBagSts OC_P_ORC OC_P_Flt_ORC DRV_SEATBELT PSG_SEATBELT OC_P_Fast_ORC PSG_ODS_STAT COD_Stat SRS_DtlMsg01_Disp_Rq SRS_DtlMsg02_Disp_Rq SRS_DtlMsg03_Disp_Rq SRS_DtlMsg04_Disp_Rq SRS_DtlMsg05_Disp_Rq SRS_DtlMsg06_Disp_Rq SRS_DtlMsg07_Disp_Rq SRS_DtlMsg08_Disp_Rq SRS_DtlMsg09_Disp_Rq SRS_DtlMsg10_Disp_Rq SRS_DtlMsg11_Disp_Rq SRS_DtlMsg12_Disp_Rq SRS_DtlMsg13_Disp_Rq SRS_DtlMsg14_Disp_Rq SRS_DtlMsg15_Disp_Rq SRS_DtlMsg16_Disp_Rq AirBagFailSts
+0x1D2,0 1 2 3 4 5 6 7 8,can_c,16,IMPACT_A IMPACT_B IMPACT_C IMPACT_D IMPACT_E IMPACT_F IMPACT_G IMPACT_Tgl IMPACT_H IMPACT_I IMPACT_K IMPACT_L IMPACT_M IMPACT_N IMPACT_O IMPACT_X
+0x1F4,0 1 6 7,can_c,1,EngTrq_Rq_DAS
+0x212,0 1 2 3 4 5 6 7 8,can_c,3,PreHtIndLmp_On_Rq PFW WtrFuelIndLmp_On_Rq
+0x22D,0 1 2 3 4 5 6 7 8,audioctl,23,Command_01 Command_02 Command_03 Command_04 Command_05 Command_06 Command_07 Command_08 Command_09 Command_10 Command_11 Command_12 Command_13 Command_14 Command_15 Command_16 Focus Status_OK List Status_Down Status_Left Status_Right Status_Up
+0x22F,0 6 7,vehstat,2,IntkAirTempIntrClr LTR_CoolantTemp
+0x230,0 1 2 3 4 5 6 7 8,comfortstat,6,SpSt_Pad1 DEFROST_SEL SpSt_Pad2 AQS_Active EVAP_TEMP EvapTempTar
+0x232,0 1 2 3 4 5 6 7 8,location vehstat,5,EngOilTemp TX_TEMP ACT_CNT_DIF_TRQ LT_DIST RT_DIST
+0x248,0 1 2 3 4 5 6 7 8,vehstat,5,PN14_LS_Actv PN14_Key_Off_Load_Shed PN14_LS_Lvl5 PN14_LS_Lvl7 Batt_ST_Crit
+0x24E,0 1 2 3 4 5 6 7 8,vehstat,4,FuelCons EngRunFuelTyp Roll_Angle Pitch_Angle
+0x252,0 1 2 3 4 5 6 7 8,vehstat,6,FUEL_SAV_MD_ACT LRW VehYawRate_Raw VehAccel_X VehAccel_Y IntkAirTemp
+0x280,0 1 2 3 4 5 6 7 8,personal,3,Mem_D_Pos_Rq Mem_D_Rc_Rq Mem_D_Sv_Rq
+0x290,0 1 2 3 4 5 6 7 8,can_c,4,UConnSeed1 UConnSeed2 UConnSeed3 UConnSeed4
+0x29D,0 1 2 3 4 5 6 7 8,can_c,5,BSMBrkReq BSMBrkReqActive EPBHoldSts MC_EPB_A1 CRC_EPB_A1
+0x2A0,1 2 3 4 5 6 7 8,can_c vehstat,11,ETC_IND_LMP MZR_MODE_ACT EngOilIndLmp_On_Rq OIL_TEMP_IND_RQ OIL_TEMP_CHM_RQ ChkFuelCap OIL_PRESS DCSD_TCH_STAT DCSD_TCH_X_COORD DCSD_TCH_Y_COORD DCSD_DISP_STAT
+0x2AD,0 1 2 3 4 5 6 7 8,vehcfg vehstat,16,CBC_AUX1_Type CBC_AUX2_Type CBC_AUX3_Type CBC_AUX4_Type CBC_AUX5_Type CBC_AUX1_PWRMD CBC_AUX2_PWRMD CBC_AUX3_PWRMD CBC_AUX4_PWRMD CBC_AUX5_PWRMD CBC_AUX1_HLEnbl CBC_AUX2_HLEnbl CBC_AUX3_HLEnbl CBC_AUX4_HLEnbl CBC_AUX5_HLEnbl Cfg_Aux_PTO
+0x2C2,0 1 2 3 4 5 6 7 8,comfortstat vehstat,2,AMB_TEMP_AVG BATT_VOLT
+0x2C3,0 1 2 3 4 5 6 7 8,vehstat,6,WhlPlsCnt_FL WhlPlsCnt_FR WhlPlsCnt_RL WhlPlsCnt_RR VehPerfAccel_X VehPerfAccel_Y
+0x2C5,6 7,vehcfg0,14,EC_ECUCfg16_Stat OC_Dsbl_LF OC_Dsbl_RF OC_Dsbl_LR OC_Dsbl_RR SVC_SK_PRSNT DRIVE_MODE DEFROST_MODE PhoneInfoInCluster EC_MIRROR_HK_PRSNT Clari_FI_PRSNT ACN_PRSNT RVC_SK_PRSNT CPD
+0x2D0,0 1 2 3 4 5 6 7 8,personal teenkey,7,BSM_CFG_STAT BSM_SRV_RQ BSM_MUTE_RQ BSM_OPR_STAT BSS_LT_OPR_StatSts BSS_RT_OPR_StatSts TeenKeyBSM_ConfigStatus
+0x2D3,0 1 2 3 4 5 6 7 8,vehstat,22,ICS_btn_12 ICS_btn_13 ICS_btn_24 ICS_btn_28 ICS_btn_29 ICS_launch_hardbtn_status ICS_btn_26 ICS_btn_27 ICS_btn_30 ICS_btn_31 ICS_DISP_STAT ICS_btn_0 ICS_btn_1 ICS_btn_2 ICS_btn_3 ICS_btn_4 ICS_btn_5 ICS_btn_6 ICS_btn_7 ICS_btn_9 ICS_FT_HVAC_MD_Cntrl ICS_btn_46
+0x2DE,5 6,vehstat,1,AudioMuteRq_TBM
+0x2DF,6,personal vehstat,2,ImageDefeatRQSts DynamicGridRespSts
+0x2E0,0 1 2 3 4 5 6 7 8,can_c notification suspension,20,TerMdStat SelSpdSts ACT_R_DIF_TRQ FL_Lvl FR_Lvl RL_Lvl RR_Lvl ASCM_Stat HALF_CHIME_TYPE HALF_CHIME_REP_RATE HALF_LF_CHIME_RQ HALF_RF_CHIME_RQ HALF_CHIME_TYPESts HALF_CHIME_REP_RATESts HALF_LF_CHIME_RQSts HALF_RF_CHIME_RQSts ESP_Off_IndLmp_On_Rq ESC_CtrlLmp_Info ABS_IndLmp_On_Rq BrkIndLmp_On_Rq_ESC
+0x2E2,0 1 2 3 4 5 6 7 8,personal,2,TILT_IN_REV_D AutoFoldMirrorDriver
+0x2EA,0 1 2 3 4 5 6 7 8,vehstat,1,HFM_MD_RQ
+0x2F0,0 1 2 3 4 5 6 7 8,personal unknown,3,RKE_MEM EASY_EXIT MEM_RC_STAT
+0x2F2,0 1 2 3 4 5 6 7 8,personal,2,TILT_IN_REV_P PassWinLO_Enbl
+0x2F8,6,personal teenkey vehstat,12,TextDisplay FCWState FCWSetting TeenKeyFCWSensitivitySetting AutoParkSts ServiceModeSts TeenKeyFCWBrakingAssistStatus TeenKeyPTS_ConfigStatus TeenKeyPTS_FrontVolume TeenKeyPTS_RearVolume TeenKeyPTS_BrakingAssistStatus RrAxleLkIndRq
+0x2FA,0 1 2 3 4 5 6 7 8,can_c compact personal vehctl vehstat,22,DRV_AJAR PSG_AJAR L_R_AJAR R_R_AJAR FG_AJAR TLG_AJAR DR_LKD DAY_LGT_MD PoliceStlthMdAct PANEL_INTS REV_GEAR PARK_BRK_EGD DR_LK_STAT RR_DR_UNLKD DriveStyleSts MOOD_LGT_INTS FuelLevel FuelLevelFailSts BrakeFluidLevelSts IceRiskIndication WASH_FLUID_LO GlobalDriveModeStatus
+0x2FF,0 1 2 3 4 5 6 7 8,vehstat,4,AirFuelRatio BoostVacGauge LTR_CoolantTemp IntkAirTempIntrClr
+0x304,0 1 2 3 4 5 6 7 8,can_c,11,TPM_IndLmp_On_Rq Type TireFL TireFR TireRR TireRL TirePressFL TirePressFR TirePressRL TirePressRR SensorFailSts
+0x305,0 6,personal vehstat,22,E_Mode_Sts DrvMdHMI_1 DrvMdHMI_2 DrvMdHMI_3 DrvMdHMI_4 TerAWD_DrvMd_CfgSts Trans_DrvMd_CfgSts EPS_DrvMd_CfgSts ESC_DrvMd_CfgSts ADC_DrvMd_CfgSts HP_DrvMd_CfgSts Eng_DrvMd_CfgSts Paddles_DrvMd_CfgSts SettingsPaddleModeCfgStat ErrSys_1 ErrSys_2 ErrSys_3 ErrSys_4 ErrSys_5 ErrSys_6 ErrSys_7 ErrSys_8
+0x306,0 1 2 3 4 5 6 7 8,can_c,2,TirePrssRL2 TirePrssRR2
+0x307,0 1 2 3 4 5 6 7 8,ves,5,VES3_PWR_ON VES3_IR1_MUTED VES3_IR2_MUTED VES3_CTRL_LK VES3_DISP_STAT
+0x308,0 1 2 3 4 5 6 7 8,can_c,13,TCASE_FAIL TCASE_INHBT TCASE_SRV_RQ Tcase4Lock Tcase4Low TcaseNtrlStat TerSt_LED3 TerSt_LED1 TerSt_LED2 TerSt_LED5 TerSt_LED4 TerMdInhbt TcaseAWD
+0x30A,0 1 2 3 4 5 6 7 8,audioctl personal suspension unknown vehcfg vehstat,24,AFLS_ENBL FullOFC_Actv HILL_DES_STAT HSA_SUPP HSA_EN WarnPrio1_Mute_Rq AutoOilChg ASCM_AeroDsbl ASCM_TJM HLDrpStat Radio_Strng_Rq FuelSavDispEnbl FCW_Sensitivity EngCoolTemp SHFT_PROG FCW_Stat FUEL_TYPE TRANS_TYPE ESP_DSBL ESC_LnchMd OilLifeLeftRst AvgFuelLvl EmodeBtnSts SpStPrsnt
+0x30B,0 1 2 3 4 5 6 7 8,can_c,4,DisOilLifeRst OilLifeLeft MntncSts HoursOilLifeRst
+0x30E,0 1 2 3 4 5 6 7 8,comfortstat,10,EBL_Stat SYNC_STAT RECIRC_STAT AUTO_STAT AC_Stat AutoDfgStat TRAC_PSD MAX_ACSts DRV_SUN_SNSR PAS_SUN_SNSR
+0x30F,0 1 2 3 4 5 6 7 8,can_c,4,VehPerfAccelPeak_X_Pos VehPerfAccelPeak_X_Neg VehPerfAccelPeak_Y_Pos VehPerfAccelPeak_Y_Neg
+0x310,0 1 2 3 4 5 6 7 8,can_c,3,SRS_LMP_STAT DPF_DEF_WrnStat FuelLvlLow
+0x318,0 1 2 3 4 5 6 7 8,audioctl,10,PRESET_CFG SEEK VOL AUD_MODE_ADV RT_ARW_RST_RQ Up_Arw_Rq DN_ARW_STEP_RQ MENU_RQ CELL_VR HrnSw_Psd
+0x31B,0 1 2 3 4 5 6 7 8,ves,10,VES2_IR1_AUD_MD VES2_IR2_AUD_MD VES2_CTRL_LK VES2_IR2_MUTED VES2_IR1_MUTED VES2_PWR_ON VES2_DISP_STAT VES2_RDC2_STAT VES2_H_SIZE VES2_V_SIZE
+0x31E,0 1 2 3 4 5 6 7 8,personal vehstat,11,FL_HS_STAT FL_VS_STAT HSW_Stat FR_HS_STAT FR_VS_STAT AutoOnComfortStatus FL_HS_STATFailSts FL_VS_STATFailSts HSW_StatFailSts FR_HS_STATFailSts FR_VS_STATFailSts
+0x31F,0 1 2 3 4 5 6 7 8,can_c,1,RainSensorFailSts
+0x320,0 1 2 3 4 5 6 7 8,can_c,1,PSI_Max_RPM
+0x321,0 1 2 3 4 5 6 7 8,ves,12,VES2_PT_CAB_DR VES2_PT_FT_PAS VES2_PT_IR1 VES2_PT_IR2 VES2_DISP_FLAG VES2_Video_Active VES2_Audio_Active VES2_RQ1 VES2_RQ2 VES2_RQ3 VES2_RSP VES2_JUMP_FUNC
+0x322,0 1 2 3 4 5 6 7 8,vehstat,6,EngRPM VEH_SPEED EngTrqStatic Gr Brk_Stat OIL_PRESS
+0x324,0 1 2 3 4 5 6 7 8,can_c,1,RemSt_inhibit
+0x32A,0 1 2 3 4 5 6 7 8,camera personal vehstat,30,ZoomSts GridStsCHMCM ZoomStsCHMCM PSI_EnableSts PS_SysType ECM_MSG_RQ ESC_sftbtn_launch_sel CapacityUnit ESC_OFF_Hrd_Sft_Button_sts LaunchRPMsetting_ESC PowerSteeringMode HP_MODE_STS RR_PTS_StopControlSts ESP_TRK_MD EPS_MODE_STAT EPS_Warn_Disp_Rq TorqueUnit TemperatureUnit DistanceUnit SpeedUnit PowerUnit PressureUnit PaddlesModeSts ConsumptionUnit EngDrvMdStat E_Mode_Sts RadioTractionControl_Ind RR_PAM_StopControl SBR_MuteRq DistanceUnit_PNET
+0x32B,0 1 2 3 4 5 6 7 8,comfortstat,2,R_HVAC_Mode_2_Status R_HVAC_Blwr_2_Spd
+0x32C,0 1 2 3 4 5 6 7 8,personal pto,14,LDW_LEDControlSts IdleShutDwnApply PPPA_STAT PTO_RPM3 PTO_RPM2 PTO_RPM1 PTO_SingleRPM PTO_RmtThrottleSts PTO_TYPES PTO_AutoRsm PTO_MaxVehSpd PTO_Md PPPA_ControlSts TorqueIntensitySts
+0x331,0 1 2 3 4 5 6 7 8,ves,10,VES3_PT_CAB_DR VES3_PT_FT_PAS VES3_PT_IR1 VES3_PT_IR2 VES3_DISP_FLAG VES3_RQ1 VES3_RQ2 VES3_RQ3 VES3_RSP VES3_JUMP_FUNC
+0x332,0 1 2 3 4 5 6 7 8,audiostat personal suspension vehstat,18,TrlrNum TrlrStyle US_METRIC LANG R134a_Press_Stat AudioMuteRq ASCM_WarnOnly WAL_Enbl TM_Enbl TCASE_STAT PRND_STAT PRNDL_DISP PTS_WARN ITBM_BrkStyle PTS_MUTE_RQ PTS_CFG_STAT MIL_OnRq ConfigSts
+0x333,0 1 2 3 4 5 6 7 8,ves,4,VES3_AUX_STAT VES3_Src_TGW_Stat VES3_Src_IR_Stat VES3_AUX2_STAT
+0x334,0 1 2 3 4 5 6 7 8,can_c,5,HIBEAM_ON BRK_FLUID_LO ElecDrLkFT_LT ElecDrLkFT_RT WASH_FLUID_LO
+0x339,0 1 2 3 4 5 6 7 8,notification,24,PTS_RF_CHIME_RQ PTS_LF_CHIME_RQ PTS_RR_CHIME_RQ PTS_LR_CHIME_RQ PTS_CHIME_TYPE PTS_CHIME_REP_RATE PTS_FT_VOL PTS_RR_VOL ChimeTypeFront ChimeTypeRear ChimeRepetitionRate_Front ChimeRepetitionRate_Rear SDW_ChimeActivation_LHF SDW_ChimeActivation_LHR SDW_ChimeActivation_RHF SDW_ChimeActivation_RHR SDW_ChimeType_Front SDW_ChimeType_Rear SDW_ChimeRepetitionRate_Front SDW_ChimeRepetitionRate_Rear SDW_ChimeType_Left SDW_ChimeType_Right SDW_ChimeRepetitionRate_Left SDW_ChimeRepetitionRate_Right
+0x33A,0 1 2 3 4 5 6 7 8,comfortstat,8,VEH_INT_TEMP DRV_TEMP_DR_POS PAS_TEMP_DR_POS RECIRC_DR_POS MD_DR_POS R_TEMP_DR_POS R_MD_DR_POS CLNT_FLWR_FROM_HVAC
+0x33E,0 1 2 3 4 5 6 7 8,notification,17,BSM_RF_CHIME_RQ BSM_LF_CHIME_RQ BSM_RR_CHIME_RQ BSM_LR_CHIME_RQ BSM_RT_CFG_STAT BSM_LT_CFG_STAT BSM_CHIME_REP_RATE BSM_CHIME_TYPE BSM_LT_CHIME_REP_RATE BSM_LT_CHIME_TYPE BSM_RT_Blind_RQ BSM_LT_Blind_RQ BSM_RT_CHIME_REP_RATE BSM_RT_CHIME_TYPE BSM_SRV_RQ BSS_LT_SRV_RQSts BSS_RT_SRV_RQSts
+0x340,0 1 2 3 4 5 6 7 8,personal vehstat,15,VehAccelPeak_X VehAccelPeak_Y ESS_ENG_ST Gr_Target AS_ChimeTyp AS_ChimeRq_LF AS_ChimeRq_RF PTS_RR_Enbl PTS_FT_Enbl LowShftToPark RR_PAM_StopControl FCW_BrkOn FCW_SetFar VehSpd_MPH VehSpdDisp
+0x341,0 1 2 3 4 5 6 7 8,dvd,10,DVD_PT_CAB_DR DVD_PT_FT_PAS DVD_PT_IR1 DVD_PT_IR2 DVD_DISP_FLAG DVD_RQ1 DVD_RQ2 DVD_RQ3 DVD_RSP DVD_JUMP_FUNC
+0x344,0 1 2 3 4 5 6 7 8,notification,6,SPCR_CHIME_TYPE SPCR_LR_CHIME_RQ SPCR_RR_CHIME_RQ SPCR_LF_CHIME_RQ SPCR_RF_CHIME_RQ SPCR_CHIME_RATE
+0x346,0 1 2 3 4 5 6 7 8,notification,6,AS_CHIME_TYPE AS_LR_CHIME_RQ AS_RR_CHIME_RQ AS_LF_CHIME_RQ AS_RF_CHIME_RQ AS_CHIME_REP_RATE
+0x34A,0 1 2 3 4 5 6 7 8,personal vehstat,3,ShiftLeverPositionReq CSOPlgChimeEnableDisableSts HandsFreeLiftGateStat
+0x34C,6,suspension,3,ASCM_Stat ASCM_Srv ASCM_SysFail
+0x34E,0 1 2 3 4 5 6 7 8,comfortstat,8,FT_DRV_ATC_TEMP FT_DRV_MTC_TEMP FT_PSG_ATC_TEMP FT_PSG_MTC_TEMP FT_HVAC_BLW_FN_SP FT_HVAC_MD_STAT FT_HVAC_CTRL_STAT MD_DR2_POS
+0x351,6,vrm,8,VRM_PT_CAB_DR VRM_Audio_Active VRM_Video_Active VRM_RQ1 VRM_RQ2 VRM_RQ3 VRM_RSP VRM_JUMP_FUNC
+0x352,6,vrm,7,VRM_RDC2_STAT VRM_AUD_MD_CAB VRM_H_SIZE VRM_V_SIZE VRM_IR1_AUD_MD VRM_IR2_AUD_MD VRM_IR3_AUD_MD
+0x354,0 1 2 3 4 5 6 7 8,audiocfg audioctl audiostat personal,19,AMP_EQ AMP_MUTED AMP_DSS_STAT ANC_EN SURR_AVAIL AEL_AVAIL AEL_STAT SpeakerSTS_RF SpeakerSTS_LF SpeakerSTS_RR SpeakerSTS_LR Ambient_Light_Level AudioRepetition AMP_AUDIOSts AUDIOSts_Telematic SpeakerFault_RF SpeakerFault_LF SpeakerFault_RR SpeakerFault_LR
+0x358,0 1 2 3 4 5 6 7 8,location,10,CMP_DIR VAR_VAL CAL_FAULT CAL_REQD IN_CAL_MD SENSOR_FAULT ECU_FAULT DISTOR_DETECTED NVM_FAULT CMP_DIR_RAW
+0x35F,0 1 2 3 4 5 6 7 8,can_c,5,PSI_Gr1_RPM PSI_Gr2_RPM PSI_Gr3_RPM PSI_Gr4_RPM PSI_Gr5_RPM
+0x360,0 1 2 3 4 5 6 7 8,dtv,10,DTV_PT_CAB_DR DTV_Video_Active DTV_Audio_Active DTV_RQ3 DTV_JUMP_FUNC DTV_PT_IR1 DTV_PT_IR2 DTV_RQ1 DTV_RQ2 DTV_RSP
+0x361,0 1 2 3 4 5 6 7 8,dtv,7,DTV_RDC2_STAT DTV_Signal_Available DTV_FrontCamera_Signal DTV_SideCamera_Signal LOC_DTV DTV_H_SIZE DTV_V_SIZE
+0x36A,0 1 2 3 4 5 6 7 8,vehstat,3,ADC_Stat ADS_MODE_CFG_Stat ADS_RedLmp
+0x36E,0 1 2 3 4 5 6 7 8,comfortstat,4,R_DRV_FLR_DUCT_TEMP R_PAS_FLR_DUCT_TEMP R_DRV_PNL_DUCT_TEMP R_PAS_PNL_DUCT_TEMP
+0x36F,0 1 2 3 4 5 6 7 8,comfortstat,10,HVAC_Amb_FILT HVAC_Blwr_Perct R_Mode1_Pos R_Mode2_Pos R_Temp1_Pos R_Temp2_Pos R_Blw1_Pos R_Sync_State R_Blw2_Pos R_Lock_State
+0x370,0 1 2 3 4 5 6 7 8,comfortstat,4,R_L_ATC_TEMP R_R_ATC_TEMP R_L_MTC_TEMP R_R_MTC_TEMP
+0x372,0 1 2 3 4 5 6 7 8,can_c,3,IC_PP_RQ VehPerfAccelPeak_X VehPerfAccelPeak_Y
+0x373,0 1 2 3 4 5 6 7 8,dvd,5,DVD_AUX_STAT DVD_OUT_STAT DVD_DISC_STAT DVD_DISP_CFG DISC_VIDEO_OUT
+0x37A,0 1 2 3 4 5 6 7 8,comfortstat,8,R_ATC_TEMP R_HVAC_LkOut R_MTC_TEMP R_HVAC_BLW_FN_SP R_HVAC_MD_STAT R_HVAC_CTRL_STAT R_HVAC_MD_2_STAT R_HVAC_BLW_FN_2_SP
+0x381,0 1 2 3 4 5 6 7 8,vehcfg vehcfg0,13,VC_VehCfg7_Stat VC_TrnsDrvMdPrsnt VC_PdlsMdPrsnt VC_STP_PRSNT VC_TransType TeenKeyFeaturePresent VC_SVC_Prsnt VC_SuspPrsnt VC_DampingPrsnt VC_RedKey VC_Trans_Equipped VC_TSBM_Prsnt VC_Screen_Off
+0x383,0 1 2 3 4 5 6 7 8,dvd,1,DVD
+0x384,0 1 2 3 4 5 6 7 8,dvd,1,DVD1
+0x385,0 1 2 3 4 5 6 7 8,dvd,1,DVD2
+0x386,0 1 2 3 4 5 6 7 8,dvd,1,DVD3
+0x38F,0 1 2 3 4 5 6 7 8,vehstat,7,SelTrlrNum SelTrlrStyle TrlrTripDist TrlrStyle_1 TrlrStyle_2 TrlrStyle_3 TrlrStyle_4
+0x394,6,teenkey,1,TeenKeyMaxSpeedLimit
+0x395,6,personal,2,UNIT_SET_CSO ReadyToDriveStatus
+0x3A2,0 1 2 3 4 5 6 7 8,vehstat,1,IGN_OFF_TIME_LNG
+0x3A7,0 1 2 3 4 5 6 7 8,ves,4,VES2_AUX1_STAT VES2_AUX2_STAT VES2_Src_TGW_Stat VES2_Src_IR_Stat
+0x3B2,0 1 2 3 4 5 6 7 8,comfortstat personal vehstat,15,EC_MirrStat PNC_ALM_ACT TurnInd_LT_ON TurnInd_RT_ON INVERTER_ON AHB_ENBL AirTemp_Outsd AutoVehHoldSts E_CALL_BtnStat U_CALL_BtnStat INST_FUEL_ECO SHIP_STAT VALET_LK_OUT SRT_HK_RQ CUSTOM_HK_RQ
+0x3B3,0 1 2 3 4 5 6 7 8,vehcfg vehcfg0,58,VehCfgCS01_Stat ParkAssist ParkAssistBraking ParkAssistFrontVolume ParkAssistRearVolume ElectPowerSteering ForwardCollisionWarning ForwardCollisionBraking HornWithRemoteLock HornWithRemoteStart HornWithRemoteLower CHMSL_CameraGuidelines AutoDriverComfort AuxillarySwitches RearCameraGridlines AccessoryDelay AdaptiveFrontLightSystem AmbientDimmer TireJackMode AirSuspensionWarning AutoAeroMode AutoHighBeam AutoPark BlindSpot CapacityUnits DigitalClock CompassCalibration CompassVariance ConsumptionUnits DistanceUnits AutoDoorLock AutoDoorUnlock DaytimeRunningLights EasySeatExit AutoEntryExit ElectronicParkBrake FlashLampWithLock HeadlampDrop HeadlampOffDelay HeadlampWithWiper HillStartAssist IlluminatedApproach LaneDepartureTorque LaneDepartureWarning FlashLightsWithRemoteLower NavigationTurnByTurn PassiveEntry PerformanceShiftEnable PerformanceShiftRPM PowerLiftGate PowerUnits PressureUnits PowerTakeOff RainSensitiveWipers RearCamera VC_CHMSL_LINE_CSO VC_UNIT_SET_CSO VC_Police_PE_CSO
+0x3B4,0 1 2 3 4 5 6 7 8,vehcfg vehcfg0,39,VehCfgCS02_Stat RearCameraDelay RKELinkedToMemory RKEUnlock SpeedUnits TiltMirrorInReverse TorqueUnits TrailerName TrailerNumber TrailerType TransportMode USMetric WheelAlignment FuelSaver TemperatureUnits PowerFoldingMirrorPresent HandsFreeLiftGatePresent HandsFreeSlidingDoorPresent SVCGridlines SVC_Delay SliderDoorAlert TeenKeyFCWSensitivityPresent TeenKeyFCWBrakingPresent TeenKeyParkAssistPresent TeenKeyFTParkAssistVolPresent TeenKeyRRParkAssistVolPresent TeenKeyMaxSpeedLimitPresent TeenKeyFuelWarningPresent TeenKeyFuelPopupPresent TeenKeyBlindSpotPresent TeenKeyRainSenseWipersPresent TeenKeyAutoHighBeamsPresent TeenKeyHLsWithWipersPresent SettingsPaddleModePresent FlashLightSlideDoorPresent VC_FCW_SW_CSO VC_RDY_DRV_CSO VC_AutoOnFeatureMethod ReadyToDrivePresent
+0x3C7,0 1 2 3 4 5 6 7 8,dvd,11,DVD_DISC_TYPE DVD_DISP_MD DVD_DISC_NUM DVD_TRK_FILE DVD_MEDIA_PT DVD_RND_MD DVD_RPT_MD DVD_NEG_TIME DVD_HOUR DVD_MINUTE DVD_SECOND
+0x3C9,0 1 2 3 4 5 6 7 8,comfortstat,2,AMB_TEMP_AVG_F AMB_TEMP_AVG_C
+0x3CF,0 1 2 3 4 5 6 7 8,srt,7,SRT_60mphTmC SRT_eighthTmC SRT_quarterTmC SRT_EthSpdC_M SRT_QrtSpdC_M SRT_BrkSpdC_M SRT_BrkDistC_M
+0x3D2,0 1 2 3 4 5 6 7 8,vehstat,1,ODO
+0x3DE,0 1 2 3 4 5 6 7 8,audioctl compact personal,27,RKE_ONE_PRESS_ENBL SOUND_LK FLASH_LK HL_WPR AUTO_LK AUTO_UNLK DR_ALR CFG_AUTO_WPR ILL_APRCH_TIME HL_DLY_TIME ACC_DLY_TIME DRL_ON ECM_Enbl ACC_DLY_ACT RemLoHrnEnbl RemLoLgtEnbl SOUND_RS AUTO_RELK StaticGridResp DynamicGridResp SOUND_LK_1ST_2ND DynamicGridRespFail SWSError AutoSwitch OffWithDoorOpen HandsFreeSlidingDoorStat SLD_DR_Chime_Enbl
+0x3E0,0 1 2 3 4 5 6 7 8,vehcfg,1,VIN
+0x3E1,0 1 2 3 4 5 6 7 8,can_c,2,DISPLACEMENT ENG_ASP
+0x3E3,0 1 2 3 4 5 6 7 8,vehcfg vehcfg0,34,NET_CFG_STAT_INT NetCfg_CLOCK NetCfg_CRSM NetCfg_HVAC_R NetCfg_DCM_PASS NetCfg_DCM_DR NetCfg_CSWM NetCfg_CBC_IN NetCfg_BSM NetCfg_RBSS NetCfg_PSD_RT NetCfg_PSD_LT NetCfg_PLG NetCfg_MSM NetCfg_HVAC NetCfg_DCM_RR NetCfg_DCM_RL NetCfg_ITM NetCfg_VSIM NetCfg_TGW NetCfg_DTV NetCfg_RBC NetCfg_PTCM NetCfg_FSM NetCfg_VES3_I NetCfg_VES2_I NetCfg_ICS_I NetCfg_HFM_CTM NetCfg_DVD_CDM NetCfg_AMP_I NetCfg_CVPM NetCfg_VRM NetCfg_DCSD NetCfg_TBM
+0x3E4,0 1 2 3 4 5 6 7 8,vehcfg vehcfg0,33,NetCfg_ANC NetCfg_HaLF NetCfg_OCM NetCfg_ITBM NetCfg_AFLS NetCfg_PASS_PT NetCfg_TPM NetCfg_TCM NetCfg_ELSD NetCfg_SCCM NetCfg_RBT_PASS NetCfg_RBT_DR NetCfg_PTS NetCfg_ORC NetCfg_EPPM NetCfg_FDCM NetCfg_DASM NetCfg_IC NetCfg_RF_HUB NetCfg_EPB NetCfg_ESC NetCfg_ESM NetCfg_EPS NetCfg_ECM NetCfg_DTCM NetCfg_CBC_PT NetCfg_ASCM NetCfg_VSIM_C NetCfg_AHLM NetCfg_ADCM NetCfg_ACC NET_CFG_STAT_PT NetCfg_HCP
+0x3E5,0 1 2 3 4 5 6 7 8,vehcfg0,30,Proxi_BCM Proxi_ECM Proxi_EPS Proxi_IPC Proxi_BSM Proxi_DDM_DMM_FDM_UDM Proxi_ECC_ACM_MCM_MHM Proxi_MTA_TCM_DCTM Proxi_EPB Proxi_PDM Proxi_DSM Proxi_ESL Proxi_GSM_STM Proxi_PAM Proxi_SDM_ORC Proxi_HALF Proxi_LTM_ETM_HTM Proxi_AMP Proxi_CDM Proxi_CSWM Proxi_ICS_HCPM Proxi_LBSS Proxi_RBSS Proxi_SCCM Proxi_DASM Proxi_RFHM Proxi_DTCM Proxi_PLGM Proxi_AHLM Proxi_OCM
+0x3E8,0 1 2 3 4 5 6 7 8,vehcfg vehcfg0,19,VC_VehCfg1_Stat VC_MODEL_YEAR VC_VEH_LINE VC_COUNTRY VC_LHD_RHD VC_RemStPrsnt VC_XWD VC_EmodePrsnt VC_AUTO_HB VC_BODY_STYLE VC_PP_Prsnt VC_SpecialPKG VC_HdRstPrsnt VC_PTS_Config VC_RVCM_Prsnt VC_CHMCM_Prsnt VC_HDC_Prsnt VC_SSC_Prsnt VC_CmfrtFeatMethod
+0x3E9,0 1 2 3 4 5 6 7 8,vehcfg vehcfg0,16,VC_VehCfg2_Stat VC_PwrIvtrTyp VC_RainSnsPrsnt VC_SpecialPKG_IC VC_ECO_Indicator VC_DRVMD_Prsnt VC_MemoryDRVMD_Prsnt VC_ESCDrvMd_Prsnt VC_EngPowerDrvMd_Prsnt VC_SecPrkPrsnt VC_ShftInd_Prsnt VC_MaxLdPressRrTr VC_MaxLdPressFtTr VC_LgtLdPressRrTr VC_LgtldPressFtTr VC_ECO_MODE_PRESENCE
+0x3EA,0 1 2 3 4 5 6 7 8,vehcfg vehcfg0,30,VC_VehCfg3_Stat VC_RKE_PRSNT VC_SunShade_Present VC_TcaseTyp VC_FUEL_CAP VC_AUTO_HL VC_DrAlrPrsnt VC_SRT_PRSNT VC_DSBL_CLK_DISP VC_TEMP_DISP VC_HVAC_Config VC_VEH_BRAND VC_CMP_DISP VC_IntEC_MIRR VC_CMS VC_FCW VC_SPORT_PRSNT VC_PE_Prsnt VC_Audio_Lay_Out VC_HeadlampOffDelay VC_HornChirpMenu VC_AutoCloseMenu VC_HALF_Sensitivity VC_HALF_Torque ParkWithStop DEFROST_MODE VC_Hold_N_Go CUSW VC_POLICE RearHeatedWindow
+0x3EB,0 1 2 3 4 5 6 7 8,vehcfg vehcfg0,2,VC_VehCfg4_Stat VC_TIRE_CIRCUMF
+0x3F2,0 1 2 3 4 5 6 7 8,vehcfg vehcfg0,36,VENT_ST_PRSNT HS_PRSNT FT_PTS_Prsnt PWR_INV_PRSNT DRL_Prsnt RrCameraPrsnt DEST CABIN_EQ VTA_PRSNT DAB_PRSNT SDAR_TRL_LNK_PRSNT APPS_PRSNT WiFi_Cfg VC_EXT_PORT_TYPE HYBRID_PT ANT_TYP PWR_DR_LK_PRSNT SURR_PRSNT VIN_ChkDgt_Dsbl HSW_PRSNT DisplayOnOffSKPresent VC_AUD_SWS_CF HILL_DES_PRSNT TOW_HAUL_PRSNT DTV_FRNTCAM_PRSNT DTV_SIDECAM_PRSNT DSBL_CD_EJECT NumberOfMics_PNET Microphone_Type_PNET Splashscreen_Type MicTuningParam_PNET EC_ECUCfg3_Stat ConnectedServicesPresent ECSB_PRSNT NAV_Presence OD_SW_PRSNT
+0x44A,0 1 2 3 4 5 6 7 8,vehcfg vehcfg0,4,VC_VehCfg5_Stat VC_OffRoadPg VC_AmbLtgPrsnt VC_ParkStopPrsnt
+0x44C,0 1 2 3 4 5 6 7 8,vehcfg vehcfg0,2,VC_VehCfg6_Stat VC_TireCircumfFT
+0x4B1,3 5,can_c,6,BonnetSts DriverDoorSts_C PsngrDoorSts LHRDoorSts RHRDoorSts TheftAlarmStatus
+0x52D,0 1 2 3 4 5 6 7 8,notification vehstat,6,HALF_CHIME_REP_RATE HALF_CHIME_TYPE HALF_LF_CHIME_RQ HALF_RF_CHIME_RQ EngineSts AHBFault
+0x52E,0 1,personal,2,TorqueIntensitySts ConfigSts
+0x550,0 1 2 3 4 5 6 7 8,audiostat personal vehstat,4,AutoParkSts ServiceModeSts EPBChimeReq TextDisplay
+0x600,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_RF_HUB
+0x601,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_CBC
+0x602,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_IC
+0x603,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_TPM
+0x604,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_ORC
+0x605,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_RBT_DR
+0x606,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_RBT_PASS
+0x607,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_ESC
+0x609,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_ESM
+0x60B,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_DTCM
+0x60C,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_FDCM
+0x613,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_DASM
+0x614,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_ITBM
+0x617,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_ADCM
+0x619,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_EPB
+0x61A,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_EPS
+0x61E,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_OCM
+0x61F,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_EPPM
+0x622,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_PTS
+0x623,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_SCCM
+0x624,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_HaLF
+0x626,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_ASCM
+0x628,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_AFLS
+0x629,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_AHLM
+0x630,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_ELSD
+0x638,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_ECM
+0x639,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_TCM
+0x643,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_HVAC
+0x644,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_DCM_DR
+0x645,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_DCM_PASS
+0x646,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_DCM_RL
+0x647,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_DCM_RR
+0x648,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_PSD_LT
+0x649,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_PSD_RT
+0x64A,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_MSM
+0x64C,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_PLG
+0x64D,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_FSM
+0x64E,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_VSIM
+0x64F,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_ITM
+0x650,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_AHBM
+0x651,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_BSM
+0x652,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_CSWM
+0x654,6,roe,1,SD_RS_CVPM
+0x655,6,roe,1,SD_RS_MSM_PASS
+0x656,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_CRSM
+0x657,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_CLOCK
+0x658,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_HVAC_R
+0x659,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_RBSS
+0x665,6,roe,1,SD_RS_ANC_I
+0x66C,6,roe,1,SD_RS_DCSD
+0x66D,6,roe,1,SD_RS_VRM
+0x66E,6,roe,1,SD_RS_ICS_R
+0x674,0 1 2 3 4 5 6 7 8,dtv,1,SD_RS_DTV
+0x676,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_DVD
+0x677,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_VES2
+0x679,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_HFM
+0x67A,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_SDARV
+0x67B,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_VES3
+0x67C,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_ICS
+0x67E,0 1 2 3 4 5 6 7 8,roe,1,SD_RS_AMP
+0x67F,6,roe,1,SD_RS_TGW
+0x9AB,0 1 5 6 7,vehstat,1,resumeModeTimeout
+0xAAA,0 1 2 3 4 5 6 7 8,vehcfg vehcfg0,1,PROXI
+0x1000,0 1 2 3 4 5 6 7 8,compact,7,IstantaneusFuelConsumption1 IstantaneusFuelConsumption2 IstantaneusFuelConsumption3 IstantFuelConsumptionValidData AutonomyDistanceValidData AutonomyDistance TotalOdometer
+0x1001,0 1 2 3 4 5 6 7 8,compact,10,AverageFuelConsumptionAPlus AverageFuelConsumptionAPlusValidData AverageSpeedAPlus AverageSpeedAPlusValidData TravelingTimeAPlus_Hour TravellingTimeAPlus_Minute TravelTimeAPlus_SEC ResetTripAPlusACK PartialOdometerAPlus PartialOdometerAPlusValidData
+0x1002,0 1 2 3 4 5 6 7 8,compact,10,AverageFuelConsumptionBPlus AverageFuelConsumptionBPlusValidData AverageSpeedBPlus AverageSpeedBPlusValidData TravelingTimeBPlus_Hour TravellingTimeBPlus_Minute TravelTimeBPlus_SEC ResetTripBPlusACK PartialOdometerBPlus PartialOdometerBPlusValidData
+0x1003,0 1 2 3 4 5 6 7 8,compact vehstat,11,LatAcceleration LongAcceleration YawRate AXSStat AYSStat YRSStat GasPedalPosition GasPedalPositionValidData BrakePedalSwitchNOSts OperationalModeSts FuelLvlLow
+0x1004,0 1 2 3 4 5 6 7 8,compact,7,DistanceToService DistanceToServiceValidData TyrePressureSystemFailSts InflationState_LHF_Tyre InflationState_LHR_Tyre InflationState_RHF_Tyre InflationState_RHR_Tyre
+0x1006,0 1 2 3 4 5 6 7 8,compact,10,BoostPressureIndication GearShiftIndiciation ActualGearForDisplay ShiftLeverPosition ShiftModeSts AlternativeFuelFillingTank ExternalTemperatureFailSts ExternalTemperatureC ExternalTemperatureF DriveStyleSts
+0x1007,0 1 2 3 4 5 6 7 8,compact,13,GPLGasolineMode EngineWaterTempFailSts EngineSpeedValidData FuelConsumptionValidData DPFSts EngineSts CompressorSts OilLifeSts VehicleSpeedVSOSigFailSts EngineWaterTemp EngineSpeed FuelConsumption VehicleSpeedVSOSig
+0x100A,1 2 3 4 5 7 8,compact personal vehctl,37,ConsumptionUnit ETMSetupAckCntrl CorneringEnable SpeedLockDoorEnable RainSensorLevel TemperatureUnit ExternalLightSensorLevel EPB_MaintenanceMode HeadlightsOffDelay AFSEnable GreetingLightsEnable AutomaticResetTripB BSDEnable NavRepetition Pam4Ch Pam8ChChimeVolume PamAlertMode PhoneRepetition Sdw SdwChimeVolume RemoteDoorUnlock AutoParkBrake AutoRelock AutoUnlockDoorExit FlashLightWLock LDW_Intensity LDW_Sensibility TyrePressureUnit Trip_B_Enable DistanceUnit AutoHighBeamEnable EPB_Maintenance_Fdbk FSFCWPlusActivationMode FSFCWPlusSetting Units RemStNrmlStEnbl RKEMemoryLinkEnable
+0x100B,0 1 2 3 4 5 6 7 8,compact,13,Day1 Day2 Hour1 Hour2 Minute1 Minute2 Month1 Month2 Year1 Year2 Year3 Year4 HourMode
+0x12A0,0 6,can_c,9,MIL_OnRq ETC_IND_LMP MZR_MODE_ACT EngOilIndLmp_On_Rq OIL_TEMP_IND_RQ OIL_TEMP_CHM_RQ ChkFuelCap OIL_PRESS EngRun_Stat
+0x12E0,0 1 2 3 4 5 6 7,can_c,5,ESP_Off_IndLmp_On_Rq ESC_CtrlLmp_Info ABS_IndLmp_On_Rq BrkIndLmp_On_Rq_ESC SelSpdLmp
+0x1305,6 7,can_c,9,TPM_IndLmpOnRq Tire_FL Tire_FR Tire_RR Tire_RL TirePrssFL TirePrssFR TirePrssRL TirePrssRR
+0x13CF,0 1 2 3 4 5 6 7 8,srt,7,SRT_60mphTmB SRT_eighthTmB SRT_quarterTmB SRT_EthSpdB_M SRT_QrtSpdB_M SRT_BrkSpdB_M SRT_BrkDistB_M
+0x20DE,5,vehstat,1,EPS_Warn_Disp_Rq
+0x20FB,5,can_c,1,EngTrq_Rq_ESC
+0x20FC,5,can_c,1,CHRG_FAIL
+0x21F5,0 6,can_c,2,ACConlyNA_DASMSts ACCFaulted
+0x21F8,5,can_c,1,CCMFailSts
+0x2214,0 6,can_c,2,IBS_V_BATT IBS_T_BATT
+0x2248,0 1 6 7,can_c,2,IBS_SOC IBS_SOC_Accuracy
+0x2256,5,can_c,1,SRS_LMP_STAT
+0x2257,5,can_c,3,SRS_IndLmp_Rq DRV_SEATBELT PSG_SEATBELT
+0x228F,6,hev,7,EstTimeofChrg_Lv2 ChrgSysFault ChargingLevel EstTimeofChrg_Lv1 PrplsnSysAtv ChargingSysSts CabinPreCondReqStat
+0x22BD,6,hev,3,HEV_LMP_RQ HEV_EVT_MD Est_Range
+0x22EF,5,vehstat,3,Gr EngineOilTemp OIL_TEMP_IND_RQ
+0x230E,6,hev,2,Gas_Range Total_Range
+0x233A,6,can_c,2,PTS_FT_SRV PTS_RR_SRV
+0x2340,6,hev,1,Est_Range_Disp
+0x236A,6,can_c,1,ADS_SrvSys
+0x236E,6,hev,8,BatPwrUsageDisp EngPwrUsageDisp HVACPwrUsageDisp HVBatSOC_HC BatPwrUsageDisp_V EngPwrUsageDisp_V HVACPwrUsageDisp_V HVBatSOCV_HCP
+0x23AA,6,hev,3,A_MPG A_EV_Miles A_EV_Kilometers
+0x23AB,6,hev,3,A_KMpL A_Hybrid_Miles A_Hybrid_Kilometers
+0x23AC,6,hev,2,A_Total_Dist_Miles A_Total_Dist_Kilometers
+0x23AD,6,hev,3,B_MPG B_EV_Miles B_EV_Kilometers
+0x23AE,6,hev,3,B_KMpL B_Hybrid_Miles B_Hybrid_Kilometers
+0x23AF,6,hev,2,B_Total_Dist_Miles B_Total_Dist_Kilometers
+0x23BE,6,hev,3,Electric_Dist_Miles Hybrid_Dist_Miles MPG_combined
+0x23BF,6,hev,3,Electric_Dist_Kilometers Hybrid_Dist_Kilometers KMpL_combined
+0x23CF,0 1 2 3 4 5 6 7 8,srt,7,SRT_60mphTmL SRT_eighthTmL SRT_quarterTmL SRT_EthSpdL_M SRT_QrtSpdL_M SRT_BrkSpdL_M SRT_BrkDistL_M
+0x23DE,3 5,compact,1,TravelDistance
+0x23E6,3 5,compact,3,ShiftLeverPosition EngineSpeed EngineSpeedFailSts
+0x241E,5,can_c,2,IBS_V_BATT IBS_T_BATT
+0x2420,5,can_c,1,IBS_SOC
+0x246A,5,comfortstat,1,PTCFailSts
+0x24AC,5,can_c,5,TirePressFL TirePressRL TirePressFR TirePressRR TPM_IndLmp_On_Rq
+0x24AF,5,can_c,3,ESC_CtrlLmp_Info ABS_IndLmp_On_Rq BrkIndLmp_On_Rq_ESC
+0x2545,5,can_c,1,ChkFuelLevelSts
+0x25A8,5,can_c,3,MIL_OnRq_TCM TxTemp_Excess TransmissionWarnings
+0x25AE,5,can_c vehstat,7,ETC_IND_LMP EngOilIndLmp_On_Rq MIL_OnRq EngineWaterTempWarningLightSts ChkFuelCap WtrFuelIndLmp_On_Rq FuelWaterPresentFailSts
+0x25E0,5,can_c,1,EPBSts
+0x263A,6,roe,1,SD_RS_HCP
+0x263B,6,roe,1,SD_RS_EBCM
+0x275C,5,vehstat,1,IgnitionOnCounter
+0x33CF,0 1 2 3 4 5 6 7 8,srt,7,SRT_60mphTm_C SRT_eighthTm_C SRT_quarterTm_C SRT_EthSpdC_US SRT_QrtSpdC_US SRT_BrkSpdC_US SRT_BrkDistC_US
+0x43CF,0 1 2 3 4 5 6 7 8,srt,7,SRT_60mphTm_B SRT_eighthTm_B SRT_quarterTm_B SRT_EthSpdB_US SRT_QrtSpdB_US SRT_BrkSpdB_US SRT_BrkDistB_US
+0x53CF,0 1 2 3 4 5 6 7 8,srt,7,SRT_60mphTm_L SRT_eighthTm_L SRT_quarterTm_L SRT_EthSpdL_US SRT_QrtSpdL_US SRT_BrkSpdL_US SRT_BrkDistL_US
+0x63CF,0 1 2 3 4 5 6 7 8,srt,4,SRT_0C0mphTmC SRT_BrkTmC SRT_ReactTmC SRT_60ftTmC
+0x73CF,0 1 2 3 4 5 6 7 8,srt,4,SRT_0C0mphTmB SRT_BrkTmB SRT_ReactTmB SRT_60ftTmB
+0x83CF,0 1 2 3 4 5 6 7 8,srt,4,SRT_0C0mphTmL SRT_BrkTmL SRT_ReactTmL SRT_60ftTmL
+0x93CF,0 1 2 3 4 5 6 7 8,srt,4,SRT_0C0mphTm_C SRT_BrkTm_C SRT_ReactTm_C SRT_60ftTm_C
+0xA3CF,0 1 2 3 4 5 6 7 8,srt,4,SRT_0C0mphTm_B SRT_BrkTm_B SRT_ReactTm_B SRT_60ftTm_B
+0xB3CF,0 1 2 3 4 5 6 7 8,srt,4,SRT_0C0mphTm_L SRT_BrkTm_L SRT_ReactTm_L SRT_60ftTm_L
+0xC0C0,0 1 2 3 4 5 6 7 8,vehcfg vehcfg0,27,Audio_System_Type Sdars_Presence VC_TwilightSnsrPrsnt CorneringPresent GPS_Presence AFSMenu OdoUnitsChange AutoCloseMenu ExternalTempSensor InternalLighting BrowsingEnable NumberOfMics AdditionalLanguages Turbo_Param_Max Turbo_Param_Typ GearShiftIndicator StartAndStop Microphone_Type GreetingLightsMenu can_node_SDU AcousticConfig ExternalPortType MicTuningParam EngineTypeVariant Brand_Configuration_2 AdditionalLanguagesDisplay DeadReckoningEnable
+0xC0C1,0 1 2 3 4 5 6 7 8,vehcfg0,27,PamConfiguration VoiceRecActivation AutoParkBrakeMenu NavRepetitionMenu RelockStrategy PhoneRepetitionMenu GearBoxTypeVariant SideDistWarn AudioRepetitionMenu GearBoxType FuelType520 AudioCarLayOut DriveTypeVariant AudioRepetition NavRepetitionCfg PhoneRepetitionCfg RemoteDoorUnlockMenu AudioSystemType SwitchOffTime AutoResetTripB AudioBrand CellPresence ClusterDispType RRMVPxSWCType NavRepetition Ambient_Dimmer_Switch Ambient_Lighting_Function
+0xC0C2,0 1,vehcfg0,11,Phase_Diversity Main_Ant_Supply_Cfg DAB_Disable ClusterDispType Logistic_Mode DeadReckoningEnable Tip_Start CellPresence RRMVPxSWCType Sky_Slider EC_MIRROR_HK_PRSNT
+0xFFFE,0 1 6 7,vehcfg0,1,DTV_Diag_Cfg

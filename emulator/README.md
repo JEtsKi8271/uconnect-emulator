@@ -10,8 +10,15 @@ Double-click `run.bat` (needs Python 3 on PATH). It starts the backend, opens th
 in your browser (http://127.0.0.1:4401/) and opens the head unit window. Touch = mouse.
 
 Hardware panel: volume / tune knobs, faceplate buttons, climate knobs, shift to R (backup camera),
-and a box for sending raw backend frames. Keyboard on the panel page: `+`/`-` volume, `M` mute,
+theme and boot-splash pickers, and a box for sending raw backend frames. Applying a theme restarts the
+head unit (the stock HMI only re-skins live from its own Settings theme screen). The boot splash is the
+car's own image (`splash/`), picked like `splash.lua` does from `brandId` + `splashFlags` in `config.json`. Keyboard on the panel page: `+`/`-` volume, `M` mute,
 arrows tune, Enter, Backspace = back.
+
+## Sound
+`audio.py` plays your music folder (config `musicDir`, default `~/Music`) as the USB stick through Windows MCI,
+with tags read by `mutagen` (`pip install mutagen`; without it, names come from `Artist/Album/` folders). The scan
+is cached in `music_cache.json`. The ringtone is the stock one from the firmware (`sounds/`).
 
 ## Configure
 `config.json` (applied at next start, written into `hmi/hmiVars` like the car's boot file):

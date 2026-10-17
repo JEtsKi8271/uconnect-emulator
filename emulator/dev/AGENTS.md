@@ -60,9 +60,11 @@ runs unmodified in Adobe AIR (`tools/airsdk/bin/adl.exe`). It talks to a fake ve
 ## How to test (your own isolated instance)
 `cd ROOT/emulator` then `python dev/uc.py NAME start PORT` (NAME/PORT from your brief). This copies the HMI to
 `dev/NAME/`, starts a backend + its own AIR window titled "Uconnect dev: NAME". Boot takes ~15-20 s.
-- `python dev/uc.py NAME snap <abs path>.png` then Read the PNG to see the screen (window is 800x510 incl. ~30px title bar).
-- `python dev/uc.py NAME click X Y [HOLD_MS]` taps at CLIENT coords = screenshot coords with y - 30.
-  Taskbar (client y=425): Radio 153, Media 235, Controls 318, Apps 400, Climate 483, Nav 567, Phone 649.
+- `python dev/uc.py NAME snap <abs path>.png` then Read the PNG to see the screen (window is 1040x807 incl. ~31px title bar;
+  screen is 1024x768 = the 640x480 HMI stage scaled 1.6x).
+- `python dev/uc.py NAME click X Y [HOLD_MS]` taps at CLIENT coords = screenshot coords with x - 8, y - 31.
+  Stage coords from the AS3 (640x480) x 1.6 = client coords.
+  Taskbar (client y=680): Radio 117, Media 248, Controls 381, Apps 512, Climate 645, Nav 779, Phone 910.
 - `python dev/uc.py NAME act key settings` (hard keys: radio player nav phone more settings screenOff enter back browse audioOnOff),
   `act volume 1`, `act tune -1`, `act inject '{"Module":{...}}'` to push any frame.
 - `python dev/uc.py NAME errors` / `unhandled`; full traces in `dev/NAME/adl.log` and `dev/NAME/backend.log`.

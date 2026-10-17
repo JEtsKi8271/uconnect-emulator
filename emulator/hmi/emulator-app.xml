@@ -11,8 +11,9 @@
     <title>Uconnect 8.4AN (RA4 17.43.01)</title>
     <visible>true</visible>
     <resizable>false</resizable>
-    <width>800</width>
-    <height>480</height>
+    <!-- Outer window size: 1024x768 screen + Windows 11 frame (16x39). The 640x480 HMI stage scales 1.6x. -->
+    <width>1040</width>
+    <height>807</height>
     <renderMode>gpu</renderMode>
   </initialWindow>
 </application>

@@ -13,6 +13,7 @@ emulator/dev/*/
 emulator/fs/
 emulator/persistency.json
 emulator/settings.json
+emulator/music_cache.json
 emulator/hmi/hmiVars
 emulator/backend_probe.py
 emulator/snap.ps1

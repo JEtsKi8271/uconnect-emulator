@@ -187,6 +187,7 @@ def serve_client(conn):
     q = queue.Queue()
     with lock:
         clients[conn] = q
+    handlers.hmi_connected(True)
     threading.Thread(target=writer, args=(conn, q), daemon=True).start()
     buf = b""
     try:
@@ -210,30 +211,36 @@ def serve_client(conn):
     finally:
         with lock:
             clients.pop(conn, None)
+            if not clients:
+                handlers.hmi_connected(False)
         q.put(None)
         conn.close()
 
 
 class Panel(http.server.BaseHTTPRequestHandler):
-    """Hardware control panel: GET / serves panel.html, POST /act {action, value}."""
+    """Hardware control panel: GET / serves panel.html, GET /status, POST /act {action, value}."""
 
-    def do_GET(self):
-        body = open(os.path.join(HERE, "panel.html"), "rb").read()
-        self.send_response(200)
-        self.send_header("Content-Type", "text/html; charset=utf-8")
+    def reply(self, code, body=b"", ctype="text/plain; charset=utf-8"):
+        self.send_response(code)
+        self.send_header("Content-Type", ctype)
         self.end_headers()
         self.wfile.write(body)
+
+    def do_GET(self):
+        if self.path == "/status":
+            self.reply(200, json.dumps(handlers.panel_status()).encode(), "application/json")
+        else:
+            self.reply(200, open(os.path.join(HERE, "panel.html"), "rb").read(), "text/html; charset=utf-8")
 
     def do_POST(self):
         try:
             req = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))) or b"{}")
             log("PANEL", json.dumps(req))
             handlers.panel_action(req.get("action"), req.get("value"))
-            self.send_response(204)
+            self.reply(204)
         except Exception as e:
             log("!!", f"panel {e!r}")
-            self.send_response(400)
-        self.end_headers()
+            self.reply(400, str(e).encode())
 
     def log_message(self, *a):
         pass
@@ -249,6 +256,8 @@ def main():
     panel = http.server.ThreadingHTTPServer((HOST, PANEL_PORT), Panel)
     threading.Thread(target=panel.serve_forever, daemon=True).start()
     print(f"control panel on http://{HOST}:{PANEL_PORT}/", flush=True)
+    if "--hmi" in sys.argv:
+        threading.Thread(target=handlers.run_hmi, daemon=True).start()
     while True:
         conn, _ = srv.accept()
         conn.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)

@@ -35,6 +35,7 @@ def init(backend):
     MEDIA["playing"] = False
     B.mod("Media").update(media_device_payloads())
     B.mod("Media").update(media_track_payloads())
+    start_audio()
 
 
 # ---------------------------------------------------------------- hmiVars (boot config)
@@ -67,6 +68,75 @@ def update_config(**kv):
 @on("VehicleStatus", "setThemeTo")
 def theme_to(dest, args, conn):
     update_config(theme=args["newTheme"])
+
+
+# ---------------------------------------------------------------- themes, splash, HMI process
+HMI_DIR = os.path.join(_INSTANCE, "hmi")
+ADL = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "tools", "airsdk", "bin", "adl.exe")
+HMI = {"proc": None, "restart": False, "connected_at": None, "managed": False}
+
+
+def themes():
+    """Every theme in themes.xml as the HMI names it: '<brand folder>/<file>.swf'."""
+    import xml.etree.ElementTree as ET
+    root = ET.parse(os.path.join(HMI_DIR, "skins", "default", "themes.xml")).getroot()
+    out = []
+    for brand in root.findall("brand"):
+        # "RU" (Chrysler Pacifica) has no folder of its own; its files live under Chrysler.
+        folder = "Chrysler" if brand.get("id") == "RU" else brand.get("id")
+        out += [{"brand": brand.get("id"), "label": t.get("id"), "path": f"{folder}/{t.get('path')}"}
+                for t in brand.findall("theme")
+                if os.path.exists(os.path.join(HMI_DIR, "skins", "default", "themeSwfs", folder, t.get("path")))]
+    return out
+
+
+def splash_file():
+    import splash
+    c = json.load(open(CONFIG_FILE, encoding="utf-8"))
+    name = c.get("splash", "auto")
+    if name == "auto":
+        name = splash.pick(c["brandId"], c.get("splashFlags", 0), set(os.listdir(splash.SPLASH_DIR)))
+    return os.path.join(splash.SPLASH_DIR, name)
+
+
+def hmi_connected(up):
+    HMI["connected_at"] = time.time() if up else None
+
+
+def hmi_ready():
+    # The UI is drawn ~1 s after the HMI connects; hold the splash a bit longer like the car does.
+    return HMI["connected_at"] is not None and time.time() - HMI["connected_at"] > 3
+
+
+def run_hmi():
+    """Own the head-unit window (run.bat mode): splash, then the stock HMI; relaunch on restart_hmi()."""
+    import subprocess, sys
+    HMI["managed"] = True
+    while True:
+        HMI["restart"] = False
+        HMI["connected_at"] = None  # the killed HMI's socket may not have closed yet
+        subprocess.Popen([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), "splash.py"),
+                          splash_file(), str(B.PANEL_PORT)])
+        HMI["proc"] = subprocess.Popen([ADL, "-profile", "extendedDesktop",
+                                        os.path.join(HMI_DIR, "emulator-app.xml"), HMI_DIR])
+        HMI["proc"].wait()
+        if not HMI["restart"]:
+            os._exit(0)  # user closed the head-unit window: switch the car off
+
+
+def restart_hmi():
+    if not HMI["managed"]:
+        raise RuntimeError("HMI not started by the backend (use run.bat); restart it yourself")
+    HMI["restart"] = True
+    HMI["proc"].kill()
+
+
+def panel_status():
+    c = json.load(open(CONFIG_FILE, encoding="utf-8"))
+    import splash
+    return {"theme": c["theme"], "themes": themes(), "splash": c.get("splash", "auto"),
+            "splashes": sorted(os.listdir(splash.SPLASH_DIR), key=str.lower),
+            "hmiReady": hmi_ready(), "canRestart": HMI["managed"]}
 
 
 def on_emit_signal(packet):
@@ -318,7 +388,9 @@ DEVICES = {
     "usb1": {"id": 1, "name": "SANDISK 16GB", "type": "usb", "handle": 1},  # audio source "usb1", device type "usb"
     "btsa": {"id": 2, "name": "Pixel 8", "type": "btsa", "handle": 2},
 }
-LIBRARY = [  # (title, artist, album, genre, year, seconds)
+# (title, artist, album, genre, year, seconds, path). Demo list without files (silent); replaced at boot by the
+# music folder (config "musicDir", default ~/Music) when it has playable files.
+LIBRARY = [t + (None,) for t in [
     ("Highway Star", "Deep Purple", "Machine Head", "Rock", 1972, 365),
     ("Smoke on the Water", "Deep Purple", "Machine Head", "Rock", 1972, 340),
     ("Radar Love", "Golden Earring", "Moontan", "Rock", 1973, 383),
@@ -334,8 +406,14 @@ LIBRARY = [  # (title, artist, album, genre, year, seconds)
     ("Midnight City", "M83", "Hurry Up, We're Dreaming", "Electronic", 2011, 244),
     ("Nightcall", "Kavinsky", "OutRun", "Electronic", 2013, 258),
     ("Kickstart My Heart", "Motley Crue", "Dr. Feelgood", "Metal", 1989, 282),
-]
-MEDIA = {"device": "usb1", "track": 0, "time": 0, "playing": True, "repeat": "off", "random": "off"}
+]]
+# "seek" changes only on explicit jumps (generation, seconds) so the player can tell them from playback ticks.
+MEDIA = {"device": "usb1", "track": 0, "time": 0, "playing": True, "repeat": "off", "random": "off", "seek": (0, 0)}
+
+
+def media_seek(sec):
+    MEDIA["time"] = sec
+    MEDIA["seek"] = (MEDIA["seek"][0] + 1, sec)
 
 
 def _msid():
@@ -343,11 +421,14 @@ def _msid():
 
 
 def media_track_payloads():
-    title, artist, album, genre, year, dur = LIBRARY[MEDIA["track"]]
+    title, artist, album, genre, year, dur, path = LIBRARY[MEDIA["track"]]
+    if audio_active():
+        dur = AUDIO["length"] or dur  # tags can lie; the decoder knows
     m = _msid()
     return {
         "nowPlaying": {"title": title, "artist": artist, "album": album, "genre": genre,
-                       "year": str(year), "composer": "", "filename": f"{title}.mp3", "msid": m},
+                       "year": str(year) if year else "", "composer": "",
+                       "filename": os.path.basename(path) if path else f"{title}.mp3", "msid": m},
         "trackState": {"totalTracks": len(LIBRARY), "fid": 0, "track": MEDIA["track"] + 1, "msid": m},
         "playTime": {"time": MEDIA["time"], "duration": dur, "msid": m},
         "playState": {"state": "playing" if MEDIA["playing"] else "paused", "msid": m, "handle": 0},
@@ -392,7 +473,7 @@ def media_select_device(name):
 
 def media_skip(delta):
     MEDIA["track"] = (MEDIA["track"] + delta) % len(LIBRARY)
-    MEDIA["time"] = 0
+    media_seek(0)
     media_publish()
 
 
@@ -435,7 +516,7 @@ def media_prev(dest, args, conn):
     _media_reply("previous", conn)
     # Like the real unit: restart the song unless we are in its first seconds.
     if MEDIA["time"] > 3:
-        MEDIA["time"] = 0
+        media_seek(0)
         media_publish(("playTime",))
     else:
         media_skip(-1)
@@ -518,7 +599,8 @@ def browse_selection(conn, ack):
 
 def browse_play(tracks, conn):
     if tracks:
-        MEDIA.update(track=tracks[0], time=0, playing=True)
+        MEDIA.update(track=tracks[0], playing=True)
+        media_seek(0)
         media_publish()
 
 
@@ -572,7 +654,7 @@ def media_get_items(dest, args, conn):
 
 @on("Media", "seekToTime")
 def media_seek_time(dest, args, conn):
-    MEDIA["time"] = int(args.get("sec", args.get("time", 0)))
+    media_seek(int(args.get("sec", args.get("time", 0))))
     B.send("Media", {"seekToTime": {"description": "success"}}, conn)
     media_publish(("playTime",))
 
@@ -602,6 +684,73 @@ def set_volume(dest, args, conn):
     B.send("AudioSettings", {"volume": sig})
 
 
+# ---------------------------------------------------------------- Real audio output (audio.py)
+RINGTONE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sounds", "incomingCallDefaultRingtone.wav")
+AUDIO = {"path": None, "length": 0}  # file the player has open, and its real length
+
+
+def audio_active():
+    path = LIBRARY[MEDIA["track"]][6]
+    return path is not None and AUDIO["path"] == path
+
+
+def _ringing():
+    phone = __import__("sys").modules.get("modules.phone")
+    return phone is not None and any(c.get("callState") == "ringing" for c in getattr(phone, "CALLS", {}).values())
+
+
+def audio_want():
+    a = B.mod("Audio")
+    on_usb = a.get("audioSource", {}).get("source") == MEDIA["device"] == "usb1"
+    muted = a.get("userMuteState", {}).get("state") is True
+    return {"path": LIBRARY[MEDIA["track"]][6] if on_usb else None, "playing": on_usb and MEDIA["playing"],
+            "start": MEDIA["time"], "seek": MEDIA["seek"],
+            "volume": 0 if muted else round(1000 * VOLUME["level"] / VOLUME["cap"]),
+            "ring": RINGTONE if _ringing() else None}
+
+
+def audio_report(event, **kw):
+    if event == "loaded":
+        AUDIO.update(path=LIBRARY[MEDIA["track"]][6], length=kw["length"])
+        media_publish(("playTime",))
+    elif event == "position":
+        MEDIA["time"] = kw["sec"]
+    elif event == "ended":
+        media_skip(0 if MEDIA["repeat"] == "song" else 1)
+    elif event == "failed":
+        B.log("!!", f"audio: cannot play {kw['path']}")
+        AUDIO.update(path=None, length=0)
+        if MEDIA["playing"]:
+            media_skip(1)
+    else:
+        B.log("!!", f"audio: {kw.get('msg')}")
+
+
+def load_music():
+    """Swap the demo list for the music folder (scan is cached in music_cache.json)."""
+    import audio
+    d = json.load(open(CONFIG_FILE, encoding="utf-8")).get("musicDir") or os.path.join(os.path.expanduser("~"), "Music")
+    if not os.path.isdir(d):
+        return
+    lib = audio.scan(d, os.path.join(_INSTANCE, "music_cache.json"))
+    if not lib:
+        return
+    MEDIA.update(track=0, time=0)
+    LIBRARY[:] = lib
+    BROWSE["stack"] = [("root", None, {})]
+    B.log("--", f"music: {len(lib)} tracks from {d}")
+    B.mod("Media").update(media_track_payloads())
+    if HMI["connected_at"]:
+        media_publish()
+
+
+def start_audio():
+    import audio, threading
+    threading.Thread(target=load_music, daemon=True).start()
+    if os.name == "nt":
+        threading.Thread(target=audio.run, args=(audio_want, audio_report), daemon=True).start()
+
+
 # ---------------------------------------------------------------- Hardware panel actions
 def hard_key(key):
     """Faceplate / ICS button: press then release, as the IOC reports it."""
@@ -623,6 +772,17 @@ def panel_action(action, value=None):
     elif action == "temp":
         zone, delta = value.split(":")
         hvac_set("HVAC", {"zone": zone, "controls": {"tempUp" if delta == "+" else "tempDown": "press"}}, None)
+    elif action == "theme":
+        if value not in {t["path"] for t in themes()}:
+            raise ValueError(value)
+        update_config(theme=value)
+        restart_hmi()  # the stock HMI only re-skins live from its own Settings > Theme screen
+    elif action == "splash":
+        if value != "auto" and value not in panel_status()["splashes"]:
+            raise ValueError(value)
+        update_config(splash=value)
+    elif action == "restart":
+        restart_hmi()
     elif action == "inject":
         import json as _j
         frame = _j.loads(value)
@@ -639,11 +799,14 @@ def ticker():
     while True:
         src = B.mod("Audio").get("audioSource", {}).get("source")
         if src in DEVICES and src == MEDIA["device"] and MEDIA["playing"]:
-            MEDIA["time"] += 1
-            if MEDIA["time"] >= LIBRARY[MEDIA["track"]][5]:
-                media_skip(0 if MEDIA["repeat"] == "song" else 1)
+            if audio_active():
+                media_publish(("playTime",))  # the player moves the clock and reports the end of the song
             else:
-                media_publish(("playTime",))
+                MEDIA["time"] += 1
+                if MEDIA["time"] >= LIBRARY[MEDIA["track"]][5]:
+                    media_skip(0 if MEDIA["repeat"] == "song" else 1)
+                else:
+                    media_publish(("playTime",))
         t = time.localtime()
         if t.tm_min != last_min:
             last_min = t.tm_min
