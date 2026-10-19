@@ -67,6 +67,42 @@ def scan(music_dir, cache_file):
     return sorted(out, key=lambda r: (r[1].lower(), r[2].lower(), r[6].lower()))
 
 
+# ---------------------------------------------------------------- touch beeps
+# The car's DSP synthesises its confirmation tones; no sound files ship in the firmware.
+TONES = {"CONF_1": [(2400, 0.035)],                       # normal touch
+         "CONF_2": [(700, 0.07), (0, 0.04), (700, 0.07)],  # rejection
+         "CONF_3": [(1900, 0.04), (0, 0.02), (2600, 0.05)]}  # setting stored
+
+
+def make_tones(folder):
+    import math, wave
+    os.makedirs(folder, exist_ok=True)
+    rate = 22050
+    for name, parts in TONES.items():
+        path = os.path.join(folder, f"{name}.wav")
+        if os.path.exists(path):
+            continue
+        frames = bytearray()
+        for hz, sec in parts:
+            n = int(rate * sec)
+            for i in range(n):
+                env = min(1.0, i / 60, (n - i) / 60)  # 3 ms ramps: no clicks
+                v = int(9000 * env * math.sin(2 * math.pi * hz * i / rate)) if hz else 0
+                frames += v.to_bytes(2, "little", signed=True)
+        with wave.open(path, "wb") as w:
+            w.setnchannels(1)
+            w.setsampwidth(2)
+            w.setframerate(rate)
+            w.writeframes(bytes(frames))
+
+
+def tone(folder, name):
+    import winsound
+    path = os.path.join(folder, f"{name}.wav")
+    if os.path.exists(path):
+        winsound.PlaySound(path, winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_NODEFAULT)
+
+
 # ---------------------------------------------------------------- MCI player
 class MciError(Exception):
     pass
@@ -87,7 +123,7 @@ def mci(cmd):
 
 def run(want, report):
     """Playback loop. want() -> {"path", "playing", "start": seconds to open at, "seek": (generation, seconds),
-    "volume": 0..1000, "ring": path|None}; a new seek generation means "jump to its seconds".
+    "volume": (left, right) 0..1000, "ring": path|None}; a new seek generation means "jump to its seconds".
     report(event, **kw): "loaded"(length), "position"(sec), "ended", "failed"(path)."""
     cur = {"path": None, "ok": False, "playing": False, "seek": None, "volume": None, "ring": None}
     while True:
@@ -119,7 +155,9 @@ def run(want, report):
                     mci("pause song")
                     cur["playing"] = False
                 if w["volume"] != cur["volume"]:
-                    mci(f"setaudio song volume to {w['volume']}")
+                    left, right = w["volume"]
+                    mci(f"setaudio song left volume to {left}")
+                    mci(f"setaudio song right volume to {right}")
                     cur["volume"] = w["volume"]
                 if cur["playing"]:
                     pos, mode = int(mci("status song position") or 0), mci("status song mode")

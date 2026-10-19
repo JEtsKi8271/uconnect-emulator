@@ -127,6 +127,63 @@ def _props(args):
     return args.get("props") if isinstance(args.get("props"), dict) else args
 
 
+# LocaleEngine.XMLIDTolanguageIDTable: hmiVars language byte (= Textarchive_<n>) <-> locale id
+LANG_IDS = [None, None, "de_DE", "en_US", "fr_CA", "fr_FR", "it_IT", "es_MX", "es_ES", "ja_JP", "pt_PT", "nl_NL",
+            "en_GB", "zh_CN", "ru_RU", "ko_KR", "pt_BR", "pl_PL", "tr_TR", "ar_AE"]
+# VehConfig variant_market -> LocaleEngine.onMarketConfigRead's language list (ROW also gets the ECE list)
+MARKETS = {"NA": "North America", "ECE": "Europe", "ROW": "Rest of world", "JP": "Japan", "AU": "Australia",
+           "SA": "South America", "KR": "Korea", "CH": "China"}
+_ECE = ["it_IT", "fr_FR", "en_GB", "es_ES", "pt_PT", "de_DE", "nl_NL", "pt_BR", "pl_PL", "tr_TR", "ru_RU"]
+MARKET_LANGS = {"NA": ["en_US", "es_MX", "fr_CA"], "ECE": _ECE, "ROW": ["ar_AE"] + _ECE, "JP": ["en_US", "ja_JP"],
+                "AU": ["en_GB", "fr_FR"], "SA": ["en_GB", "es_ES"], "KR": ["en_US", "ko_KR"], "CH": ["en_US", "zh_CN"]}
+LANG_NAMES = {"de_DE": "Deutsch", "en_US": "English (US)", "fr_CA": "Français (Canada)", "fr_FR": "Français",
+              "it_IT": "Italiano", "es_MX": "Español (México)", "es_ES": "Español", "ja_JP": "日本語", "pt_PT": "Português",
+              "nl_NL": "Nederlands", "en_GB": "English (UK)", "zh_CN": "简体中文", "ru_RU": "Русский", "ko_KR": "한국어",
+              "pt_BR": "Português (Brasil)", "pl_PL": "Polski", "tr_TR": "Türkçe", "ar_AE": "عربي"}
+
+
+def _config():
+    return json.load(open(H.CONFIG_FILE, encoding="utf-8"))
+
+
+def api_locale():
+    c = _config()
+    market = c.get("market", "NA")
+    return {"market": market, "markets": MARKETS, "language": VSTATUS["language"],
+            "languages": {l: LANG_NAMES[l] for l in MARKET_LANGS[market]}}
+
+
+def locale_action(value):
+    """Panel "locale": {"market"} restarts the head unit (language list is read at start-up);
+    {"language"} switches live, as Settings > Display > Language does."""
+    v = json.loads(value) if isinstance(value, str) else value
+    if "market" in v and v["market"] != _config().get("market", "NA"):
+        if v["market"] not in MARKETS:
+            raise ValueError(value)
+        H.update_config(market=v["market"])
+        H.B.prop_store("VehicleConfig")["variant_market"] = v["market"]
+        langs = MARKET_LANGS[v["market"]]
+        if VSTATUS["language"] not in langs:  # keep the language family (en_US -> en_GB) if the market has it
+            same = [l for l in langs if l[:2] == VSTATUS["language"][:2]]
+            set_language((same or langs)[0])
+        H.restart_hmi()
+    elif "language" in v:
+        if v["language"] not in MARKET_LANGS[_config().get("market", "NA")]:
+            raise ValueError(value)
+        pc_set("lang", v["language"])
+        set_language(v["language"])
+
+
+def set_language(locale):
+    """The car confirms a Display > Language pick with VehicleStatus.language (that is what switches the HMI's
+    texts) and keeps it for the next start (hmiVars language byte)."""
+    VSTATUS["language"] = locale
+    H.B.prop_store("VehicleStatus")["language"] = locale
+    H.B.mod("VehicleStatus")["language"] = {"language": locale}
+    H.B.send("VehicleStatus", {"language": {"language": locale}})
+    H.update_config(languageId=LANG_IDS.index(locale))
+
+
 def pc_set(key, value):
     H.B.set_property("PersonalConfig", key, value)
 
@@ -135,10 +192,14 @@ def pc_set(key, value):
 def pc_set_props(dest, args, conn):
     for k, v in _props(args).items():
         pc_set(k, v)
+        if k == "lang" and v in LANG_IDS:
+            set_language(v)
         # The real service rewrites every unit when the unit system changes.
         if k == "units":
             for uk, uv in (CUSTOM_UNITS if v == "custom" else UNIT_SETS.get(v, UNIT_SETS["us"])).items():
                 pc_set(uk, uv)
+    if {"units", "temperatureUnits"} & set(_props(args)):
+        H.hvac_publish_temps()  # climate shows temps in the new unit
     save()
 
 
@@ -399,11 +460,18 @@ def init(B):
     B.mod("PersonalConfig").update({k: {k: v} for k, v in pc.items()})
 
     B.prop_store("VehicleConfig").update(VEHCFG)
+    c = json.load(open(H.CONFIG_FILE, encoding="utf-8"))
+    # "NA" etc. as the HMI knows them (state.json's old "NAFTA" matched no market: empty language list)
+    B.prop_store("VehicleConfig")["variant_market"] = c.get("market", "NA")
+    lang_id = c.get("languageId", 3)
+    VSTATUS["language"] = LANG_IDS[lang_id] if 2 <= lang_id < len(LANG_IDS) else "en_US"
 
     B.prop_store("VehSetting").update(VEH)
     B.mod("VehSetting").update({k: {k: v} for k, v in VEH.items()})
 
     B.prop_store("VehicleStatus").update(VSTATUS)
+    B.API["/api/locale"] = api_locale
+    H.PANEL_ACTIONS["locale"] = locale_action
     B.mod("VehicleStatus").update({k: {k: v} for k, v in VSTATUS.items()})
 
     # state.json has these as "true"/"false" strings; Clock.as negates timeFormat24, so a

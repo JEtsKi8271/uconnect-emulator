@@ -17,3 +17,7 @@ emulator/music_cache.json
 emulator/hmi/hmiVars
 emulator/backend_probe.py
 emulator/snap.ps1
+# Local caches / generated files / personal docs
+emulator/perfpages/cache/
+emulator/tones/
+*.pdf

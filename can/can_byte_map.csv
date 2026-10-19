@@ -1,0 +1,1726 @@
+can_id,signal,type,first_byte,last_byte,bits,decode,tables
+0x000,zzz-NULL,z,0,0,? (raw shift=0 mask=0x0),type z: raw byte 0,3 5
+0x000,zzz-null,z,0,0,? (raw shift=0 mask=0x0),type z: raw byte 0,0 1 2 4 6 7 8
+0x001,TestToolPresent,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x008,EC_MIRROR_HK_PRSNT,b,0,0,bit 0,d[0] & 0x1,7
+0x0FC,EngineSpeed_C,y,0,1,16-bit,d[1]<<8 | d[0],3 5
+0x101,RAD_FAN1_STAT,b,0,0,bits 0-7,d[0] & 0xFF,1 2 3 4 5 6 7 8
+0x101,DPFRgnMode,b,1,1,bit 0,d[1] & 0x1,0 1 2 3 4 5 6 7 8
+0x101,RAD_FAN1_STAT,b,1,1,bits 6-7,(d[1] >> 6) & 0x3,0
+0x101,RearLockLastElSts,b,1,1,bit 5,(d[1] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x101,RechargeSts,b,1,1,bit 4,(d[1] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x101,EngLoad_OBD,b,2,2,bits 0-7,d[2] & 0xFF,0 6
+0x102,LRW_PLRTY,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x102,VLRW,y,2,3,16-bit,d[3]<<8 | d[2],0 1 2 3 4 5 6 7 8
+0x102,LRWS_ST,b,4,4,bits 0-1,d[4] & 0x3,0 1 2 3 4 5 6 7 8
+0x102,Pad_Shft,b,4,4,bits 2-4,(d[4] >> 2) & 0x7,0 1 2 3 4 5 6 7 8
+0x102,LRW_RHP,b,6,6,bits 0-3,d[6] & 0xF,0 1 2 3 4 5 6 7 8
+0x102,MC_STW_Angle_STAT,b,6,6,bits 4-7,(d[6] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x102,CRC_STW_Angle_STAT,b,7,7,bits 0-7,d[7] & 0xFF,0 1 2 3 4 5 6 7 8
+0x10C,EngTrq_Rq_ESC,y,0,1,16-bit,d[1]<<8 | d[0],0 1 2 3 4 6 7 8
+0x112,TeenKeyIsPresent,b,1,1,bit 7,(d[1] >> 7) & 0x1,6
+0x112,TeenKeyPrsnt,b,1,1,bit 7,(d[1] >> 7) & 0x1,0 1 2 3 4 5 7 8
+0x120,AccelPdlPosn,b,0,0,bits 0-7,d[0] & 0xFF,0 1 2 3 4 5 6 7 8
+0x122,CmdIgnStat,b,0,0,bits 0-2,d[0] & 0x7,0 1 2 3 4 5 6 7 8
+0x122,RedKeyPrsnt,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x122,RemStActv,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x122,StTyp,b,0,0,bits 3-5,(d[0] >> 3) & 0x7,0 1 2 3 4 5 6 7 8
+0x122,KeyInIgn,b,1,1,bits 0-1,d[1] & 0x3,0 1 2 3 4 5 6 7 8
+0x122,TeenKeyIsPresent,b,1,1,bit 7,(d[1] >> 7) & 0x1,6
+0x134,MAP_ENG,b,0,0,bits 0-7,d[0] & 0xFF,0 1 2 3 4 5 6 7 8
+0x134,BARO_ENG,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x140,BrkPdl_Stat,b,0,0,bits 2-3,(d[0] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x140,ABS_BrkEvt,b,1,1,bit 6,(d[1] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x140,SelSpdSts_CANC,b,1,1,bits 4-5,(d[1] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x14B,BrkPrss_TMC,y,0,1,16-bit,d[1]<<8 | d[0],0 1 2 3 4 5 6 7 8
+0x14B,HSA_BrkPrss,b,4,4,bits 0-5,d[4] & 0x3F,0 1 2 3 4 5 6 7 8
+0x14C,VehYawRate_Offset,b,0,0,bits 0-7,d[0] & 0xFF,0 1 2 3 4 5 6 7 8
+0x14C,VehAccel_X_Offset,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x14C,MC_VEH_DYN_STAT,b,2,2,bits 4-7,(d[2] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x14C,VehAccel_Y_Offset,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x178,TxTemp_Excess,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 6 7 8
+0x178,RoboticTransmissionWarnings,b,2,2,bits 0-7,d[2] & 0xFF,0
+0x180,IntkAirTemp,b,0,0,bits 0-7,d[0] & 0xFF,0 6 7
+0x180,CHRG_FAIL,b,1,1,bit 1,(d[1] >> 1) & 0x1,0 1 2 3 4 6 7 8
+0x180,AirPress_Outsd,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x1C0,PE_ENABLE,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x1C8,DLY_5_SEC,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x1C8,LKOUT_1_MIN,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x1C8,MOT_DSBL_RQ,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x1C8,VTA_STAT,b,0,0,bits 0-2,d[0] & 0x7,0 1 2 3 4 5 6 7 8
+0x1C8,VTA_AUTH,y,1,2,16-bit,d[2]<<8 | d[1],0 1 2 3 4 5 6 7 8
+0x1D0,DSBL_PSG_LMP,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,EPP_FAULT,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,PsngrBagSts,b,0,0,bits 5-6,(d[0] >> 5) & 0x3,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_IndLmp_Rq,b,0,0,bits 2-3,(d[0] >> 2) & 0x3,0 1 2 3 4 6 7 8
+0x1D0,OC_P_Flt_ORC,b,1,1,bit 3,(d[1] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,OC_P_ORC,b,1,1,bits 0-2,d[1] & 0x7,0 1 2 3 4 5 6 7 8
+0x1D0,DRV_SEATBELT,b,2,2,bits 0-1,d[2] & 0x3,0 1 2 3 4 6 7 8
+0x1D0,PSG_SEATBELT,b,2,2,bits 2-3,(d[2] >> 2) & 0x3,0 1 2 3 4 6 7 8
+0x1D0,OC_P_Fast_ORC,b,3,3,bits 0-1,d[3] & 0x3,0 1 2 3 4 5 6 7 8
+0x1D0,PSG_ODS_STAT,b,3,3,bits 2-3,(d[3] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x1D0,COD_Stat,b,4,4,bits 0-2,d[4] & 0x7,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_DtlMsg01_Disp_Rq,b,5,5,bit 0,d[5] & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_DtlMsg02_Disp_Rq,b,5,5,bit 1,(d[5] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_DtlMsg03_Disp_Rq,b,5,5,bit 2,(d[5] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_DtlMsg04_Disp_Rq,b,5,5,bit 3,(d[5] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_DtlMsg05_Disp_Rq,b,5,5,bit 4,(d[5] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_DtlMsg06_Disp_Rq,b,5,5,bit 5,(d[5] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_DtlMsg07_Disp_Rq,b,5,5,bit 6,(d[5] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_DtlMsg08_Disp_Rq,b,5,5,bit 7,(d[5] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,AirBagFailSts,b,6,6,bit 7,(d[6] >> 7) & 0x1,0
+0x1D0,SRS_DtlMsg09_Disp_Rq,b,6,6,bit 0,d[6] & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_DtlMsg10_Disp_Rq,b,6,6,bit 1,(d[6] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_DtlMsg11_Disp_Rq,b,6,6,bit 2,(d[6] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_DtlMsg12_Disp_Rq,b,6,6,bit 3,(d[6] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_DtlMsg13_Disp_Rq,b,6,6,bit 4,(d[6] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_DtlMsg14_Disp_Rq,b,6,6,bit 5,(d[6] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_DtlMsg15_Disp_Rq,b,6,6,bit 6,(d[6] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D0,SRS_DtlMsg16_Disp_Rq,b,6,6,bit 7,(d[6] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_A,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_B,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_C,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_D,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_E,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_F,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_G,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_Tgl,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_H,b,1,1,bit 0,d[1] & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_I,b,1,1,bit 1,(d[1] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_K,b,1,1,bit 2,(d[1] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_L,b,1,1,bit 3,(d[1] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_M,b,1,1,bit 4,(d[1] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_N,b,1,1,bit 5,(d[1] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_O,b,1,1,bit 6,(d[1] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x1D2,IMPACT_X,b,1,1,bit 7,(d[1] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x1F4,EngTrq_Rq_DAS,y,0,1,16-bit,d[1]<<8 | d[0],0 1 6 7
+0x212,PreHtIndLmp_On_Rq,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x212,PFW,b,1,1,bits 0-1,d[1] & 0x3,0 1 2 3 4 5 6 7 8
+0x212,WtrFuelIndLmp_On_Rq,b,1,1,bit 6,(d[1] >> 6) & 0x1,0 1 2 3 4 6 7 8
+0x22D,Command_01,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Command_02,b,0,0,bits 2-3,(d[0] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Command_03,b,0,0,bits 4-5,(d[0] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Command_04,b,0,0,bits 6-7,(d[0] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Command_05,b,1,1,bits 0-1,d[1] & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Command_06,b,1,1,bits 2-3,(d[1] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Command_07,b,1,1,bits 4-5,(d[1] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Command_08,b,1,1,bits 6-7,(d[1] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Command_09,b,2,2,bits 0-1,d[2] & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Command_10,b,2,2,bits 2-3,(d[2] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Command_11,b,2,2,bits 4-5,(d[2] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Command_12,b,2,2,bits 6-7,(d[2] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Command_13,b,3,3,bits 0-1,d[3] & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Command_14,b,3,3,bits 2-3,(d[3] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Command_15,b,3,3,bits 4-5,(d[3] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Command_16,b,3,3,bits 6-7,(d[3] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x22D,Focus,b,4,4,bits 0-6,d[4] & 0x7F,0 1 2 3 4 5 6 7 8
+0x22D,Status_OK,b,4,4,bit 7,(d[4] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x22D,List,b,5,5,bits 0-3,d[5] & 0xF,0 1 2 3 4 5 6 7 8
+0x22D,Status_Down,b,5,5,bit 4,(d[5] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x22D,Status_Left,b,5,5,bit 5,(d[5] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x22D,Status_Right,b,5,5,bit 6,(d[5] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x22D,Status_Up,b,5,5,bit 7,(d[5] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x22F,IntkAirTempIntrClr,b,2,2,bits 0-7,d[2] & 0xFF,0 6
+0x22F,LTR_CoolantTemp,b,2,2,bits 0-7,d[2] & 0xFF,7
+0x22F,IntkAirTempIntrClr,b,3,3,bits 0-7,d[3] & 0xFF,7
+0x22F,LTR_CoolantTemp,b,3,3,bits 0-7,d[3] & 0xFF,0 6
+0x230,AQS_Active,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x230,DEFROST_SEL,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x230,SpSt_Pad1,b,0,0,bits 0-2,d[0] & 0x7,0 1 2 3 4 5 6 7 8
+0x230,SpSt_Pad2,b,0,0,bits 4-6,(d[0] >> 4) & 0x7,0 1 2 3 4 5 6 7 8
+0x230,EVAP_TEMP,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x230,EvapTempTar,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x232,EngOilTemp,b,0,0,bits 0-7,d[0] & 0xFF,0 1 2 3 4 5 6 7 8
+0x232,TX_TEMP,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x232,ACT_CNT_DIF_TRQ,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x232,LT_DIST,y,4,5,16-bit,d[5]<<8 | d[4],0 1 2 3 4 5 6 7 8
+0x232,RT_DIST,y,6,7,16-bit,d[7]<<8 | d[6],0 1 2 3 4 5 6 7 8
+0x248,Batt_ST_Crit,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x248,PN14_Key_Off_Load_Shed,b,0,0,bits 1-2,(d[0] >> 1) & 0x3,0 1 2 3 4 5 6 7 8
+0x248,PN14_LS_Actv,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x248,PN14_LS_Lvl5,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x248,PN14_LS_Lvl7,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x24E,FuelCons,y,0,1,16-bit,d[1]<<8 | d[0],0 1 2 3 4 5 6 7 8
+0x24E,EngRunFuelTyp,b,2,2,bits 5-7,(d[2] >> 5) & 0x7,0 1 2 3 4 5 6 7 8
+0x24E,Roll_Angle,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x24E,Pitch_Angle,b,4,4,bits 0-7,d[4] & 0xFF,0 1 2 3 4 5 6 7 8
+0x252,FUEL_SAV_MD_ACT,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0x252,IntkAirTemp,b,1,1,bits 0-7,d[1] & 0xFF,1 2 3 4 5 8
+0x252,LRW,y,2,3,16-bit,d[3]<<8 | d[2],0 1 2 3 4 5 6 7 8
+0x252,VehYawRate_Raw,y,4,5,16-bit,d[5]<<8 | d[4],0 1 2 3 4 5 6 7 8
+0x252,VehAccel_X,b,6,6,bits 0-7,d[6] & 0xFF,0 1 2 3 4 5 6 7 8
+0x252,VehAccel_Y,b,7,7,bits 0-7,d[7] & 0xFF,0 1 2 3 4 5 6 7 8
+0x280,Mem_D_Pos_Rq,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0x280,Mem_D_Rc_Rq,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x280,Mem_D_Sv_Rq,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x290,UConnSeed1,b,0,0,bits 0-7,d[0] & 0xFF,0 1 2 3 4 5 6 7 8
+0x290,UConnSeed2,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x290,UConnSeed3,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x290,UConnSeed4,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x29D,BSMBrkReq,b,0,0,bits 0-7,d[0] & 0xFF,0 1 2 3 4 5 6 7 8
+0x29D,BSMBrkReqActive,b,1,1,bit 0,d[1] & 0x1,0 1 2 3 4 5 6 7 8
+0x29D,EPBHoldSts,b,1,1,bits 1-3,(d[1] >> 1) & 0x7,0 1 2 3 4 5 6 7 8
+0x29D,MC_EPB_A1,b,1,1,bits 4-7,(d[1] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x29D,CRC_EPB_A1,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x2A0,DCSD_TCH_STAT,b,0,0,bits 0-2,d[0] & 0x7,6
+0x2A0,ETC_IND_LMP,b,0,0,bits 2-3,(d[0] >> 2) & 0x3,1 2 3 4 7 8
+0x2A0,MZR_MODE_ACT,b,0,0,bits 4-5,(d[0] >> 4) & 0x3,1 2 3 4 5 7 8
+0x2A0,ChkFuelCap,b,1,1,bit 7,(d[1] >> 7) & 0x1,1 2 3 4 7 8
+0x2A0,EngOilIndLmp_On_Rq,b,1,1,bit 2,(d[1] >> 2) & 0x1,1 2 3 4 7 8
+0x2A0,OIL_TEMP_CHM_RQ,b,1,1,bits 5-6,(d[1] >> 5) & 0x3,1 2 3 4 5 7 8
+0x2A0,OIL_TEMP_IND_RQ,b,1,1,bits 3-4,(d[1] >> 3) & 0x3,1 2 3 4 7 8
+0x2A0,OIL_PRESS,b,2,2,bits 0-7,d[2] & 0xFF,1 2 3 4 5 7 8
+0x2A0,DCSD_TCH_X_COORD,y,3,2,0-bit,,6
+0x2A0,DCSD_DISP_STAT,b,5,5,bits 0-2,d[5] & 0x7,6
+0x2A0,DCSD_TCH_Y_COORD,y,5,4,0-bit,,6
+0x2AD,CBC_AUX1_PWRMD,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x2AD,CBC_AUX1_Type,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x2AD,CBC_AUX2_PWRMD,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x2AD,CBC_AUX2_Type,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x2AD,CBC_AUX3_PWRMD,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x2AD,CBC_AUX3_Type,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x2AD,CBC_AUX4_Type,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x2AD,CBC_AUX5_Type,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x2AD,CBC_AUX1_HLEnbl,b,1,1,bit 2,(d[1] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x2AD,CBC_AUX2_HLEnbl,b,1,1,bit 3,(d[1] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x2AD,CBC_AUX3_HLEnbl,b,1,1,bit 4,(d[1] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x2AD,CBC_AUX4_HLEnbl,b,1,1,bit 5,(d[1] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x2AD,CBC_AUX4_PWRMD,b,1,1,bit 0,d[1] & 0x1,0 1 2 3 4 5 6 7 8
+0x2AD,CBC_AUX5_HLEnbl,b,1,1,bit 6,(d[1] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x2AD,CBC_AUX5_PWRMD,b,1,1,bit 1,(d[1] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x2AD,Cfg_Aux_PTO,b,2,2,bits 0-2,d[2] & 0x7,0 1 2 3 4 5 6 7 8
+0x2C2,AMB_TEMP_AVG,y,0,1,16-bit,d[1]<<8 | d[0],0 1 2 3 4 5 6 7 8
+0x2C2,BATT_VOLT,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x2C3,WhlPlsCnt_FL,b,0,0,bits 0-7,d[0] & 0xFF,0 1 2 3 4 5 6 7 8
+0x2C3,WhlPlsCnt_FR,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x2C3,WhlPlsCnt_RL,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x2C3,WhlPlsCnt_RR,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x2C3,VehPerfAccel_X,y,4,5,16-bit,d[5]<<8 | d[4],0 1 2 3 4 5 6 7 8
+0x2C3,VehPerfAccel_Y,y,6,7,16-bit,d[7]<<8 | d[6],0 1 2 3 4 5 6 7 8
+0x2C5,DRIVE_MODE,b,0,0,bit 7,(d[0] >> 7) & 0x1,6
+0x2C5,EC_ECUCfg16_Stat,b,0,0,bits 0-1,d[0] & 0x3,6
+0x2C5,OC_Dsbl_LF,b,0,0,bit 2,(d[0] >> 2) & 0x1,6 7
+0x2C5,OC_Dsbl_LR,b,0,0,bit 4,(d[0] >> 4) & 0x1,6 7
+0x2C5,OC_Dsbl_RF,b,0,0,bit 3,(d[0] >> 3) & 0x1,6 7
+0x2C5,OC_Dsbl_RR,b,0,0,bit 5,(d[0] >> 5) & 0x1,6 7
+0x2C5,SVC_SK_PRSNT,b,0,0,bit 6,(d[0] >> 6) & 0x1,6
+0x2C5,CPD,y,1,2,16-bit,d[2]<<8 | d[1],6 7
+0x2C5,ACN_PRSNT,b,3,3,bit 5,(d[3] >> 5) & 0x1,6
+0x2C5,Clari_FI_PRSNT,b,3,3,bit 4,(d[3] >> 4) & 0x1,6
+0x2C5,DEFROST_MODE,b,3,3,bits 0-1,d[3] & 0x3,6
+0x2C5,EC_MIRROR_HK_PRSNT,b,3,3,bit 3,(d[3] >> 3) & 0x1,6
+0x2C5,PhoneInfoInCluster,b,3,3,bit 2,(d[3] >> 2) & 0x1,6
+0x2C5,RVC_SK_PRSNT,b,3,3,bit 6,(d[3] >> 6) & 0x1,6
+0x2D0,BSM_CFG_STAT,b,1,1,bits 0-1,d[1] & 0x3,0 1 2 3 4 5 6 7 8
+0x2D0,BSM_MUTE_RQ,b,1,1,bit 4,(d[1] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x2D0,BSM_OPR_STAT,b,1,1,bit 3,(d[1] >> 3) & 0x1,6
+0x2D0,BSM_SRV_RQ,b,1,1,bit 2,(d[1] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x2D0,BSM_OPR_STAT,b,2,2,bits 2-3,(d[2] >> 2) & 0x3,0
+0x2D0,BSS_LT_OPR_StatSts,b,2,2,bit 2,(d[2] >> 2) & 0x1,0
+0x2D0,BSS_RT_OPR_StatSts,b,2,2,bit 3,(d[2] >> 3) & 0x1,0
+0x2D0,TeenKeyBSM_ConfigStatus,b,2,2,bits 0-1,d[2] & 0x3,6
+0x2D3,ICS_DISP_STAT,b,0,0,bits 0-2,d[0] & 0x7,6
+0x2D3,ICS_btn_0,b,2,2,bit 0,d[2] & 0x1,6
+0x2D3,ICS_btn_1,b,2,2,bit 1,(d[2] >> 1) & 0x1,6
+0x2D3,ICS_btn_2,b,2,2,bit 2,(d[2] >> 2) & 0x1,6
+0x2D3,ICS_btn_3,b,2,2,bit 3,(d[2] >> 3) & 0x1,6
+0x2D3,ICS_btn_4,b,2,2,bit 4,(d[2] >> 4) & 0x1,6
+0x2D3,ICS_btn_5,b,2,2,bit 5,(d[2] >> 5) & 0x1,6
+0x2D3,ICS_btn_6,b,2,2,bit 6,(d[2] >> 6) & 0x1,6
+0x2D3,ICS_btn_7,b,2,2,bit 7,(d[2] >> 7) & 0x1,6
+0x2D3,ICS_btn_12,b,3,3,bit 4,(d[3] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x2D3,ICS_btn_13,b,3,3,bit 5,(d[3] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x2D3,ICS_btn_9,b,3,3,bit 1,(d[3] >> 1) & 0x1,6
+0x2D3,ICS_btn_24,b,5,5,bit 0,d[5] & 0x1,0 6
+0x2D3,ICS_btn_26,b,5,5,bit 2,(d[5] >> 2) & 0x1,3 5 6
+0x2D3,ICS_btn_27,b,5,5,bit 3,(d[5] >> 3) & 0x1,3 5 6
+0x2D3,ICS_btn_28,b,5,5,bit 4,(d[5] >> 4) & 0x1,0 6
+0x2D3,ICS_btn_29,b,5,5,bit 5,(d[5] >> 5) & 0x1,0 6
+0x2D3,ICS_btn_30,b,5,5,bit 6,(d[5] >> 6) & 0x1,3 5 6
+0x2D3,ICS_btn_31,b,5,5,bit 7,(d[5] >> 7) & 0x1,3 5 6
+0x2D3,ICS_FT_HVAC_MD_Cntrl,b,6,6,bit 3,(d[6] >> 3) & 0x1,6
+0x2D3,ICS_btn_46,b,7,7,bit 6,(d[7] >> 6) & 0x1,6
+0x2D3,ICS_launch_hardbtn_status,b,7,7,bits 3-4,(d[7] >> 3) & 0x3,0 1 2 3 4 5 6 7 8
+0x2DE,AudioMuteRq_TBM,b,0,0,bit 7,(d[0] >> 7) & 0x1,5 6
+0x2DF,DynamicGridRespSts,b,0,0,bit 7,(d[0] >> 7) & 0x1,6
+0x2DF,ImageDefeatRQSts,b,0,0,bit 6,(d[0] >> 6) & 0x1,6
+0x2E0,ASCM_Stat,b,0,0,bits 4-7,(d[0] >> 4) & 0xF,1 2 3 4 5 7 8
+0x2E0,ESP_Off_IndLmp_On_Rq,b,0,0,bit 6,(d[0] >> 6) & 0x1,8
+0x2E0,TerMdStat,b,0,0,bits 0-3,d[0] & 0xF,0 1 2 3 4 5 6 7 8
+0x2E0,ABS_IndLmp_On_Rq,b,1,1,bits 2-3,(d[1] >> 2) & 0x3,8
+0x2E0,BrkIndLmp_On_Rq_ESC,b,1,1,bits 4-5,(d[1] >> 4) & 0x3,8
+0x2E0,ESC_CtrlLmp_Info,b,1,1,bits 0-1,d[1] & 0x3,8
+0x2E0,SelSpdSts,b,1,1,bits 6-7,(d[1] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x2E0,ACT_R_DIF_TRQ,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x2E0,FL_Lvl,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x2E0,FR_Lvl,b,4,4,bits 0-7,d[4] & 0xFF,0 1 2 3 4 5 6 7 8
+0x2E0,RL_Lvl,b,5,5,bits 0-7,d[5] & 0xFF,0 1 2 3 4 5 6 7 8
+0x2E0,RR_Lvl,b,6,6,bits 0-7,d[6] & 0xFF,0 1 2 3 4 5 6 7 8
+0x2E0,HALF_CHIME_REP_RATE,b,7,7,bits 4-7,(d[7] >> 4) & 0xF,6 7
+0x2E0,HALF_CHIME_REP_RATESts,b,7,7,bits 4-7,(d[7] >> 4) & 0xF,8
+0x2E0,HALF_CHIME_TYPE,b,7,7,bits 0-3,d[7] & 0xF,6 7
+0x2E0,HALF_CHIME_TYPESts,b,7,7,bits 0-3,d[7] & 0xF,8
+0x2E0,HALF_LF_CHIME_RQ,b,8,8,bit 0,d[8] & 0x1,6 7
+0x2E0,HALF_LF_CHIME_RQSts,b,8,8,bit 0,d[8] & 0x1,8
+0x2E0,HALF_RF_CHIME_RQ,b,8,8,bit 1,(d[8] >> 1) & 0x1,6 7
+0x2E0,HALF_RF_CHIME_RQSts,b,8,8,bit 1,(d[8] >> 1) & 0x1,8
+0x2E2,AutoFoldMirrorDriver,b,0,0,bit 5,(d[0] >> 5) & 0x1,6
+0x2E2,TILT_IN_REV_D,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x2EA,HFM_MD_RQ,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x2F0,EASY_EXIT,b,0,0,bits 1-2,(d[0] >> 1) & 0x3,0 1 2 3 4 5 6 7 8
+0x2F0,MEM_RC_STAT,b,0,0,bits 3-5,(d[0] >> 3) & 0x7,0 1 2 3 4 5 6 7 8
+0x2F0,RKE_MEM,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x2F2,PassWinLO_Enbl,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x2F2,TILT_IN_REV_P,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x2F8,TextDisplay,b,0,0,bits 0-4,d[0] & 0x1F,6
+0x2F8,AutoParkSts,b,1,1,bits 5-6,(d[1] >> 5) & 0x3,6
+0x2F8,FCWSetting,b,1,1,bits 1-2,(d[1] >> 1) & 0x3,6
+0x2F8,FCWState,b,1,1,bit 0,d[1] & 0x1,6
+0x2F8,ServiceModeSts,b,1,1,bit 7,(d[1] >> 7) & 0x1,6
+0x2F8,TeenKeyFCWSensitivitySetting,b,1,1,bits 3-4,(d[1] >> 3) & 0x3,6
+0x2F8,TeenKeyFCWBrakingAssistStatus,b,2,2,bit 0,d[2] & 0x1,6
+0x2F8,TeenKeyPTS_BrakingAssistStatus,b,2,2,bit 7,(d[2] >> 7) & 0x1,6
+0x2F8,TeenKeyPTS_ConfigStatus,b,2,2,bits 1-2,(d[2] >> 1) & 0x3,6
+0x2F8,TeenKeyPTS_FrontVolume,b,2,2,bits 3-4,(d[2] >> 3) & 0x3,6
+0x2F8,TeenKeyPTS_RearVolume,b,2,2,bits 5-6,(d[2] >> 5) & 0x3,6
+0x2F8,RrAxleLkIndRq,b,3,3,bits 6-7,(d[3] >> 6) & 0x3,6
+0x2FA,DRV_AJAR,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x2FA,DR_LKD,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x2FA,FG_AJAR,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x2FA,L_R_AJAR,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x2FA,PSG_AJAR,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x2FA,R_R_AJAR,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x2FA,TLG_AJAR,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x2FA,DAY_LGT_MD,b,1,1,bit 0,d[1] & 0x1,0 1 2 3 4 5 6 7 8
+0x2FA,PoliceStlthMdAct,b,1,1,bit 2,(d[1] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x2FA,PANEL_INTS,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x2FA,DR_LK_STAT,b,3,3,bits 2-3,(d[3] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x2FA,DriveStyleSts,b,3,3,bits 5-7,(d[3] >> 5) & 0x7,0 1 2 4 6 7 8
+0x2FA,PARK_BRK_EGD,b,3,3,bit 1,(d[3] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x2FA,REV_GEAR,b,3,3,bit 0,d[3] & 0x1,0 1 2 3 4 5 6 7 8
+0x2FA,RR_DR_UNLKD,b,3,3,bit 4,(d[3] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x2FA,MOOD_LGT_INTS,b,4,4,bits 0-7,d[4] & 0xFF,0 1 2 3 4 5 6 7 8
+0x2FA,FuelLevel,b,5,5,bits 0-7,d[5] & 0xFF,0 1 2 3 4 5 6 7 8
+0x2FA,BrakeFluidLevelSts,b,6,6,bit 1,(d[6] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x2FA,FuelLevelFailSts,b,6,6,bit 0,d[6] & 0x1,0 1 2 3 4 5 6 7 8
+0x2FA,IceRiskIndication,b,6,6,bit 2,(d[6] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x2FA,WASH_FLUID_LO,b,6,6,bit 3,(d[6] >> 3) & 0x1,5
+0x2FA,GlobalDriveModeStatus,b,7,7,bits 0-4,d[7] & 0x1F,6
+0x2FF,LTR_CoolantTemp,b,4,4,bits 0-7,d[4] & 0xFF,1 2 3 4 5 8
+0x2FF,IntkAirTempIntrClr,b,5,5,bits 0-7,d[5] & 0xFF,1 2 3 4 5 8
+0x2FF,AirFuelRatio,b,6,6,bits 0-7,d[6] & 0xFF,0 1 2 3 4 5 6 7 8
+0x2FF,BoostVacGauge,b,7,7,bits 0-7,d[7] & 0xFF,0 1 2 3 4 5 6 7 8
+0x304,TPM_IndLmp_On_Rq,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 6 7 8
+0x304,Type,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x304,TireFL,b,1,1,bits 0-1,d[1] & 0x3,0 1 2 3 4 5 6 7 8
+0x304,TireFR,b,1,1,bits 2-3,(d[1] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x304,TireRL,b,1,1,bits 6-7,(d[1] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x304,TireRR,b,1,1,bits 4-5,(d[1] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x304,TirePressFL,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 6 7 8
+0x304,TirePressFR,b,4,4,bits 0-7,d[4] & 0xFF,0 1 2 3 4 6 7 8
+0x304,TirePressRL,b,5,5,bits 0-7,d[5] & 0xFF,0 1 2 3 4 6 7 8
+0x304,TirePressRR,b,6,6,bits 0-7,d[6] & 0xFF,0 1 2 3 4 6 7 8
+0x304,SensorFailSts,b,7,7,bit 0,d[7] & 0x1,0
+0x305,DrvMdHMI_1,b,1,1,bit 6,(d[1] >> 6) & 0x1,6
+0x305,DrvMdHMI_2,b,1,1,bit 7,(d[1] >> 7) & 0x1,6
+0x305,DrvMdHMI_3,b,2,2,bit 0,d[2] & 0x1,6
+0x305,DrvMdHMI_4,b,2,2,bit 1,(d[2] >> 1) & 0x1,6
+0x305,TerAWD_DrvMd_CfgSts,b,2,2,bits 4-7,(d[2] >> 4) & 0xF,6
+0x305,Trans_DrvMd_CfgSts,b,3,3,bits 0-7,d[3] & 0xFF,6
+0x305,ADC_DrvMd_CfgSts,b,4,4,bits 6-7,(d[4] >> 6) & 0x3,6
+0x305,EPS_DrvMd_CfgSts,b,4,4,bits 0-2,d[4] & 0x7,6
+0x305,ESC_DrvMd_CfgSts,b,4,4,bits 3-5,(d[4] >> 3) & 0x7,6
+0x305,Eng_DrvMd_CfgSts,b,5,5,bits 3-5,(d[5] >> 3) & 0x7,6
+0x305,HP_DrvMd_CfgSts,b,5,5,bits 0-2,d[5] & 0x7,6
+0x305,Paddles_DrvMd_CfgSts,b,5,5,bits 6-7,(d[5] >> 6) & 0x3,6
+0x305,E_Mode_Sts,b,6,6,bits 6-8,(d[6] >> 6) & 0x7,0 6
+0x305,SettingsPaddleModeCfgStat,b,6,6,bits 1-2,(d[6] >> 1) & 0x3,6
+0x305,ErrSys_1,b,7,7,bit 0,d[7] & 0x1,6
+0x305,ErrSys_2,b,7,7,bit 1,(d[7] >> 1) & 0x1,6
+0x305,ErrSys_3,b,7,7,bit 2,(d[7] >> 2) & 0x1,6
+0x305,ErrSys_4,b,7,7,bit 3,(d[7] >> 3) & 0x1,6
+0x305,ErrSys_5,b,7,7,bit 4,(d[7] >> 4) & 0x1,6
+0x305,ErrSys_6,b,7,7,bit 5,(d[7] >> 5) & 0x1,6
+0x305,ErrSys_7,b,7,7,bit 6,(d[7] >> 6) & 0x1,6
+0x305,ErrSys_8,b,7,7,bit 7,(d[7] >> 7) & 0x1,6
+0x306,TirePrssRL2,b,0,0,bits 0-7,d[0] & 0xFF,0 1 2 3 4 5 6 7 8
+0x306,TirePrssRR2,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x307,VES3_CTRL_LK,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x307,VES3_IR1_MUTED,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x307,VES3_IR2_MUTED,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x307,VES3_PWR_ON,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x307,VES3_DISP_STAT,b,1,1,bits 0-3,d[1] & 0xF,0 1 2 3 4 5 6 7 8
+0x308,TCASE_FAIL,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x308,TCASE_INHBT,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x308,TCASE_SRV_RQ,b,0,0,bits 2-3,(d[0] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x308,Tcase4Lock,b,0,0,bits 4-5,(d[0] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x308,Tcase4Low,b,0,0,bits 6-7,(d[0] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x308,TcaseAWD,b,1,1,bits 2-3,(d[1] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x308,TcaseNtrlStat,b,1,1,bits 0-1,d[1] & 0x3,0 1 2 3 4 5 6 7 8
+0x308,TerSt_LED1,b,2,2,bits 2-3,(d[2] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x308,TerSt_LED2,b,2,2,bits 4-5,(d[2] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x308,TerSt_LED3,b,2,2,bits 0-1,d[2] & 0x3,0 1 2 3 4 5 6 7 8
+0x308,TerSt_LED5,b,2,2,bits 6-7,(d[2] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x308,TerMdInhbt,b,3,3,bit 6,(d[3] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x308,TerSt_LED4,b,3,3,bits 0-1,d[3] & 0x3,0 1 2 3 4 5 6 7 8
+0x30A,AFLS_ENBL,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x30A,AutoOilChg,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x30A,FullOFC_Actv,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x30A,HILL_DES_STAT,b,0,0,bits 4-5,(d[0] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x30A,HSA_EN,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x30A,HSA_SUPP,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x30A,WarnPrio1_Mute_Rq,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x30A,ASCM_AeroDsbl,b,1,1,bit 7,(d[1] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x30A,ASCM_TJM,b,1,1,bit 6,(d[1] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x30A,FCW_Sensitivity,b,1,1,bit 0,d[1] & 0x1,0 1 2 3 4 5 6 7 8
+0x30A,FuelSavDispEnbl,b,1,1,bit 1,(d[1] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x30A,HLDrpStat,b,1,1,bits 4-5,(d[1] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x30A,Radio_Strng_Rq,b,1,1,bit 2,(d[1] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x30A,EngCoolTemp,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x30A,SHFT_PROG,b,4,4,bits 0-7,d[4] & 0xFF,0 1 2 3 4 5 6 7 8
+0x30A,FCW_Stat,b,5,5,bit 7,(d[5] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x30A,FUEL_TYPE,b,5,5,bits 4-6,(d[5] >> 4) & 0x7,0 1 2 3 4 5 6 7 8
+0x30A,TRANS_TYPE,b,5,5,bit 0,d[5] & 0x1,0 1 2 3 4 5 6 7 8
+0x30A,ESC_LnchMd,b,6,6,bits 5-6,(d[6] >> 5) & 0x3,0 1 2 3 4 5 6 7 8
+0x30A,ESP_DSBL,b,6,6,bit 0,d[6] & 0x1,0 1 2 3 4 5 6 7 8
+0x30A,EmodeBtnSts,b,6,6,bits 2-3,(d[6] >> 2) & 0x3,6
+0x30A,OilLifeLeftRst,b,6,6,bit 7,(d[6] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x30A,SpStPrsnt,b,6,6,bit 4,(d[6] >> 4) & 0x1,6
+0x30A,AvgFuelLvl,y,7,8,16-bit,d[8]<<8 | d[7],0 1 2 3 4 5 6 7 8
+0x30B,DisOilLifeRst,y,0,1,16-bit,d[1]<<8 | d[0],0 1 2 3 4 5 6 7 8
+0x30B,OilLifeLeft,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x30B,HoursOilLifeRst,y,3,4,16-bit,d[4]<<8 | d[3],0 1 2 3 4 5 6 7 8
+0x30B,MntncSts,b,5,5,bits 1-2,(d[5] >> 1) & 0x3,0 1 2 3 4 5 6 7 8
+0x30E,AUTO_STAT,b,0,0,bits 6-7,(d[0] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x30E,EBL_Stat,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0x30E,RECIRC_STAT,b,0,0,bits 4-5,(d[0] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x30E,SYNC_STAT,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x30E,AC_Stat,b,1,1,bits 0-1,d[1] & 0x3,0 1 2 3 4 5 6 7 8
+0x30E,AutoDfgStat,b,1,1,bits 2-4,(d[1] >> 2) & 0x7,0 1 2 3 4 5 6 7 8
+0x30E,MAX_ACSts,b,1,1,bits 6-7,(d[1] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x30E,TRAC_PSD,b,1,1,bit 5,(d[1] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x30E,DRV_SUN_SNSR,y,2,3,16-bit,d[3]<<8 | d[2],0 1 2 3 4 5 6 7 8
+0x30E,PAS_SUN_SNSR,y,4,5,16-bit,d[5]<<8 | d[4],0 1 2 3 4 5 6 7 8
+0x30F,VehPerfAccelPeak_X_Pos,y,0,1,16-bit,d[1]<<8 | d[0],0 1 2 3 4 5 6 7 8
+0x30F,VehPerfAccelPeak_X_Neg,y,2,3,16-bit,d[3]<<8 | d[2],0 1 2 3 4 5 6 7 8
+0x30F,VehPerfAccelPeak_Y_Pos,y,4,5,16-bit,d[5]<<8 | d[4],0 1 2 3 4 5 6 7 8
+0x30F,VehPerfAccelPeak_Y_Neg,y,6,7,16-bit,d[7]<<8 | d[6],0 1 2 3 4 5 6 7 8
+0x310,FuelLvlLow,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 6
+0x310,SRS_LMP_STAT,b,0,0,bits 4-5,(d[0] >> 4) & 0x3,0 1 2 3 4 6 7 8
+0x310,DPF_DEF_WrnStat,b,2,2,bits 0-3,d[2] & 0xF,0 1 2 3 4 5 6 7 8
+0x318,HrnSw_Psd,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x318,AUD_MODE_ADV,b,3,3,bit 0,d[3] & 0x1,0 1 2 3 4 5 6 7 8
+0x318,PRESET_CFG,b,3,3,bits 6-7,(d[3] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x318,SEEK,b,3,3,bits 4-5,(d[3] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x318,VOL,b,3,3,bits 2-3,(d[3] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x318,DN_ARW_STEP_RQ,b,4,4,bits 2-3,(d[4] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x318,MENU_RQ,b,4,4,bits 0-1,d[4] & 0x3,0 1 2 3 4 5 6 7 8
+0x318,RT_ARW_RST_RQ,b,4,4,bits 6-7,(d[4] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x318,Up_Arw_Rq,b,4,4,bits 4-5,(d[4] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x318,CELL_VR,b,5,5,bits 0-1,d[5] & 0x3,0 1 2 3 4 5 6 7 8
+0x31B,VES2_CTRL_LK,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x31B,VES2_IR1_MUTED,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x31B,VES2_IR2_MUTED,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x31B,VES2_PWR_ON,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x31B,VES2_DISP_STAT,b,1,1,bits 0-3,d[1] & 0xF,0 1 2 3 4 5 6 7 8
+0x31B,VES2_RDC2_STAT,b,1,1,bits 4-7,(d[1] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x31B,VES2_H_SIZE,y,2,3,16-bit,d[3]<<8 | d[2],0 1 2 3 4 5 6 7 8
+0x31B,VES2_V_SIZE,y,4,5,16-bit,d[5]<<8 | d[4],0 1 2 3 4 5 6 7 8
+0x31B,VES2_IR1_AUD_MD,b,6,6,bits 0-4,d[6] & 0x1F,0 1 2 3 4 5 6 7 8
+0x31B,VES2_IR2_AUD_MD,b,7,7,bits 0-4,d[7] & 0x1F,0 1 2 3 4 5 6 7 8
+0x31E,FL_HS_STAT,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0x31E,FL_HS_STATFailSts,b,0,0,bit 2,(d[0] >> 2) & 0x1,5
+0x31E,FL_VS_STAT,b,0,0,bits 2-3,(d[0] >> 2) & 0x3,0 1 2 3 4 6 7 8
+0x31E,FL_VS_STAT,b,0,0,bits 3-4,(d[0] >> 3) & 0x3,5
+0x31E,FL_VS_STATFailSts,b,0,0,bit 5,(d[0] >> 5) & 0x1,5
+0x31E,HSW_Stat,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 6 7 8
+0x31E,HSW_Stat,b,0,0,bit 6,(d[0] >> 6) & 0x1,5
+0x31E,HSW_StatFailSts,b,0,0,bit 7,(d[0] >> 7) & 0x1,5
+0x31E,AutoOnComfortStatus,b,1,1,bits 6-7,(d[1] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x31E,FR_HS_STAT,b,1,1,bits 0-1,d[1] & 0x3,0 1 2 3 4 5 6 7 8
+0x31E,FR_HS_STATFailSts,b,1,1,bit 2,(d[1] >> 2) & 0x1,5
+0x31E,FR_VS_STAT,b,1,1,bits 2-3,(d[1] >> 2) & 0x3,0 1 2 3 4 6 7 8
+0x31E,FR_VS_STAT,b,1,1,bits 3-4,(d[1] >> 3) & 0x3,5
+0x31E,FR_VS_STATFailSts,b,1,1,bit 5,(d[1] >> 5) & 0x1,5
+0x31F,RainSensorFailSts,b,7,7,bit 7,(d[7] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x320,PSI_Max_RPM,b,0,0,bits 3-7,(d[0] >> 3) & 0x1F,0 1 2 3 4 5 6 7 8
+0x321,VES2_Audio_Active,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x321,VES2_DISP_FLAG,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x321,VES2_PT_CAB_DR,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x321,VES2_PT_FT_PAS,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x321,VES2_PT_IR1,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x321,VES2_PT_IR2,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x321,VES2_Video_Active,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x321,VES2_RQ1,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x321,VES2_RQ2,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x321,VES2_RQ3,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x321,VES2_RSP,b,4,4,bits 0-7,d[4] & 0xFF,0 1 2 3 4 5 6 7 8
+0x321,VES2_JUMP_FUNC,y,5,7,24-bit,d[7]<<16 | d[6]<<8 | d[5],0 1 2 3 4 5 6 7 8
+0x322,EngRPM,y,0,1,16-bit,d[1]<<8 | d[0],0 1 2 3 4 5 6 7 8
+0x322,VEH_SPEED,y,2,3,16-bit,d[3]<<8 | d[2],0 1 2 3 4 5 6 7 8
+0x322,Brk_Stat,b,4,4,bits 4-5,(d[4] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x322,Gr,b,4,4,bits 0-3,d[4] & 0xF,0 1 2 3 4 6 7 8
+0x322,OIL_PRESS,b,5,5,bits 0-7,d[5] & 0xFF,1 2 3 4 5 7 8
+0x322,EngTrqStatic,y,6,7,16-bit,d[7]<<8 | d[6],0 1 2 3 4 5 6 7 8
+0x324,RemSt_inhibit,b,0,0,bits 0-7,d[0] & 0xFF,0 1 2 3 4 5 6 7 8
+0x32A,GridStsCHMCM,b,0,0,bits 2-3,(d[0] >> 2) & 0x3,1 2 3 4 5 6 7 8
+0x32A,PSI_EnableSts,b,0,0,bit 0,d[0] & 0x1,1 2 3 4 5 6 7 8
+0x32A,PS_SysType,b,0,0,bit 1,(d[0] >> 1) & 0x1,1 2 3 4 5 6 7 8
+0x32A,ZoomSts,b,0,0,bits 6-7,(d[0] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x32A,ZoomStsCHMCM,b,0,0,bits 4-5,(d[0] >> 4) & 0x3,1 2 3 4 5 6 7 8
+0x32A,CapacityUnit,b,1,1,bits 6-7,(d[1] >> 6) & 0x3,1 2 3 4 5 7 8
+0x32A,ECM_MSG_RQ,b,1,1,bits 0-4,d[1] & 0x1F,1 2 3 4 5 7 8
+0x32A,ESC_sftbtn_launch_sel,b,1,1,bit 5,(d[1] >> 5) & 0x1,1 2 3 4 5 7 8
+0x32A,EngDrvMdStat,b,1,1,bits 5-7,(d[1] >> 5) & 0x7,6
+0x32A,SBR_MuteRq,b,1,1,bit 0,d[1] & 0x1,6
+0x32A,ECM_MSG_RQ,b,2,2,bits 3-7,(d[2] >> 3) & 0x1F,6
+0x32A,ESC_OFF_Hrd_Sft_Button_sts,b,2,2,bits 0-2,d[2] & 0x7,1 2 3 4 5 7 8
+0x32A,ESP_TRK_MD,b,2,2,bit 2,(d[2] >> 2) & 0x1,6
+0x32A,LaunchRPMsetting_ESC,b,2,2,bits 3-7,(d[2] >> 3) & 0x1F,1 2 3 4 5 7 8
+0x32A,RR_PAM_StopControl,b,2,2,bit 1,(d[2] >> 1) & 0x1,6
+0x32A,ESC_OFF_Hrd_Sft_Button_sts,b,3,3,bits 5-7,(d[3] >> 5) & 0x7,6
+0x32A,ESC_sftbtn_launch_sel,b,3,3,bit 0,d[3] & 0x1,6
+0x32A,ESP_TRK_MD,b,3,3,bit 7,(d[3] >> 7) & 0x1,1 2 3 4 5 7 8
+0x32A,HP_MODE_STS,b,3,3,bits 3-5,(d[3] >> 3) & 0x7,1 2 3 4 5 7 8
+0x32A,PowerSteeringMode,b,3,3,bits 0-2,d[3] & 0x7,1 2 3 4 5 7 8
+0x32A,RR_PTS_StopControlSts,b,3,3,bit 6,(d[3] >> 6) & 0x1,1 2 3 4 5 7 8
+0x32A,RadioTractionControl_Ind,b,3,3,bits 3-4,(d[3] >> 3) & 0x3,6
+0x32A,EPS_MODE_STAT,b,4,4,bits 0-2,d[4] & 0x7,1 2 3 4 5 7 8
+0x32A,EPS_Warn_Disp_Rq,b,4,4,bits 3-5,(d[4] >> 3) & 0x7,1 2 3 4 7 8
+0x32A,LaunchRPMsetting_ESC,b,4,4,bits 0-4,d[4] & 0x1F,6
+0x32A,PowerSteeringMode,b,4,4,bits 5-7,(d[4] >> 5) & 0x7,6
+0x32A,TemperatureUnit,b,4,4,bit 7,(d[4] >> 7) & 0x1,1 2 3 4 5 7 8
+0x32A,TorqueUnit,b,4,4,bit 6,(d[4] >> 6) & 0x1,1 2 3 4 5 7 8
+0x32A,DistanceUnit,b,5,5,bit 0,d[5] & 0x1,1 7
+0x32A,DistanceUnit_PNET,b,5,5,bit 0,d[5] & 0x1,8
+0x32A,EPS_MODE_STAT,b,5,5,bits 5-7,(d[5] >> 5) & 0x7,6
+0x32A,HP_MODE_STS,b,5,5,bits 2-4,(d[5] >> 2) & 0x7,6
+0x32A,PaddlesModeSts,b,5,5,bits 6-7,(d[5] >> 6) & 0x3,1 2 3 4 5 7 8
+0x32A,PaddlesModeSts,b,5,5,bits 0-1,d[5] & 0x3,6
+0x32A,PowerUnit,b,5,5,bits 2-3,(d[5] >> 2) & 0x3,1 2 3 4 5 7 8
+0x32A,PressureUnit,b,5,5,bits 4-5,(d[5] >> 4) & 0x3,1 2 3 4 5 7 8
+0x32A,SpeedUnit,b,5,5,bit 1,(d[5] >> 1) & 0x1,1 2 3 4 5 7 8
+0x32A,ConsumptionUnit,b,6,6,bits 0-2,d[6] & 0x7,1 2 4 7 8
+0x32A,ConsumptionUnit,b,6,6,bits 3-5,(d[6] >> 3) & 0x7,6
+0x32A,EPS_Warn_Disp_Rq,b,6,6,bits 0-2,d[6] & 0x7,6
+0x32A,E_Mode_Sts,b,6,6,bits 6-7,(d[6] >> 6) & 0x3,1 2 3 4 5 7 8
+0x32A,EngDrvMdStat,b,6,6,bits 3-5,(d[6] >> 3) & 0x7,1 2 3 4 5 7 8
+0x32A,TemperatureUnit,b,6,6,bit 7,(d[6] >> 7) & 0x1,6
+0x32A,TorqueUnit,b,6,6,bit 6,(d[6] >> 6) & 0x1,6
+0x32A,CapacityUnit,b,7,7,bits 6-7,(d[7] >> 6) & 0x3,6
+0x32A,DistanceUnit,b,7,7,bit 0,d[7] & 0x1,6
+0x32A,PowerUnit,b,7,7,bits 2-3,(d[7] >> 2) & 0x3,6
+0x32A,PressureUnit,b,7,7,bits 4-5,(d[7] >> 4) & 0x3,6
+0x32A,SpeedUnit,b,7,7,bit 1,(d[7] >> 1) & 0x1,6
+0x32B,R_HVAC_Mode_2_Status,b,0,0,bits 4-7,(d[0] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x32B,R_HVAC_Blwr_2_Spd,b,1,1,bits 1-7,(d[1] >> 1) & 0x7F,0 1 2 3 4 5 6 7 8
+0x32C,PTO_MaxVehSpd,b,0,0,bits 3-7,(d[0] >> 3) & 0x1F,0 1 2 3 4 5 6 7 8
+0x32C,PTO_Md,b,0,0,bits 0-2,d[0] & 0x7,0 1 2 3 4 5 6 7 8
+0x32C,PTO_AutoRsm,b,1,1,bits 0-1,d[1] & 0x3,0 1 2 3 4 5 6 7 8
+0x32C,PTO_RmtThrottleSts,b,1,1,bit 4,(d[1] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x32C,PTO_TYPES,b,1,1,bits 2-3,(d[1] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x32C,PTO_SingleRPM,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x32C,PTO_RPM1,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x32C,PTO_RPM2,b,4,4,bits 0-7,d[4] & 0xFF,0 1 2 3 4 5 6 7 8
+0x32C,PTO_RPM3,b,5,5,bits 0-7,d[5] & 0xFF,0 1 2 3 4 5 6 7 8
+0x32C,IdleShutDwnApply,b,6,6,bit 2,(d[6] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x32C,LDW_LEDControlSts,b,6,6,bits 3-4,(d[6] >> 3) & 0x3,0 1 2 3 4 5 6 7 8
+0x32C,PPPA_ControlSts,b,6,6,bits 0-1,d[6] & 0x3,1 2 3 4 5 7 8
+0x32C,PPPA_STAT,b,6,6,bits 0-1,d[6] & 0x3,0 6
+0x32C,TorqueIntensitySts,b,6,6,bits 5-7,(d[6] >> 5) & 0x7,2 3 4 5 6 7 8
+0x331,VES3_DISP_FLAG,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x331,VES3_PT_CAB_DR,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x331,VES3_PT_FT_PAS,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x331,VES3_PT_IR1,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x331,VES3_PT_IR2,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x331,VES3_RQ1,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x331,VES3_RQ2,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x331,VES3_RQ3,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x331,VES3_RSP,b,4,4,bits 0-7,d[4] & 0xFF,0 1 2 3 4 5 6 7 8
+0x331,VES3_JUMP_FUNC,y,5,7,24-bit,d[7]<<16 | d[6]<<8 | d[5],0 1 2 3 4 5 6 7 8
+0x332,ITBM_BrkStyle,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0x332,MIL_OnRq,b,0,0,bit 2,(d[0] >> 2) & 0x1,1 2 3 4 7 8
+0x332,PTS_CFG_STAT,b,0,0,bits 3-4,(d[0] >> 3) & 0x3,0 1 2 3 4 5 6 7 8
+0x332,PTS_MUTE_RQ,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x332,PTS_WARN,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x332,PRNDL_DISP,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x332,PRND_STAT,b,2,2,bits 0-2,d[2] & 0x7,0 1 2 3 4 5 6 7 8
+0x332,TCASE_STAT,b,2,2,bits 3-5,(d[2] >> 3) & 0x7,0 1 2 3 4 5 6 7 8
+0x332,ASCM_WarnOnly,b,3,3,bit 4,(d[3] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x332,AudioMuteRq,b,3,3,bit 2,(d[3] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x332,ConfigSts,b,3,3,bits 5-7,(d[3] >> 5) & 0x7,2 3 4 5 6 7 8
+0x332,TM_Enbl,b,3,3,bit 1,(d[3] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x332,WAL_Enbl,b,3,3,bit 3,(d[3] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x332,R134a_Press_Stat,y,4,5,16-bit,d[5]<<8 | d[4],0 1 2 3 4 5 6 7 8
+0x332,LANG,b,6,6,bits 3-7,(d[6] >> 3) & 0x1F,0 1 2 3 4 5 6 7 8
+0x332,US_METRIC,b,6,6,bit 2,(d[6] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x332,TrlrNum,b,7,7,bits 0-2,d[7] & 0x7,0 1 2 3 4 5 6 7 8
+0x332,TrlrStyle,b,7,7,bits 3-7,(d[7] >> 3) & 0x1F,0 1 2 3 4 5 6 7 8
+0x333,VES3_AUX_STAT,b,0,0,bits 0-3,d[0] & 0xF,0 1 2 3 4 5 6 7 8
+0x333,VES3_Src_TGW_Stat,b,0,0,bits 4-7,(d[0] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x333,VES3_AUX2_STAT,b,1,1,bits 4-7,(d[1] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x333,VES3_Src_IR_Stat,b,1,1,bits 0-3,d[1] & 0xF,0 1 2 3 4 5 6 7 8
+0x334,BRK_FLUID_LO,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x334,ElecDrLkFT_LT,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x334,ElecDrLkFT_RT,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x334,HIBEAM_ON,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 6
+0x334,WASH_FLUID_LO,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 6 7 8
+0x339,PTS_CHIME_TYPE,b,0,0,bits 4-7,(d[0] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x339,PTS_LF_CHIME_RQ,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x339,PTS_LR_CHIME_RQ,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x339,PTS_RF_CHIME_RQ,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x339,PTS_RR_CHIME_RQ,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x339,PTS_CHIME_REP_RATE,b,1,1,bits 0-3,d[1] & 0xF,0 1 2 3 4 5 6 7 8
+0x339,PTS_FT_VOL,b,1,1,bits 4-5,(d[1] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x339,PTS_RR_VOL,b,1,1,bits 6-7,(d[1] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x339,ChimeTypeFront,b,2,2,bits 0-1,d[2] & 0x3,0 1 2 3 4 5 6 7 8
+0x339,ChimeTypeRear,b,2,2,bits 2-3,(d[2] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x339,ChimeRepetitionRate_Front,b,3,3,bits 0-3,d[3] & 0xF,0 1 2 3 4 5 6 7 8
+0x339,ChimeRepetitionRate_Rear,b,3,3,bits 4-7,(d[3] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x339,SDW_ChimeActivation_LHF,b,4,4,bit 0,d[4] & 0x1,0 1 2 3 4 5 6 7 8
+0x339,SDW_ChimeActivation_LHR,b,4,4,bit 1,(d[4] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x339,SDW_ChimeActivation_RHF,b,4,4,bit 2,(d[4] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x339,SDW_ChimeActivation_RHR,b,4,4,bit 3,(d[4] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x339,SDW_ChimeType_Front,b,4,4,bits 4-5,(d[4] >> 4) & 0x3,0 1 2 4 6 7 8
+0x339,SDW_ChimeType_Left,b,4,4,bits 4-5,(d[4] >> 4) & 0x3,3 5
+0x339,SDW_ChimeType_Rear,b,4,4,bits 6-7,(d[4] >> 6) & 0x3,0 1 2 4 6 7 8
+0x339,SDW_ChimeType_Right,b,4,4,bits 6-7,(d[4] >> 6) & 0x3,3 5
+0x339,SDW_ChimeRepetitionRate_Front,b,5,5,bits 0-3,d[5] & 0xF,0 1 2 4 6 7 8
+0x339,SDW_ChimeRepetitionRate_Left,b,5,5,bits 0-3,d[5] & 0xF,3 5
+0x339,SDW_ChimeRepetitionRate_Rear,b,5,5,bits 4-7,(d[5] >> 4) & 0xF,0 1 2 4 6 7 8
+0x339,SDW_ChimeRepetitionRate_Right,b,5,5,bits 4-7,(d[5] >> 4) & 0xF,3 5
+0x33A,VEH_INT_TEMP,y,0,1,16-bit,d[1]<<8 | d[0],0 1 2 3 4 5 6 7 8
+0x33A,DRV_TEMP_DR_POS,b,2,2,bits 0-6,d[2] & 0x7F,0 1 2 3 4 5 6 7 8
+0x33A,PAS_TEMP_DR_POS,b,3,3,bits 0-6,d[3] & 0x7F,0 1 2 3 4 5 6 7 8
+0x33A,RECIRC_DR_POS,b,4,4,bits 0-6,d[4] & 0x7F,0 1 2 3 4 5 6 7 8
+0x33A,MD_DR_POS,b,5,5,bits 0-6,d[5] & 0x7F,0 1 2 3 4 5 6 7 8
+0x33A,R_TEMP_DR_POS,b,6,6,bits 0-6,d[6] & 0x7F,0 1 2 3 4 5 6 7 8
+0x33A,R_MD_DR_POS,b,7,7,bits 0-6,d[7] & 0x7F,0 1 2 3 4 5 6 7 8
+0x33A,CLNT_FLWR_FROM_HVAC,b,8,8,bits 0-7,d[8] & 0xFF,0 1 2 3 4 5 6 7 8
+0x33E,BSM_LF_CHIME_RQ,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x33E,BSM_LR_CHIME_RQ,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x33E,BSM_LT_CFG_STAT,b,0,0,bits 6-7,(d[0] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x33E,BSM_RF_CHIME_RQ,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x33E,BSM_RR_CHIME_RQ,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x33E,BSM_RT_CFG_STAT,b,0,0,bits 4-5,(d[0] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x33E,BSM_CHIME_REP_RATE,b,1,1,bits 0-3,d[1] & 0xF,0 1 2 4 6 7 8
+0x33E,BSM_CHIME_TYPE,b,1,1,bits 4-7,(d[1] >> 4) & 0xF,0 1 2 4 6 7 8
+0x33E,BSM_RT_CHIME_REP_RATE,b,1,1,bits 0-3,d[1] & 0xF,3 5
+0x33E,BSM_RT_CHIME_TYPE,b,1,1,bits 4-7,(d[1] >> 4) & 0xF,3 5
+0x33E,BSM_LT_CHIME_REP_RATE,b,2,2,bits 0-3,d[2] & 0xF,0 1 2 3 4 5 6 7 8
+0x33E,BSM_LT_CHIME_TYPE,b,2,2,bits 4-7,(d[2] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x33E,BSM_LT_Blind_RQ,b,3,3,bit 1,(d[3] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x33E,BSM_RT_Blind_RQ,b,3,3,bit 0,d[3] & 0x1,0 1 2 3 4 5 6 7 8
+0x33E,BSM_SRV_RQ,b,4,4,bits 0-1,d[4] & 0x3,5
+0x33E,BSS_LT_SRV_RQSts,b,4,4,bit 0,d[4] & 0x1,5
+0x33E,BSS_RT_SRV_RQSts,b,4,4,bit 1,(d[4] >> 1) & 0x1,5
+0x340,VehAccelPeak_X,b,0,0,bits 0-7,d[0] & 0xFF,0 1 2 3 4 5 6 7 8
+0x340,VehAccelPeak_Y,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x340,ESS_ENG_ST,b,2,2,bits 0-3,d[2] & 0xF,0 1 2 3 4 5 6 7 8
+0x340,Gr_Target,b,2,2,bits 4-7,(d[2] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x340,AS_ChimeRq_LF,b,3,3,bit 4,(d[3] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x340,AS_ChimeRq_RF,b,3,3,bit 5,(d[3] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x340,AS_ChimeTyp,b,3,3,bits 0-3,d[3] & 0xF,0 1 2 3 4 5 6 7 8
+0x340,PTS_FT_Enbl,b,3,3,bit 7,(d[3] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x340,PTS_RR_Enbl,b,3,3,bit 6,(d[3] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x340,FCW_BrkOn,b,4,4,bit 6,(d[4] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x340,FCW_SetFar,b,4,4,bit 7,(d[4] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x340,LowShftToPark,b,4,4,bit 4,(d[4] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x340,RR_PAM_StopControl,b,4,4,bit 5,(d[4] >> 5) & 0x1,0 1 2 3 4 5 7 8
+0x340,VehSpd_MPH,b,5,5,bit 7,(d[5] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x340,VehSpdDisp,y,6,7,16-bit,d[7]<<8 | d[6],0 1 2 3 4 5 6 7 8
+0x341,DVD_DISP_FLAG,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x341,DVD_PT_CAB_DR,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x341,DVD_PT_FT_PAS,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x341,DVD_PT_IR1,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x341,DVD_PT_IR2,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x341,DVD_RQ1,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x341,DVD_RQ2,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x341,DVD_RQ3,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x341,DVD_RSP,b,4,4,bits 0-7,d[4] & 0xFF,0 1 2 3 4 5 6 7 8
+0x341,DVD_JUMP_FUNC,y,5,7,24-bit,d[7]<<16 | d[6]<<8 | d[5],0 1 2 3 4 5 6 7 8
+0x344,SPCR_CHIME_TYPE,b,0,0,bits 4-7,(d[0] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x344,SPCR_LF_CHIME_RQ,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x344,SPCR_LR_CHIME_RQ,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x344,SPCR_RF_CHIME_RQ,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x344,SPCR_RR_CHIME_RQ,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x344,SPCR_CHIME_RATE,b,1,1,bits 0-3,d[1] & 0xF,0 1 2 3 4 5 6 7 8
+0x346,AS_CHIME_TYPE,b,0,0,bits 4-7,(d[0] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x346,AS_LF_CHIME_RQ,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x346,AS_LR_CHIME_RQ,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x346,AS_RF_CHIME_RQ,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x346,AS_RR_CHIME_RQ,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x346,AS_CHIME_REP_RATE,b,1,1,bits 0-3,d[1] & 0xF,0 1 2 3 4 5 6 7 8
+0x34A,CSOPlgChimeEnableDisableSts,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 6
+0x34A,CSOPlgChimeEnableDisableSts,b,0,0,bit 7,(d[0] >> 7) & 0x1,1 2 3 4 5 7 8
+0x34A,HandsFreeLiftGateStat,b,0,0,bit 7,(d[0] >> 7) & 0x1,6
+0x34A,ShiftLeverPositionReq,b,0,0,bits 3-5,(d[0] >> 3) & 0x7,0 6
+0x34A,ShiftLeverPositionReq,b,0,0,bits 4-6,(d[0] >> 4) & 0x7,1 2 3 4 5 7 8
+0x34C,ASCM_Stat,b,0,0,bits 0-3,d[0] & 0xF,6
+0x34C,ASCM_Srv,b,1,1,bit 4,(d[1] >> 4) & 0x1,6
+0x34C,ASCM_SysFail,b,1,1,bit 5,(d[1] >> 5) & 0x1,6
+0x34E,FT_DRV_ATC_TEMP,b,0,0,bits 0-6,d[0] & 0x7F,0 1 2 3 4 5 6 7 8
+0x34E,FT_DRV_MTC_TEMP,b,1,1,bits 0-6,d[1] & 0x7F,0 1 2 3 4 5 6 7 8
+0x34E,FT_PSG_ATC_TEMP,b,2,2,bits 0-6,d[2] & 0x7F,0 1 2 3 4 5 6 7 8
+0x34E,FT_PSG_MTC_TEMP,b,3,3,bits 0-6,d[3] & 0x7F,0 1 2 3 4 5 6 7 8
+0x34E,FT_HVAC_BLW_FN_SP,b,4,4,bits 0-6,d[4] & 0x7F,0 1 2 3 4 5 6 7 8
+0x34E,FT_HVAC_CTRL_STAT,b,5,5,bits 4-6,(d[5] >> 4) & 0x7,0 1 2 3 4 5 6 7 8
+0x34E,FT_HVAC_MD_STAT,b,5,5,bits 0-3,d[5] & 0xF,0 1 2 3 4 5 6 7 8
+0x34E,MD_DR2_POS,b,6,6,bits 0-6,d[6] & 0x7F,0 1 2 3 4 5 6 7 8
+0x351,VRM_Audio_Active,b,0,0,bit 4,(d[0] >> 4) & 0x1,6
+0x351,VRM_PT_CAB_DR,b,0,0,bit 0,d[0] & 0x1,6
+0x351,VRM_Video_Active,b,0,0,bit 5,(d[0] >> 5) & 0x1,6
+0x351,VRM_RQ1,b,1,1,bits 0-7,d[1] & 0xFF,6
+0x351,VRM_RQ2,b,2,2,bits 0-7,d[2] & 0xFF,6
+0x351,VRM_RQ3,b,3,3,bits 0-7,d[3] & 0xFF,6
+0x351,VRM_RSP,b,4,4,bits 0-7,d[4] & 0xFF,6
+0x351,VRM_JUMP_FUNC,y,5,7,24-bit,d[7]<<16 | d[6]<<8 | d[5],6
+0x352,VRM_AUD_MD_CAB,b,0,0,bits 4-7,(d[0] >> 4) & 0xF,6
+0x352,VRM_H_SIZE,y,0,1,16-bit,d[1]<<8 | d[0],6
+0x352,VRM_RDC2_STAT,b,0,0,bits 0-3,d[0] & 0xF,6
+0x352,VRM_V_SIZE,y,2,3,16-bit,d[3]<<8 | d[2],6
+0x352,VRM_IR1_AUD_MD,b,5,5,bits 0-3,d[5] & 0xF,6
+0x352,VRM_IR2_AUD_MD,b,6,6,bits 0-3,d[6] & 0xF,6
+0x352,VRM_IR3_AUD_MD,b,7,7,bits 0-3,d[7] & 0xF,6
+0x354,AMP_EQ,b,0,0,bits 0-7,d[0] & 0xFF,0 1 2 3 4 5 6 7 8
+0x354,AEL_AVAIL,b,1,1,bit 5,(d[1] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x354,AEL_STAT,b,1,1,bits 6-7,(d[1] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x354,AMP_DSS_STAT,b,1,1,bits 1-2,(d[1] >> 1) & 0x3,0 1 2 3 4 5 6 7 8
+0x354,AMP_MUTED,b,1,1,bit 0,d[1] & 0x1,0 1 2 3 4 5 6 7 8
+0x354,ANC_EN,b,1,1,bit 3,(d[1] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x354,SURR_AVAIL,b,1,1,bit 4,(d[1] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x354,Ambient_Light_Level,b,2,2,bits 4-7,(d[2] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x354,SpeakerSTS_LF,b,2,2,bit 1,(d[2] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x354,SpeakerSTS_LR,b,2,2,bit 3,(d[2] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x354,SpeakerSTS_RF,b,2,2,bit 0,d[2] & 0x1,0 1 2 3 4 5 6 7 8
+0x354,SpeakerSTS_RR,b,2,2,bit 2,(d[2] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x354,AMP_AUDIOSts,b,3,3,bits 1-2,(d[3] >> 1) & 0x3,0 1 2 3 4 5 6 7 8
+0x354,AUDIOSts_Telematic,b,3,3,bits 3-4,(d[3] >> 3) & 0x3,0 1 2 3 4 5 6 7 8
+0x354,AudioRepetition,b,3,3,bit 0,d[3] & 0x1,0 1 2 3 4 5 6 7 8
+0x354,SpeakerFault_LF,b,4,4,bit 1,(d[4] >> 1) & 0x1,5
+0x354,SpeakerFault_LR,b,4,4,bit 3,(d[4] >> 3) & 0x1,5
+0x354,SpeakerFault_RF,b,4,4,bit 0,d[4] & 0x1,5
+0x354,SpeakerFault_RR,b,4,4,bit 2,(d[4] >> 2) & 0x1,5
+0x358,CMP_DIR,b,0,0,bits 0-3,d[0] & 0xF,0 1 2 3 4 5 6 7 8
+0x358,VAR_VAL,b,0,0,bits 4-7,(d[0] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x358,CAL_FAULT,b,1,1,bit 1,(d[1] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x358,CAL_REQD,b,1,1,bit 2,(d[1] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x358,DISTOR_DETECTED,b,1,1,bit 6,(d[1] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x358,ECU_FAULT,b,1,1,bit 5,(d[1] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x358,IN_CAL_MD,b,1,1,bit 3,(d[1] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x358,NVM_FAULT,b,1,1,bit 7,(d[1] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x358,SENSOR_FAULT,b,1,1,bit 4,(d[1] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x358,CMP_DIR_RAW,y,2,3,16-bit,d[3]<<8 | d[2],0 1 2 3 4 5 6 7 8
+0x35F,PSI_Gr1_RPM,b,0,0,bits 0-4,d[0] & 0x1F,0 1 2 3 4 5 6 7 8
+0x35F,PSI_Gr2_RPM,b,1,1,bits 0-4,d[1] & 0x1F,0 1 2 3 4 5 6 7 8
+0x35F,PSI_Gr3_RPM,b,2,2,bits 0-4,d[2] & 0x1F,0 1 2 3 4 5 6 7 8
+0x35F,PSI_Gr4_RPM,b,3,3,bits 0-4,d[3] & 0x1F,0 1 2 3 4 5 6 7 8
+0x35F,PSI_Gr5_RPM,b,4,4,bits 0-4,d[4] & 0x1F,0 1 2 3 4 5 6 7 8
+0x360,DTV_Audio_Active,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x360,DTV_PT_CAB_DR,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x360,DTV_PT_IR1,b,0,0,bit 1,(d[0] >> 1) & 0x1,1 2 3 4 5 6 7 8
+0x360,DTV_PT_IR2,b,0,0,bit 2,(d[0] >> 2) & 0x1,1 2 3 4 5 6 7 8
+0x360,DTV_Video_Active,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x360,DTV_RQ1,b,1,1,bits 0-7,d[1] & 0xFF,1 2 3 4 5 6 7 8
+0x360,DTV_RQ2,b,2,2,bits 0-7,d[2] & 0xFF,1 2 3 4 5 6 7 8
+0x360,DTV_RQ3,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x360,DTV_RSP,b,4,4,bits 0-7,d[4] & 0xFF,1 2 3 4 5 6 7 8
+0x360,DTV_JUMP_FUNC,y,5,7,24-bit,d[7]<<16 | d[6]<<8 | d[5],0 1 2 3 4 5 6 7 8
+0x361,DTV_FrontCamera_Signal,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x361,DTV_RDC2_STAT,b,0,0,bits 0-3,d[0] & 0xF,0 1 2 3 4 5 6 7 8
+0x361,DTV_SideCamera_Signal,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x361,DTV_Signal_Available,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x361,LOC_DTV,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 5 6
+0x361,DTV_H_SIZE,y,1,2,16-bit,d[2]<<8 | d[1],0 1 2 3 4 5 6 7 8
+0x361,DTV_V_SIZE,y,3,4,16-bit,d[4]<<8 | d[3],0 1 2 3 4 5 6 7 8
+0x36A,ADC_Stat,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0x36A,ADS_MODE_CFG_Stat,b,0,0,bits 2-3,(d[0] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x36A,ADS_RedLmp,b,1,1,bit 1,(d[1] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x36E,R_DRV_FLR_DUCT_TEMP,y,0,1,16-bit,d[1]<<8 | d[0],0 1 2 3 4 5 6 7 8
+0x36E,R_PAS_FLR_DUCT_TEMP,y,2,3,16-bit,d[3]<<8 | d[2],0 1 2 3 4 5 6 7 8
+0x36E,R_DRV_PNL_DUCT_TEMP,y,4,5,16-bit,d[5]<<8 | d[4],0 1 2 3 4 5 6 7 8
+0x36E,R_PAS_PNL_DUCT_TEMP,y,6,7,16-bit,d[7]<<8 | d[6],0 1 2 3 4 5 6 7 8
+0x36F,HVAC_Amb_FILT,b,0,0,bits 0-7,d[0] & 0xFF,0 1 2 3 4 5 6 7 8
+0x36F,HVAC_Blwr_Perct,b,1,1,bits 0-6,d[1] & 0x7F,0 1 2 3 4 5 6 7 8
+0x36F,R_Mode1_Pos,b,2,2,bits 0-6,d[2] & 0x7F,0 1 2 3 4 5 6 7 8
+0x36F,R_Mode2_Pos,b,3,3,bits 0-6,d[3] & 0x7F,0 1 2 3 4 5 6 7 8
+0x36F,R_Temp1_Pos,b,4,4,bits 0-6,d[4] & 0x7F,0 1 2 3 4 5 6 7 8
+0x36F,R_Temp2_Pos,b,5,5,bits 0-6,d[5] & 0x7F,0 1 2 3 4 5 6 7 8
+0x36F,R_Blw1_Pos,b,6,6,bits 0-6,d[6] & 0x7F,0 1 2 3 4 5 6 7 8
+0x36F,R_Sync_State,b,6,6,bit 7,(d[6] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x36F,R_Blw2_Pos,b,7,7,bits 0-6,d[7] & 0x7F,0 1 2 3 4 5 6 7 8
+0x36F,R_Lock_State,b,7,7,bit 7,(d[7] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x370,R_L_ATC_TEMP,b,0,0,bits 0-6,d[0] & 0x7F,0 1 2 3 4 5 6 7 8
+0x370,R_R_ATC_TEMP,b,1,1,bits 0-6,d[1] & 0x7F,0 1 2 3 4 5 6 7 8
+0x370,R_L_MTC_TEMP,b,2,2,bits 0-6,d[2] & 0x7F,0 1 2 3 4 5 6 7 8
+0x370,R_R_MTC_TEMP,b,3,3,bits 0-6,d[3] & 0x7F,0 1 2 3 4 5 6 7 8
+0x372,IC_PP_RQ,b,0,0,bits 0-3,d[0] & 0xF,0 1 2 3 4 5 6 7 8
+0x372,VehPerfAccelPeak_X,y,1,2,16-bit,d[2]<<8 | d[1],0 1 2 3 4 5 6 7 8
+0x372,VehPerfAccelPeak_Y,y,3,4,16-bit,d[4]<<8 | d[3],0 1 2 3 4 5 6 7 8
+0x373,DVD_AUX_STAT,b,0,0,bits 0-3,d[0] & 0xF,0 1 2 3 4 5 6 7 8
+0x373,DVD_OUT_STAT,b,0,0,bits 4-7,(d[0] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x373,DVD_DISC_STAT,b,1,1,bits 0-4,d[1] & 0x1F,0 1 2 3 4 5 6 7 8
+0x373,DVD_DISP_CFG,b,1,1,bits 5-7,(d[1] >> 5) & 0x7,0 1 2 3 4 5 6 7 8
+0x373,DISC_VIDEO_OUT,b,2,2,bits 0-2,d[2] & 0x7,0 1 2 3 4 5 6 7 8
+0x37A,R_ATC_TEMP,b,0,0,bits 0-6,d[0] & 0x7F,0 1 2 3 4 5 6 7 8
+0x37A,R_HVAC_LkOut,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x37A,R_MTC_TEMP,b,1,1,bits 0-6,d[1] & 0x7F,0 1 2 3 4 5 6 7 8
+0x37A,R_HVAC_BLW_FN_SP,b,2,2,bits 0-6,d[2] & 0x7F,0 1 2 3 4 5 6 7 8
+0x37A,R_HVAC_MD_STAT,b,3,3,bits 0-2,d[3] & 0x7,0 1 2 3 4 5 6 7 8
+0x37A,R_HVAC_CTRL_STAT,b,4,4,bits 0-2,d[4] & 0x7,0 1 2 3 4 5 6 7 8
+0x37A,R_HVAC_MD_2_STAT,b,4,4,bits 5-7,(d[4] >> 5) & 0x7,0 1 2 3 4 5 6 7 8
+0x37A,R_HVAC_BLW_FN_2_SP,b,5,5,bits 0-6,d[5] & 0x7F,0 1 2 3 4 5 6 7 8
+0x381,VC_DampingPrsnt,b,0,0,bit 6,(d[0] >> 6) & 0x1,1 2 3 4 5 7 8
+0x381,VC_PdlsMdPrsnt,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 6
+0x381,VC_PdlsMdPrsnt,b,0,0,bit 3,(d[0] >> 3) & 0x1,1 2 3 4 5 7 8
+0x381,VC_STP_PRSNT,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 6
+0x381,VC_STP_PRSNT,b,0,0,bit 4,(d[0] >> 4) & 0x1,1 2 3 4 5 7 8
+0x381,VC_Screen_Off,b,0,0,bit 7,(d[0] >> 7) & 0x1,1 2 3 4 5 7 8
+0x381,VC_SuspPrsnt,b,0,0,bit 5,(d[0] >> 5) & 0x1,1 2 3 4 5 7 8
+0x381,VC_TrnsDrvMdPrsnt,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 6
+0x381,VC_TrnsDrvMdPrsnt,b,0,0,bit 2,(d[0] >> 2) & 0x1,1 2 3 4 5 7 8
+0x381,VC_VehCfg7_Stat,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0x381,VC_TransType,b,1,1,bits 0-5,d[1] & 0x3F,0 6
+0x381,TeenKeyFeaturePresent,b,2,2,bit 0,d[2] & 0x1,0 6
+0x381,VC_DampingPrsnt,b,2,2,bit 6,(d[2] >> 6) & 0x1,0 6
+0x381,VC_SVC_Prsnt,b,2,2,bit 1,(d[2] >> 1) & 0x1,0 6
+0x381,VC_SuspPrsnt,b,2,2,bit 5,(d[2] >> 5) & 0x1,0 6
+0x381,VC_RedKey,b,3,3,bit 0,d[3] & 0x1,0 6
+0x381,VC_Trans_Equipped,b,3,3,bit 4,(d[3] >> 4) & 0x1,0 6
+0x381,VC_TSBM_Prsnt,b,4,4,bit 7,(d[4] >> 7) & 0x1,0 6
+0x383,DVD,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x384,DVD1,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x385,DVD2,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x386,DVD3,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x38F,SelTrlrNum,b,0,0,bits 0-2,d[0] & 0x7,0 1 2 3 4 5 6 7 8
+0x38F,SelTrlrStyle,b,0,0,bits 3-7,(d[0] >> 3) & 0x1F,0 1 2 3 4 5 6 7 8
+0x38F,TrlrTripDist,y,1,3,24-bit,d[3]<<16 | d[2]<<8 | d[1],0 1 2 3 4 5 6 7 8
+0x38F,TrlrStyle_1,b,5,5,bits 0-4,d[5] & 0x1F,0 1 2 3 4 5 6 7 8
+0x38F,TrlrStyle_2,b,6,6,bits 0-4,d[6] & 0x1F,0 1 2 3 4 5 6 7 8
+0x38F,TrlrStyle_3,b,7,7,bits 0-4,d[7] & 0x1F,0 1 2 3 4 5 6 7 8
+0x38F,TrlrStyle_4,b,8,8,bits 0-4,d[8] & 0x1F,0 1 2 3 4 5 6 7 8
+0x394,TeenKeyMaxSpeedLimit,b,0,0,bits 0-2,d[0] & 0x7,6
+0x395,ReadyToDriveStatus,b,0,0,bit 3,(d[0] >> 3) & 0x1,6
+0x395,UNIT_SET_CSO,b,0,0,bits 0-1,d[0] & 0x3,6
+0x3A2,IGN_OFF_TIME_LNG,y,1,2,16-bit,d[2]<<8 | d[1],0 1 2 3 4 5 6 7 8
+0x3A7,VES2_AUX1_STAT,b,0,0,bits 0-3,d[0] & 0xF,0 1 2 3 4 5 6 7 8
+0x3A7,VES2_AUX2_STAT,b,0,0,bits 4-7,(d[0] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x3A7,VES2_Src_IR_Stat,b,1,1,bits 4-7,(d[1] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x3A7,VES2_Src_TGW_Stat,b,1,1,bits 0-3,d[1] & 0xF,0 1 2 3 4 5 6 7 8
+0x3B2,AHB_ENBL,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B2,EC_MirrStat,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0x3B2,INVERTER_ON,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B2,PNC_ALM_ACT,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B2,TurnInd_LT_ON,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 6
+0x3B2,TurnInd_RT_ON,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 6
+0x3B2,AirTemp_Outsd,b,1,1,bits 0-7,d[1] & 0xFF,1 2 3 4 5 7 8
+0x3B2,CUSTOM_HK_RQ,b,1,1,bits 5-7,(d[1] >> 5) & 0x7,6
+0x3B2,SRT_HK_RQ,b,1,1,bits 3-4,(d[1] >> 3) & 0x3,6
+0x3B2,VALET_LK_OUT,b,1,1,bit 2,(d[1] >> 2) & 0x1,6
+0x3B2,AirTemp_Outsd,b,2,2,bits 0-7,d[2] & 0xFF,0 6
+0x3B2,AutoVehHoldSts,b,2,2,bits 2-3,(d[2] >> 2) & 0x3,1 2 3 4 5 7 8
+0x3B2,E_CALL_BtnStat,b,2,2,bits 4-5,(d[2] >> 4) & 0x3,1 2 3 4 5 7 8
+0x3B2,U_CALL_BtnStat,b,2,2,bits 6-7,(d[2] >> 6) & 0x3,1 2 3 4 5 7 8
+0x3B2,INST_FUEL_ECO,y,3,4,16-bit,d[4]<<8 | d[3],1 2 3 4 5 7 8
+0x3B2,AutoVehHoldSts,b,4,4,bits 2-3,(d[4] >> 2) & 0x3,0 6
+0x3B2,E_CALL_BtnStat,b,4,4,bits 4-5,(d[4] >> 4) & 0x3,0 6
+0x3B2,U_CALL_BtnStat,b,4,4,bits 6-7,(d[4] >> 6) & 0x3,0 6
+0x3B2,INST_FUEL_ECO,y,5,6,16-bit,d[6]<<8 | d[5],0 6
+0x3B2,SHIP_STAT,b,5,5,bits 6-7,(d[5] >> 6) & 0x3,1 2 3 4 5 7 8
+0x3B2,SHIP_STAT,b,7,7,bits 6-7,(d[7] >> 6) & 0x3,0 6
+0x3B3,ElectPowerSteering,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,ParkAssist,b,0,0,bits 2-3,(d[0] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x3B3,ParkAssistBraking,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,ParkAssistFrontVolume,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,ParkAssistRearVolume,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,VehCfgCS01_Stat,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0x3B3,CHMSL_CameraGuidelines,b,1,1,bit 7,(d[1] >> 7) & 0x1,0 6
+0x3B3,ForwardCollisionBraking,b,1,1,bit 2,(d[1] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,ForwardCollisionWarning,b,1,1,bits 0-1,d[1] & 0x3,0 1 2 3 4 5 6 7 8
+0x3B3,HornWithRemoteLock,b,1,1,bits 3-4,(d[1] >> 3) & 0x3,0 1 2 3 4 5 6 7 8
+0x3B3,HornWithRemoteLower,b,1,1,bit 6,(d[1] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,HornWithRemoteStart,b,1,1,bit 5,(d[1] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,VC_CHMSL_LINE_CSO,b,1,1,bit 7,(d[1] >> 7) & 0x1,1 2 3 4 5 7 8
+0x3B3,AutoDriverComfort,b,2,2,bits 0-1,d[2] & 0x3,0 1 2 3 4 5 6 7 8
+0x3B3,AuxillarySwitches,b,2,2,bits 2-3,(d[2] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x3B3,RearCameraGridlines,b,2,2,bits 4-5,(d[2] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x3B3,VC_UNIT_SET_CSO,b,2,2,bit 6,(d[2] >> 6) & 0x1,6
+0x3B3,AccessoryDelay,b,3,3,bit 0,d[3] & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,AdaptiveFrontLightSystem,b,3,3,bit 1,(d[3] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,AirSuspensionWarning,b,3,3,bit 4,(d[3] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,AmbientDimmer,b,3,3,bit 2,(d[3] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,AutoAeroMode,b,3,3,bit 5,(d[3] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,AutoHighBeam,b,3,3,bit 6,(d[3] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,AutoPark,b,3,3,bit 7,(d[3] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,TireJackMode,b,3,3,bit 3,(d[3] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,AutoDoorLock,b,4,4,bit 7,(d[4] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,BlindSpot,b,4,4,bit 0,d[4] & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,CapacityUnits,b,4,4,bit 1,(d[4] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,CompassCalibration,b,4,4,bit 3,(d[4] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,CompassVariance,b,4,4,bit 4,(d[4] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,ConsumptionUnits,b,4,4,bit 5,(d[4] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,DigitalClock,b,4,4,bit 2,(d[4] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,DistanceUnits,b,4,4,bit 6,(d[4] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,AutoDoorUnlock,b,5,5,bit 0,d[5] & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,AutoEntryExit,b,5,5,bit 3,(d[5] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,DaytimeRunningLights,b,5,5,bit 1,(d[5] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,EasySeatExit,b,5,5,bit 2,(d[5] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,ElectronicParkBrake,b,5,5,bit 4,(d[5] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,FlashLampWithLock,b,5,5,bit 5,(d[5] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,HeadlampDrop,b,5,5,bit 6,(d[5] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,HeadlampOffDelay,b,5,5,bit 7,(d[5] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,FlashLightsWithRemoteLower,b,6,6,bit 5,(d[6] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,HeadlampWithWiper,b,6,6,bit 0,d[6] & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,HillStartAssist,b,6,6,bit 1,(d[6] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,IlluminatedApproach,b,6,6,bit 2,(d[6] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,LaneDepartureTorque,b,6,6,bit 3,(d[6] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,LaneDepartureWarning,b,6,6,bit 4,(d[6] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,NavigationTurnByTurn,b,6,6,bit 6,(d[6] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,PassiveEntry,b,6,6,bit 7,(d[6] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,PerformanceShiftEnable,b,7,7,bit 0,d[7] & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,PerformanceShiftRPM,b,7,7,bit 1,(d[7] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,PowerLiftGate,b,7,7,bit 2,(d[7] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,PowerTakeOff,b,7,7,bit 5,(d[7] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,PowerUnits,b,7,7,bit 3,(d[7] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,PressureUnits,b,7,7,bit 4,(d[7] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,RainSensitiveWipers,b,7,7,bit 6,(d[7] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,RearCamera,b,7,7,bit 7,(d[7] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B3,VC_Police_PE_CSO,b,8,8,bit 0,d[8] & 0x1,6 7
+0x3B4,RKELinkedToMemory,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B4,RKEUnlock,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B4,RearCameraDelay,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B4,SpeedUnits,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B4,TiltMirrorInReverse,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B4,TorqueUnits,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B4,VehCfgCS02_Stat,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0x3B4,FuelSaver,b,1,1,bit 6,(d[1] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B4,TemperatureUnits,b,1,1,bit 7,(d[1] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B4,TrailerName,b,1,1,bit 0,d[1] & 0x1,0 1 2 3 4 5 6 7 8
+0x3B4,TrailerNumber,b,1,1,bit 1,(d[1] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B4,TrailerType,b,1,1,bit 2,(d[1] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B4,TransportMode,b,1,1,bit 3,(d[1] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B4,USMetric,b,1,1,bit 4,(d[1] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B4,WheelAlignment,b,1,1,bit 5,(d[1] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3B4,HandsFreeLiftGatePresent,b,2,2,bit 2,(d[2] >> 2) & 0x1,0 6
+0x3B4,HandsFreeSlidingDoorPresent,b,2,2,bit 3,(d[2] >> 3) & 0x1,0 6
+0x3B4,PowerFoldingMirrorPresent,b,2,2,bit 1,(d[2] >> 1) & 0x1,0 6
+0x3B4,SVCGridlines,b,2,2,bit 4,(d[2] >> 4) & 0x1,0 6
+0x3B4,SVC_Delay,b,2,2,bit 5,(d[2] >> 5) & 0x1,0 6
+0x3B4,SliderDoorAlert,b,2,2,bit 6,(d[2] >> 6) & 0x1,0 6
+0x3B4,TeenKeyFCWSensitivityPresent,b,2,2,bit 7,(d[2] >> 7) & 0x1,0 6
+0x3B4,VC_AutoOnFeatureMethod,b,2,2,bit 0,d[2] & 0x1,1 7 8
+0x3B4,TeenKeyBlindSpotPresent,b,3,3,bit 7,(d[3] >> 7) & 0x1,0 6
+0x3B4,TeenKeyFCWBrakingPresent,b,3,3,bit 0,d[3] & 0x1,0 6
+0x3B4,TeenKeyFTParkAssistVolPresent,b,3,3,bit 2,(d[3] >> 2) & 0x1,0 6
+0x3B4,TeenKeyFuelPopupPresent,b,3,3,bit 6,(d[3] >> 6) & 0x1,0 6
+0x3B4,TeenKeyFuelWarningPresent,b,3,3,bit 5,(d[3] >> 5) & 0x1,0 6
+0x3B4,TeenKeyMaxSpeedLimitPresent,b,3,3,bit 4,(d[3] >> 4) & 0x1,0 6
+0x3B4,TeenKeyParkAssistPresent,b,3,3,bit 1,(d[3] >> 1) & 0x1,0 6
+0x3B4,TeenKeyRRParkAssistVolPresent,b,3,3,bit 3,(d[3] >> 3) & 0x1,0 6
+0x3B4,SettingsPaddleModePresent,b,4,4,bit 7,(d[4] >> 7) & 0x1,0 6
+0x3B4,TeenKeyAutoHighBeamsPresent,b,4,4,bit 1,(d[4] >> 1) & 0x1,0 6
+0x3B4,TeenKeyHLsWithWipersPresent,b,4,4,bit 2,(d[4] >> 2) & 0x1,0 6
+0x3B4,TeenKeyRainSenseWipersPresent,b,4,4,bit 0,d[4] & 0x1,0 6
+0x3B4,FlashLightSlideDoorPresent,b,5,5,bit 0,d[5] & 0x1,0 6
+0x3B4,VC_AutoOnFeatureMethod,b,5,5,bit 0,d[5] & 0x1,2 3 4 5
+0x3B4,VC_FCW_SW_CSO,b,5,5,bit 7,(d[5] >> 7) & 0x1,0 6
+0x3B4,ReadyToDrivePresent,b,6,6,bit 7,(d[6] >> 7) & 0x1,6
+0x3B4,VC_RDY_DRV_CSO,b,6,6,bit 7,(d[6] >> 7) & 0x1,0
+0x3B4,VC_AutoOnFeatureMethod,b,7,7,bit 0,d[7] & 0x1,0 6
+0x3C7,DVD_DISC_NUM,b,0,0,bits 2-5,(d[0] >> 2) & 0xF,0 1 2 3 4 5 6 7 8
+0x3C7,DVD_DISC_TYPE,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x3C7,DVD_DISP_MD,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x3C7,DVD_TRK_FILE,y,1,2,16-bit,d[2]<<8 | d[1],0 1 2 3 4 5 6 7 8
+0x3C7,DVD_MEDIA_PT,b,3,3,bits 0-2,d[3] & 0x7,0 1 2 3 4 5 6 7 8
+0x3C7,DVD_NEG_TIME,b,4,4,bit 7,(d[4] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3C7,DVD_RND_MD,b,4,4,bit 0,d[4] & 0x1,0 1 2 3 4 5 6 7 8
+0x3C7,DVD_RPT_MD,b,4,4,bit 1,(d[4] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x3C7,DVD_HOUR,b,5,5,bits 0-7,d[5] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3C7,DVD_MINUTE,b,6,6,bits 0-7,d[6] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3C7,DVD_SECOND,b,7,7,bits 0-7,d[7] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3C9,AMB_TEMP_AVG_F,b,0,0,bits 0-7,d[0] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3C9,AMB_TEMP_AVG_C,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3CF,SRT_60mphTmC,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3CF,SRT_eighthTmC,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3CF,SRT_quarterTmC,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3CF,SRT_EthSpdC_M,b,4,4,bits 0-7,d[4] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3CF,SRT_QrtSpdC_M,b,5,5,bits 0-7,d[5] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3CF,SRT_BrkSpdC_M,b,6,6,bits 0-7,d[6] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3CF,SRT_BrkDistC_M,b,7,7,bits 0-7,d[7] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3D2,ODO,y,0,2,24-bit,d[2]<<16 | d[1]<<8 | d[0],0 1 2 3 4 5 6 7 8
+0x3DE,AUTO_LK,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,AUTO_UNLK,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,CFG_AUTO_WPR,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,DR_ALR,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,FLASH_LK,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,HL_WPR,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,RKE_ONE_PRESS_ENBL,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,SOUND_LK,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,ILL_APRCH_TIME,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3DE,HL_DLY_TIME,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3DE,ACC_DLY_TIME,y,3,4,16-bit,d[4]<<8 | d[3],0 1 2 3 4 5 6 7 8
+0x3DE,AutoSwitch,b,5,5,bits 4-5,(d[5] >> 4) & 0x3,5
+0x3DE,DRL_ON,b,5,5,bit 0,d[5] & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,ECM_Enbl,b,5,5,bit 1,(d[5] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,HandsFreeSlidingDoorStat,b,5,5,bit 2,(d[5] >> 2) & 0x1,6
+0x3DE,OffWithDoorOpen,b,5,5,bit 6,(d[5] >> 6) & 0x1,5
+0x3DE,SLD_DR_Chime_Enbl,b,5,5,bit 3,(d[5] >> 3) & 0x1,6
+0x3DE,ACC_DLY_ACT,b,6,6,bit 0,d[6] & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,AUTO_RELK,b,6,6,bit 5,(d[6] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,DynamicGridResp,b,6,6,bit 7,(d[6] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,RemLoHrnEnbl,b,6,6,bit 2,(d[6] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,RemLoLgtEnbl,b,6,6,bit 3,(d[6] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,SOUND_RS,b,6,6,bit 4,(d[6] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,StaticGridResp,b,6,6,bit 6,(d[6] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,DynamicGridRespFail,b,7,7,bit 2,(d[7] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3DE,SOUND_LK_1ST_2ND,b,7,7,bits 0-1,d[7] & 0x3,0 1 2 3 4 5 6 7 8
+0x3DE,SWSError,b,7,7,bit 3,(d[7] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E0,VIN,s,0,16,17 chars,ascii(d[0..16]),0 1 2 3 4 5 6 7 8
+0x3E1,DISPLACEMENT,b,0,0,bits 0-7,d[0] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3E1,ENG_ASP,b,1,1,bits 5-7,(d[1] >> 5) & 0x7,0 1 2 3 4 5 6 7 8
+0x3E3,NET_CFG_STAT_INT,b,0,0,bits 0-1,d[0] & 0x3,0 6
+0x3E3,NetCfg_BSM,b,0,0,bit 3,(d[0] >> 3) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_CBC_IN,b,0,0,bit 4,(d[0] >> 4) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_CSWM,b,0,0,bit 5,(d[0] >> 5) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_DCM_DR,b,0,0,bit 6,(d[0] >> 6) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_DCM_PASS,b,0,0,bit 7,(d[0] >> 7) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_RBSS,b,0,0,bit 2,(d[0] >> 2) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_BSM,b,1,1,bit 3,(d[1] >> 3) & 0x1,0 6
+0x3E3,NetCfg_CBC_IN,b,1,1,bit 4,(d[1] >> 4) & 0x1,0 6
+0x3E3,NetCfg_CSWM,b,1,1,bit 5,(d[1] >> 5) & 0x1,0 6
+0x3E3,NetCfg_DCM_DR,b,1,1,bit 6,(d[1] >> 6) & 0x1,0 6
+0x3E3,NetCfg_DCM_PASS,b,1,1,bit 7,(d[1] >> 7) & 0x1,0 6
+0x3E3,NetCfg_DCM_RL,b,1,1,bit 0,d[1] & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_DCM_RR,b,1,1,bit 1,(d[1] >> 1) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_HVAC,b,1,1,bit 2,(d[1] >> 2) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_MSM,b,1,1,bit 3,(d[1] >> 3) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_PLG,b,1,1,bit 4,(d[1] >> 4) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_PSD_LT,b,1,1,bit 6,(d[1] >> 6) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_PSD_RT,b,1,1,bit 7,(d[1] >> 7) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_RBSS,b,1,1,bit 2,(d[1] >> 2) & 0x1,0 6
+0x3E3,NetCfg_CLOCK,b,2,2,bit 5,(d[2] >> 5) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_DCM_RL,b,2,2,bit 0,d[2] & 0x1,0 6
+0x3E3,NetCfg_DCM_RR,b,2,2,bit 1,(d[2] >> 1) & 0x1,0 6
+0x3E3,NetCfg_DTV,b,2,2,bit 3,(d[2] >> 3) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_FSM,b,2,2,bit 0,d[2] & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_HVAC,b,2,2,bit 2,(d[2] >> 2) & 0x1,0 6
+0x3E3,NetCfg_ITM,b,2,2,bit 7,(d[2] >> 7) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_MSM,b,2,2,bit 3,(d[2] >> 3) & 0x1,0 6
+0x3E3,NetCfg_PLG,b,2,2,bit 4,(d[2] >> 4) & 0x1,0 6
+0x3E3,NetCfg_PSD_LT,b,2,2,bit 6,(d[2] >> 6) & 0x1,0 6
+0x3E3,NetCfg_PSD_RT,b,2,2,bit 7,(d[2] >> 7) & 0x1,0 6
+0x3E3,NetCfg_PTCM,b,2,2,bit 1,(d[2] >> 1) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_RBC,b,2,2,bit 2,(d[2] >> 2) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_TGW,b,2,2,bit 4,(d[2] >> 4) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_VSIM,b,2,2,bit 6,(d[2] >> 6) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_AMP_I,b,3,3,bit 0,d[3] & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_CLOCK,b,3,3,bit 5,(d[3] >> 5) & 0x1,0 6
+0x3E3,NetCfg_CRSM,b,3,3,bit 6,(d[3] >> 6) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_DTV,b,3,3,bit 3,(d[3] >> 3) & 0x1,0 6
+0x3E3,NetCfg_DVD_CDM,b,3,3,bit 1,(d[3] >> 1) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_FSM,b,3,3,bit 0,d[3] & 0x1,0 6
+0x3E3,NetCfg_HFM_CTM,b,3,3,bit 2,(d[3] >> 2) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_HVAC_R,b,3,3,bit 7,(d[3] >> 7) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_ICS_I,b,3,3,bit 3,(d[3] >> 3) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_ITM,b,3,3,bit 7,(d[3] >> 7) & 0x1,0 6
+0x3E3,NetCfg_PTCM,b,3,3,bit 1,(d[3] >> 1) & 0x1,0 6
+0x3E3,NetCfg_RBC,b,3,3,bit 2,(d[3] >> 2) & 0x1,0 6
+0x3E3,NetCfg_TGW,b,3,3,bit 4,(d[3] >> 4) & 0x1,0 6
+0x3E3,NetCfg_VES2_I,b,3,3,bit 4,(d[3] >> 4) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_VES3_I,b,3,3,bit 5,(d[3] >> 5) & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_VSIM,b,3,3,bit 6,(d[3] >> 6) & 0x1,0 6
+0x3E3,NetCfg_AMP_I,b,4,4,bit 0,d[4] & 0x1,0 6
+0x3E3,NetCfg_CRSM,b,4,4,bit 6,(d[4] >> 6) & 0x1,0 6
+0x3E3,NetCfg_CVPM,b,4,4,bit 0,d[4] & 0x1,1 2 3 4 5 7 8
+0x3E3,NetCfg_DVD_CDM,b,4,4,bit 1,(d[4] >> 1) & 0x1,0 6
+0x3E3,NetCfg_HFM_CTM,b,4,4,bit 2,(d[4] >> 2) & 0x1,0 6
+0x3E3,NetCfg_HVAC_R,b,4,4,bit 7,(d[4] >> 7) & 0x1,0 6
+0x3E3,NetCfg_ICS_I,b,4,4,bit 3,(d[4] >> 3) & 0x1,0 6
+0x3E3,NetCfg_VES2_I,b,4,4,bit 4,(d[4] >> 4) & 0x1,0 6
+0x3E3,NetCfg_VES3_I,b,4,4,bit 5,(d[4] >> 5) & 0x1,0 6
+0x3E3,NetCfg_CVPM,b,5,5,bit 0,d[5] & 0x1,0 6
+0x3E3,NetCfg_DCSD,b,5,5,bit 5,(d[5] >> 5) & 0x1,6
+0x3E3,NetCfg_TBM,b,5,5,bit 6,(d[5] >> 6) & 0x1,6
+0x3E3,NetCfg_VRM,b,5,5,bit 4,(d[5] >> 4) & 0x1,6
+0x3E4,NET_CFG_STAT_PT,b,0,0,bits 0-1,d[0] & 0x3,0 6
+0x3E4,NetCfg_ACC,b,0,0,bit 2,(d[0] >> 2) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_ADCM,b,0,0,bit 3,(d[0] >> 3) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_AHLM,b,0,0,bit 4,(d[0] >> 4) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_ASCM,b,0,0,bit 6,(d[0] >> 6) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_CBC_PT,b,0,0,bit 7,(d[0] >> 7) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_VSIM_C,b,0,0,bit 5,(d[0] >> 5) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_ACC,b,1,1,bit 2,(d[1] >> 2) & 0x1,0 6
+0x3E4,NetCfg_ADCM,b,1,1,bit 3,(d[1] >> 3) & 0x1,0 6
+0x3E4,NetCfg_AHLM,b,1,1,bit 4,(d[1] >> 4) & 0x1,0 6
+0x3E4,NetCfg_ASCM,b,1,1,bit 6,(d[1] >> 6) & 0x1,0 6
+0x3E4,NetCfg_CBC_PT,b,1,1,bit 7,(d[1] >> 7) & 0x1,0 6
+0x3E4,NetCfg_DTCM,b,1,1,bit 0,d[1] & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_ECM,b,1,1,bit 1,(d[1] >> 1) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_EPB,b,1,1,bit 5,(d[1] >> 5) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_EPS,b,1,1,bit 2,(d[1] >> 2) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_ESC,b,1,1,bit 4,(d[1] >> 4) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_ESM,b,1,1,bit 3,(d[1] >> 3) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_IC,b,1,1,bit 7,(d[1] >> 7) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_RF_HUB,b,1,1,bit 6,(d[1] >> 6) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_VSIM_C,b,1,1,bit 5,(d[1] >> 5) & 0x1,0 6
+0x3E4,NetCfg_DASM,b,2,2,bit 0,d[2] & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_DTCM,b,2,2,bit 0,d[2] & 0x1,0 6
+0x3E4,NetCfg_ECM,b,2,2,bit 1,(d[2] >> 1) & 0x1,0 6
+0x3E4,NetCfg_EPB,b,2,2,bit 5,(d[2] >> 5) & 0x1,0 6
+0x3E4,NetCfg_EPPM,b,2,2,bit 2,(d[2] >> 2) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_EPS,b,2,2,bit 2,(d[2] >> 2) & 0x1,0 6
+0x3E4,NetCfg_ESC,b,2,2,bit 4,(d[2] >> 4) & 0x1,0 6
+0x3E4,NetCfg_ESM,b,2,2,bit 3,(d[2] >> 3) & 0x1,0 6
+0x3E4,NetCfg_FDCM,b,2,2,bit 1,(d[2] >> 1) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_IC,b,2,2,bit 7,(d[2] >> 7) & 0x1,0 6
+0x3E4,NetCfg_ORC,b,2,2,bit 3,(d[2] >> 3) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_PTS,b,2,2,bit 4,(d[2] >> 4) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_RBT_DR,b,2,2,bit 5,(d[2] >> 5) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_RBT_PASS,b,2,2,bit 6,(d[2] >> 6) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_RF_HUB,b,2,2,bit 6,(d[2] >> 6) & 0x1,0 6
+0x3E4,NetCfg_SCCM,b,2,2,bit 7,(d[2] >> 7) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_AFLS,b,3,3,bit 4,(d[3] >> 4) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_DASM,b,3,3,bit 0,d[3] & 0x1,0 6
+0x3E4,NetCfg_ELSD,b,3,3,bit 0,d[3] & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_EPPM,b,3,3,bit 2,(d[3] >> 2) & 0x1,0 6
+0x3E4,NetCfg_FDCM,b,3,3,bit 1,(d[3] >> 1) & 0x1,0 6
+0x3E4,NetCfg_HaLF,b,3,3,bit 7,(d[3] >> 7) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_ITBM,b,3,3,bit 5,(d[3] >> 5) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_OCM,b,3,3,bit 6,(d[3] >> 6) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_ORC,b,3,3,bit 3,(d[3] >> 3) & 0x1,0 6
+0x3E4,NetCfg_PASS_PT,b,3,3,bit 3,(d[3] >> 3) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_PTS,b,3,3,bit 4,(d[3] >> 4) & 0x1,0 6
+0x3E4,NetCfg_RBT_DR,b,3,3,bit 5,(d[3] >> 5) & 0x1,0 6
+0x3E4,NetCfg_RBT_PASS,b,3,3,bit 6,(d[3] >> 6) & 0x1,0 6
+0x3E4,NetCfg_SCCM,b,3,3,bit 7,(d[3] >> 7) & 0x1,0 6
+0x3E4,NetCfg_TCM,b,3,3,bit 1,(d[3] >> 1) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_TPM,b,3,3,bit 2,(d[3] >> 2) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_AFLS,b,4,4,bit 4,(d[4] >> 4) & 0x1,0 6
+0x3E4,NetCfg_ANC,b,4,4,bit 7,(d[4] >> 7) & 0x1,1 2 3 4 5 7 8
+0x3E4,NetCfg_ELSD,b,4,4,bit 0,d[4] & 0x1,0 6
+0x3E4,NetCfg_HaLF,b,4,4,bit 7,(d[4] >> 7) & 0x1,0 6
+0x3E4,NetCfg_ITBM,b,4,4,bit 5,(d[4] >> 5) & 0x1,0 6
+0x3E4,NetCfg_OCM,b,4,4,bit 6,(d[4] >> 6) & 0x1,0 6
+0x3E4,NetCfg_PASS_PT,b,4,4,bit 3,(d[4] >> 3) & 0x1,0 6
+0x3E4,NetCfg_TCM,b,4,4,bit 1,(d[4] >> 1) & 0x1,0 6
+0x3E4,NetCfg_TPM,b,4,4,bit 2,(d[4] >> 2) & 0x1,0 6
+0x3E4,NetCfg_ANC,b,5,5,bit 7,(d[5] >> 7) & 0x1,0 6
+0x3E4,NetCfg_HCP,b,5,5,bit 6,(d[5] >> 6) & 0x1,6
+0x3E5,Proxi_BCM,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_BSM,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_ECM,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_EPS,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_IPC,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_DDM_DMM_FDM_UDM,b,1,1,bit 0,d[1] & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_ECC_ACM_MCM_MHM,b,1,1,bit 2,(d[1] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_EPB,b,1,1,bit 5,(d[1] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_MTA_TCM_DCTM,b,1,1,bit 3,(d[1] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_DSM,b,2,2,bit 2,(d[2] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_ESL,b,2,2,bit 5,(d[2] >> 5) & 0x1,0 1
+0x3E5,Proxi_GSM_STM,b,2,2,bit 6,(d[2] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_PDM,b,2,2,bit 1,(d[2] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_HALF,b,3,3,bit 6,(d[3] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_PAM,b,3,3,bit 0,d[3] & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_SDM_ORC,b,3,3,bit 2,(d[3] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_LTM_ETM_HTM,b,4,4,bit 4,(d[4] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_AMP,b,5,5,bit 6,(d[5] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_CDM,b,5,5,bit 7,(d[5] >> 7) & 0x1,0 1
+0x3E5,Proxi_CSWM,b,6,6,bit 0,d[6] & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_ICS_HCPM,b,6,6,bit 2,(d[6] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_LBSS,b,6,6,bit 3,(d[6] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_RBSS,b,6,6,bit 4,(d[6] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_SCCM,b,6,6,bit 5,(d[6] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_DASM,b,7,7,bit 1,(d[7] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_DTCM,b,8,8,bit 3,(d[8] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_PLGM,b,8,8,bit 5,(d[8] >> 5) & 0x1,0 1
+0x3E5,Proxi_RFHM,b,8,8,bit 1,(d[8] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E5,Proxi_AHLM,b,9,9,bit 4,(d[9] >> 4) & 0x1,0 1
+0x3E5,Proxi_OCM,b,9,9,bit 6,(d[9] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E8,VC_HdRstPrsnt,b,0,0,bit 6,(d[0] >> 6) & 0x1,1 2 3 4 5 7 8
+0x3E8,VC_MODEL_YEAR,b,0,0,bits 2-7,(d[0] >> 2) & 0x3F,0 6
+0x3E8,VC_MODEL_YEAR,b,0,0,bits 0-5,d[0] & 0x3F,1 2 3 4 5 7 8
+0x3E8,VC_PP_Prsnt,b,0,0,bit 7,(d[0] >> 7) & 0x1,1 2 3 4 5 7 8
+0x3E8,VC_VehCfg1_Stat,b,0,0,bits 0-1,d[0] & 0x3,0 6
+0x3E8,VC_VEH_LINE,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3E8,VC_COUNTRY,b,2,2,bits 0-4,d[2] & 0x1F,0 1 2 3 4 5 6 7 8
+0x3E8,VC_LHD_RHD,b,2,2,bits 5-6,(d[2] >> 5) & 0x3,0 1 2 3 4 5 6 7 8
+0x3E8,VC_RemStPrsnt,b,2,2,bit 7,(d[2] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E8,VC_AUTO_HB,b,3,3,bit 3,(d[3] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E8,VC_BODY_STYLE,b,3,3,bits 4-7,(d[3] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x3E8,VC_EmodePrsnt,b,3,3,bit 2,(d[3] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3E8,VC_XWD,b,3,3,bits 0-1,d[3] & 0x3,0 1 2 3 4 5 6 7 8
+0x3E8,VC_SpecialPKG,b,4,4,bits 0-7,d[4] & 0xFF,1 2 3 4 5 7 8
+0x3E8,VC_CHMCM_Prsnt,b,5,5,bit 0,d[5] & 0x1,1 2 3 4 5 7 8
+0x3E8,VC_CmfrtFeatMethod,b,5,5,bits 6-7,(d[5] >> 6) & 0x3,1 2 3 4 5 7 8
+0x3E8,VC_HDC_Prsnt,b,5,5,bit 4,(d[5] >> 4) & 0x1,1 7 8
+0x3E8,VC_HDC_Prsnt,b,5,5,bit 5,(d[5] >> 5) & 0x1,2 3 4 5
+0x3E8,VC_PP_Prsnt,b,5,5,bit 7,(d[5] >> 7) & 0x1,0 6
+0x3E8,VC_PTS_Config,b,5,5,bits 2-3,(d[5] >> 2) & 0x3,1 2 3 4 5 7 8
+0x3E8,VC_RVCM_Prsnt,b,5,5,bit 1,(d[5] >> 1) & 0x1,1 2 3 4 5 7 8
+0x3E8,VC_SSC_Prsnt,b,5,5,bit 5,(d[5] >> 5) & 0x1,1 7 8
+0x3E8,VC_SSC_Prsnt,b,5,5,bit 4,(d[5] >> 4) & 0x1,2 3 4 5
+0x3E8,VC_SpecialPKG,b,6,6,bits 0-7,d[6] & 0xFF,0 6
+0x3E8,VC_CHMCM_Prsnt,b,7,7,bit 5,(d[7] >> 5) & 0x1,0 6
+0x3E8,VC_HDC_Prsnt,b,7,7,bit 6,(d[7] >> 6) & 0x1,0 6
+0x3E8,VC_HdRstPrsnt,b,7,7,bit 0,d[7] & 0x1,0 6
+0x3E8,VC_PTS_Config,b,7,7,bits 2-3,(d[7] >> 2) & 0x3,0 6
+0x3E8,VC_RVCM_Prsnt,b,7,7,bit 4,(d[7] >> 4) & 0x1,0 6
+0x3E8,VC_SSC_Prsnt,b,7,7,bit 7,(d[7] >> 7) & 0x1,0 6
+0x3E8,VC_CmfrtFeatMethod,b,8,8,bits 0-1,d[8] & 0x3,0 6
+0x3E9,VC_ECO_MODE_PRESENCE,b,0,0,bit 4,(d[0] >> 4) & 0x1,1 2 3 4 5 7 8
+0x3E9,VC_PwrIvtrTyp,b,0,0,bits 2-3,(d[0] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x3E9,VC_RainSnsPrsnt,b,0,0,bit 1,(d[0] >> 1) & 0x1,1 2 3 4 5 7 8
+0x3E9,VC_VehCfg2_Stat,b,0,0,bits 0-1,d[0] & 0x3,0 6
+0x3E9,VC_MaxLdPressRrTr,b,1,1,bits 0-7,d[1] & 0xFF,1 2 3 4 5 7 8
+0x3E9,VC_RainSnsPrsnt,b,1,1,bit 1,(d[1] >> 1) & 0x1,0 6
+0x3E9,VC_MaxLdPressFtTr,b,2,2,bits 0-7,d[2] & 0xFF,1 2 3 4 5 7 8
+0x3E9,VC_SpecialPKG_IC,b,2,2,bits 0-7,d[2] & 0xFF,0 6
+0x3E9,VC_DRVMD_Prsnt,b,3,3,bit 1,(d[3] >> 1) & 0x1,0 6
+0x3E9,VC_ECO_Indicator,b,3,3,bit 0,d[3] & 0x1,0 6
+0x3E9,VC_ESCDrvMd_Prsnt,b,3,3,bit 3,(d[3] >> 3) & 0x1,0 6
+0x3E9,VC_EngPowerDrvMd_Prsnt,b,3,3,bit 4,(d[3] >> 4) & 0x1,0 6
+0x3E9,VC_LgtLdPressRrTr,b,3,3,bits 0-7,d[3] & 0xFF,1 2 3 4 5 7 8
+0x3E9,VC_MemoryDRVMD_Prsnt,b,3,3,bit 2,(d[3] >> 2) & 0x1,0 6
+0x3E9,VC_SecPrkPrsnt,b,3,3,bit 5,(d[3] >> 5) & 0x1,0 6
+0x3E9,VC_ShftInd_Prsnt,b,3,3,bits 6-7,(d[3] >> 6) & 0x3,0 6
+0x3E9,VC_LgtldPressFtTr,b,4,4,bits 0-7,d[4] & 0xFF,1 2 3 4 5 7 8
+0x3E9,VC_MaxLdPressRrTr,b,4,4,bits 0-7,d[4] & 0xFF,0 6
+0x3E9,VC_DRVMD_Prsnt,b,5,5,bit 1,(d[5] >> 1) & 0x1,1 2 3 4 5 7 8
+0x3E9,VC_ECO_Indicator,b,5,5,bit 0,d[5] & 0x1,1 2 3 4 5 7 8
+0x3E9,VC_ESCDrvMd_Prsnt,b,5,5,bit 3,(d[5] >> 3) & 0x1,1 2 3 4 5 7 8
+0x3E9,VC_EngPowerDrvMd_Prsnt,b,5,5,bit 4,(d[5] >> 4) & 0x1,1 2 3 4 5 7 8
+0x3E9,VC_MaxLdPressFtTr,b,5,5,bits 0-7,d[5] & 0xFF,0 6
+0x3E9,VC_MemoryDRVMD_Prsnt,b,5,5,bit 2,(d[5] >> 2) & 0x1,1 2 3 4 5 7 8
+0x3E9,VC_SecPrkPrsnt,b,5,5,bit 5,(d[5] >> 5) & 0x1,1 2 3 4 5 7 8
+0x3E9,VC_ShftInd_Prsnt,b,5,5,bits 6-7,(d[5] >> 6) & 0x3,1 2 3 4 5 7 8
+0x3E9,VC_LgtLdPressRrTr,b,6,6,bits 0-7,d[6] & 0xFF,0 6
+0x3E9,VC_LgtldPressFtTr,b,7,7,bits 0-7,d[7] & 0xFF,0 6
+0x3E9,VC_ECO_MODE_PRESENCE,b,8,8,bit 0,d[8] & 0x1,0 6
+0x3EA,VC_HALF_Sensitivity,b,0,0,bits 2-3,(d[0] >> 2) & 0x3,1 2 3 4 5 7 8
+0x3EA,VC_HALF_Torque,b,0,0,bits 4-5,(d[0] >> 4) & 0x3,1 2 3 4 5 7 8
+0x3EA,VC_POLICE,b,0,0,bit 2,(d[0] >> 2) & 0x1,6
+0x3EA,VC_RKE_PRSNT,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3EA,VC_SunShade_Present,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3EA,VC_VehCfg3_Stat,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0x3EA,CUSW,b,1,1,bit 0,d[1] & 0x1,1 2 4 8
+0x3EA,DEFROST_MODE,b,1,1,bits 1-2,(d[1] >> 1) & 0x3,1 7
+0x3EA,VC_SPORT_PRSNT,b,1,1,bit 0,d[1] & 0x1,7
+0x3EA,VC_TcaseTyp,b,1,1,bits 0-3,d[1] & 0xF,0 6
+0x3EA,VC_FUEL_CAP,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3EA,VC_AUTO_HL,b,3,3,bit 3,(d[3] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3EA,VC_DSBL_CLK_DISP,b,3,3,bit 7,(d[3] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3EA,VC_DrAlrPrsnt,b,3,3,bit 4,(d[3] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3EA,VC_SRT_PRSNT,b,3,3,bit 6,(d[3] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3EA,VC_TEMP_DISP,b,4,4,bit 7,(d[4] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3EA,VC_HVAC_Config,b,5,5,bits 0-3,d[5] & 0xF,0 1 2 3 4 5 6 7 8
+0x3EA,VC_VEH_BRAND,b,5,5,bits 4-7,(d[5] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x3EA,VC_CMP_DISP,b,6,6,bit 0,d[6] & 0x1,0 1 2 3 4 5 6 7 8
+0x3EA,VC_CMS,b,6,6,bit 7,(d[6] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3EA,VC_Hold_N_Go,b,6,6,bit 6,(d[6] >> 6) & 0x1,1 2 3 4 5 7 8
+0x3EA,VC_IntEC_MIRR,b,6,6,bit 1,(d[6] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x3EA,VC_FCW,b,7,7,bit 0,d[7] & 0x1,0 1 2 3 4 5 6 7 8
+0x3EA,VC_PE_Prsnt,b,7,7,bit 6,(d[7] >> 6) & 0x1,0 6
+0x3EA,VC_PE_Prsnt,b,7,7,bit 7,(d[7] >> 7) & 0x1,1 2 3 4 5 7 8
+0x3EA,VC_SPORT_PRSNT,b,7,7,bit 4,(d[7] >> 4) & 0x1,0 6
+0x3EA,VC_Audio_Lay_Out,b,8,8,bits 0-3,d[8] & 0xF,0 1 2 3 4 5 6 7 8
+0x3EA,VC_AutoCloseMenu,b,8,8,bit 6,(d[8] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3EA,VC_HeadlampOffDelay,b,8,8,bit 4,(d[8] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3EA,VC_HornChirpMenu,b,8,8,bit 5,(d[8] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3EA,DEFROST_MODE,b,9,9,mask 0x05<<4,(d[9] >> 4) & 0x5,0
+0x3EA,ParkWithStop,b,9,9,bit 5,(d[9] >> 5) & 0x1,0 6
+0x3EA,RearHeatedWindow,b,9,9,bit 6,(d[9] >> 6) & 0x1,6
+0x3EA,VC_HALF_Sensitivity,b,9,9,bits 0-1,d[9] & 0x3,0 6
+0x3EA,VC_HALF_Torque,b,9,9,bits 2-3,(d[9] >> 2) & 0x3,0 6
+0x3EA,VC_Hold_N_Go,b,9,9,bit 7,(d[9] >> 7) & 0x1,0 6
+0x3EB,VC_TIRE_CIRCUMF,y,0,1,16-bit,d[1]<<8 | d[0],1 2 3 4 5 7 8
+0x3EB,VC_VehCfg4_Stat,b,0,0,bits 0-1,d[0] & 0x3,0 6
+0x3EB,VC_TIRE_CIRCUMF,y,1,2,16-bit,d[2]<<8 | d[1],0 6
+0x3F2,DRL_Prsnt,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,EC_ECUCfg3_Stat,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0x3F2,FT_PTS_Prsnt,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,HS_PRSNT,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,PWR_INV_PRSNT,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,RrCameraPrsnt,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,VENT_ST_PRSNT,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,DEST,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3F2,CABIN_EQ,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x3F2,APPS_PRSNT,b,3,3,bit 3,(d[3] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,DAB_PRSNT,b,3,3,bit 6,(d[3] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,SDAR_TRL_LNK_PRSNT,b,3,3,bit 5,(d[3] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,VC_EXT_PORT_TYPE,b,3,3,bits 0-2,d[3] & 0x7,0 1 2 3 4 5 6 7 8
+0x3F2,VTA_PRSNT,b,3,3,bit 7,(d[3] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,WiFi_Cfg,b,3,3,bit 4,(d[3] >> 4) & 0x1,0 3 5
+0x3F2,ANT_TYP,b,4,4,bits 4-5,(d[4] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x3F2,HSW_PRSNT,b,4,4,bit 0,d[4] & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,HYBRID_PT,b,4,4,bit 7,(d[4] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,OD_SW_PRSNT,b,4,4,bit 1,(d[4] >> 1) & 0x1,8
+0x3F2,PWR_DR_LK_PRSNT,b,4,4,bit 3,(d[4] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,SURR_PRSNT,b,4,4,bit 2,(d[4] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,VIN_ChkDgt_Dsbl,b,4,4,bit 1,(d[4] >> 1) & 0x1,0 1 2 3 4 5 6 7
+0x3F2,ConnectedServicesPresent,b,5,5,bit 6,(d[5] >> 6) & 0x1,3 5
+0x3F2,DSBL_CD_EJECT,b,5,5,bit 0,d[5] & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,DTV_FRNTCAM_PRSNT,b,5,5,bit 1,(d[5] >> 1) & 0x1,0 5 6 7
+0x3F2,DTV_SIDECAM_PRSNT,b,5,5,bit 2,(d[5] >> 2) & 0x1,0 5 6 7
+0x3F2,DisplayOnOffSKPresent,b,5,5,bit 7,(d[5] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,HILL_DES_PRSNT,b,5,5,bit 4,(d[5] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,TOW_HAUL_PRSNT,b,5,5,bit 3,(d[5] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,VC_AUD_SWS_CF,b,5,5,bit 5,(d[5] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,Microphone_Type_PNET,b,6,6,bits 1-2,(d[6] >> 1) & 0x3,0 1 2 3 4 5 6 7 8
+0x3F2,NumberOfMics_PNET,b,6,6,bit 0,d[6] & 0x1,0 1 2 3 4 5 6 7 8
+0x3F2,Splashscreen_Type,b,6,6,bits 3-7,(d[6] >> 3) & 0x1F,0 1 2 3 4 5 6 7 8
+0x3F2,ECSB_PRSNT,b,7,7,bit 4,(d[7] >> 4) & 0x1,3 5
+0x3F2,MicTuningParam_PNET,b,7,7,bits 0-3,d[7] & 0xF,0 1 2 3 4 5 6 7 8
+0x3F2,NAV_Presence,b,7,7,bit 5,(d[7] >> 5) & 0x1,5
+0x44A,VC_VehCfg5_Stat,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0x44A,VC_AmbLtgPrsnt,b,1,1,bit 5,(d[1] >> 5) & 0x1,0 6
+0x44A,VC_AmbLtgPrsnt,b,1,1,bit 6,(d[1] >> 6) & 0x1,1 2 3 4 5 7 8
+0x44A,VC_OffRoadPg,b,1,1,bit 4,(d[1] >> 4) & 0x1,0 6
+0x44A,VC_OffRoadPg,b,1,1,bit 5,(d[1] >> 5) & 0x1,1 2 3 4 5 7 8
+0x44A,VC_ParkStopPrsnt,b,1,1,bit 7,(d[1] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x44C,VC_TireCircumfFT,y,0,1,16-bit,d[1]<<8 | d[0],1 2 3 4 5 7 8
+0x44C,VC_VehCfg6_Stat,b,0,0,bits 0-1,d[0] & 0x3,0 6
+0x44C,VC_TireCircumfFT,y,1,2,16-bit,d[2]<<8 | d[1],0 6
+0x4B1,BonnetSts,b,0,0,bit 3,(d[0] >> 3) & 0x1,3 5
+0x4B1,DriverDoorSts_C,b,0,0,bit 7,(d[0] >> 7) & 0x1,3 5
+0x4B1,LHRDoorSts,b,1,1,bit 1,(d[1] >> 1) & 0x1,3 5
+0x4B1,PsngrDoorSts,b,1,1,bit 0,d[1] & 0x1,3 5
+0x4B1,RHRDoorSts,b,1,1,bit 2,(d[1] >> 2) & 0x1,3 5
+0x4B1,TheftAlarmStatus,b,2,2,bits 1-3,(d[2] >> 1) & 0x7,3 5
+0x52D,HALF_CHIME_REP_RATE,b,0,0,bits 0-3,d[0] & 0xF,0 1 2 3 4 5 8
+0x52D,HALF_CHIME_TYPE,b,0,0,bits 4-7,(d[0] >> 4) & 0xF,0 1 2 3 4 5 8
+0x52D,AHBFault,b,1,1,bit 4,(d[1] >> 4) & 0x1,5
+0x52D,EngineSts,b,1,1,bits 2-3,(d[1] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x52D,HALF_LF_CHIME_RQ,b,1,1,bit 0,d[1] & 0x1,0 1 2 3 4 5 8
+0x52D,HALF_RF_CHIME_RQ,b,1,1,bit 1,(d[1] >> 1) & 0x1,0 1 2 3 4 5 8
+0x52E,ConfigSts,b,0,0,bits 3-5,(d[0] >> 3) & 0x7,0 1
+0x52E,TorqueIntensitySts,b,0,0,bits 0-2,d[0] & 0x7,0 1
+0x550,AutoParkSts,b,0,0,bits 1-2,(d[0] >> 1) & 0x3,0 1 2 3 4 5 7 8
+0x550,ServiceModeSts,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 7 8
+0x550,EPBChimeReq,b,2,2,bits 0-2,d[2] & 0x7,0 1 2 3 4 5 6 7 8
+0x550,TextDisplay,b,2,2,bits 3-7,(d[2] >> 3) & 0x1F,0 1 2 3 4 5 6 7 8
+0x600,SD_RS_RF_HUB,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x601,SD_RS_CBC,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x602,SD_RS_IC,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x603,SD_RS_TPM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x604,SD_RS_ORC,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x605,SD_RS_RBT_DR,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x606,SD_RS_RBT_PASS,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x607,SD_RS_ESC,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x609,SD_RS_ESM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x60B,SD_RS_DTCM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x60C,SD_RS_FDCM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x613,SD_RS_DASM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x614,SD_RS_ITBM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x617,SD_RS_ADCM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x619,SD_RS_EPB,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x61A,SD_RS_EPS,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x61E,SD_RS_OCM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x61F,SD_RS_EPPM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x622,SD_RS_PTS,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x623,SD_RS_SCCM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x624,SD_RS_HaLF,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x626,SD_RS_ASCM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x628,SD_RS_AFLS,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x629,SD_RS_AHLM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x630,SD_RS_ELSD,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x638,SD_RS_ECM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x639,SD_RS_TCM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x643,SD_RS_HVAC,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x644,SD_RS_DCM_DR,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x645,SD_RS_DCM_PASS,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x646,SD_RS_DCM_RL,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x647,SD_RS_DCM_RR,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x648,SD_RS_PSD_LT,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x649,SD_RS_PSD_RT,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x64A,SD_RS_MSM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x64C,SD_RS_PLG,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x64D,SD_RS_FSM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x64E,SD_RS_VSIM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x64F,SD_RS_ITM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x650,SD_RS_AHBM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x651,SD_RS_BSM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x652,SD_RS_CSWM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x654,SD_RS_CVPM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,6
+0x655,SD_RS_MSM_PASS,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,6
+0x656,SD_RS_CRSM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x657,SD_RS_CLOCK,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x658,SD_RS_HVAC_R,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x659,SD_RS_RBSS,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x665,SD_RS_ANC_I,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,6
+0x66C,SD_RS_DCSD,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,6
+0x66D,SD_RS_VRM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,6
+0x66E,SD_RS_ICS_R,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,6
+0x674,SD_RS_DTV,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x676,SD_RS_DVD,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x677,SD_RS_VES2,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x679,SD_RS_HFM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x67A,SD_RS_SDARV,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x67B,SD_RS_VES3,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x67C,SD_RS_ICS,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x67E,SD_RS_AMP,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,0 1 2 3 4 5 6 7 8
+0x67F,SD_RS_TGW,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,6
+0x9AB,resumeModeTimeout,b,0,0,bits 0-7,d[0] & 0xFF,0 1 5 6 7
+0xAAA,PROXI,b,0,0,bits 0-3,d[0] & 0xF,0 1 2 3 4 5 6 7 8
+0x1000,IstantaneusFuelConsumption1,b,0,0,bits 0-3,d[0] & 0xF,0 1 2 3 4 5 6 7 8
+0x1000,IstantaneusFuelConsumption2,b,0,0,bits 4-7,(d[0] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x1000,IstantaneusFuelConsumption3,b,1,1,bits 0-3,d[1] & 0xF,0 1 2 3 4 5 6 7 8
+0x1000,AutonomyDistanceValidData,b,2,2,bit 7,(d[2] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x1000,IstantFuelConsumptionValidData,b,2,2,bit 3,(d[2] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x1000,AutonomyDistance,y,3,4,16-bit,d[4]<<8 | d[3],0 1 2 3 4 5 6 7 8
+0x1000,TotalOdometer,y,5,9,40-bit,d[9]<<32 | d[8]<<24 | d[7]<<16 | d[6]<<8 | d[5],0 1 2 3 4 5 6 7 8
+0x1001,AverageFuelConsumptionAPlus,y,0,1,16-bit,d[1]<<8 | d[0],0 1 2 3 4 5 6 7 8
+0x1001,AverageFuelConsumptionAPlusValidData,b,1,1,bit 7,(d[1] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x1001,AverageSpeedAPlus,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x1001,AverageSpeedAPlusValidData,b,3,3,bit 7,(d[3] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x1001,TravelingTimeAPlus_Hour,y,4,5,16-bit,d[5]<<8 | d[4],0 1 2 3 4 5 6 7 8
+0x1001,TravellingTimeAPlus_Minute,b,5,5,bits 2-7,(d[5] >> 2) & 0x3F,0 1 2 3 4 5 6 7 8
+0x1001,ResetTripAPlusACK,b,6,6,bits 6-7,(d[6] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x1001,TravelTimeAPlus_SEC,b,6,6,bits 0-5,d[6] & 0x3F,0 1 2 3 4 5 6 7 8
+0x1001,PartialOdometerAPlus,y,7,9,24-bit,d[9]<<16 | d[8]<<8 | d[7],0 1 2 3 4 5 6 7 8
+0x1001,PartialOdometerAPlusValidData,b,9,9,bit 7,(d[9] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x1002,AverageFuelConsumptionBPlus,y,0,1,16-bit,d[1]<<8 | d[0],0 1 2 3 4 5 6 7 8
+0x1002,AverageFuelConsumptionBPlusValidData,b,1,1,bit 7,(d[1] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x1002,AverageSpeedBPlus,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x1002,AverageSpeedBPlusValidData,b,3,3,bit 7,(d[3] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x1002,TravelingTimeBPlus_Hour,y,4,5,16-bit,d[5]<<8 | d[4],0 1 2 3 4 5 6 7 8
+0x1002,TravellingTimeBPlus_Minute,b,5,5,bits 2-7,(d[5] >> 2) & 0x3F,0 1 2 3 4 5 6 7 8
+0x1002,ResetTripBPlusACK,b,6,6,bits 6-7,(d[6] >> 6) & 0x3,0 1 2 3 4 5 6 7 8
+0x1002,TravelTimeBPlus_SEC,b,6,6,bits 0-5,d[6] & 0x3F,0 1 2 3 4 5 6 7 8
+0x1002,PartialOdometerBPlus,y,7,9,24-bit,d[9]<<16 | d[8]<<8 | d[7],0 1 2 3 4 5 6 7 8
+0x1002,PartialOdometerBPlusValidData,b,9,9,bit 7,(d[9] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x1003,LatAcceleration,y,0,1,16-bit,d[1]<<8 | d[0],0 1 2 3 4 5 6 7 8
+0x1003,LongAcceleration,y,2,3,16-bit,d[3]<<8 | d[2],0 1 2 3 4 5 6 7 8
+0x1003,YawRate,y,4,5,16-bit,d[5]<<8 | d[4],0 1 2 3 4 5 6 7 8
+0x1003,AXSStat,b,6,6,bits 0-1,d[6] & 0x3,0 1 2 3 4 5 6 7 8
+0x1003,AYSStat,b,6,6,bits 2-3,(d[6] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x1003,YRSStat,b,6,6,bits 4-5,(d[6] >> 4) & 0x3,0 1 2 3 4 5 6 7 8
+0x1003,GasPedalPosition,b,7,7,bits 0-7,d[7] & 0xFF,0 1 2 3 4 5 6 7 8
+0x1003,BrakePedalSwitchNOSts,b,8,8,bit 1,(d[8] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x1003,FuelLvlLow,b,8,8,bit 6,(d[8] >> 6) & 0x1,5
+0x1003,GasPedalPositionValidData,b,8,8,bit 0,d[8] & 0x1,0 1 2 3 4 5 6 7 8
+0x1003,OperationalModeSts,b,8,8,bits 2-5,(d[8] >> 2) & 0xF,5
+0x1004,DistanceToService,y,0,2,24-bit,d[2]<<16 | d[1]<<8 | d[0],0 1 2 3 4 5 6 7 8
+0x1004,DistanceToServiceValidData,b,2,2,bit 7,(d[2] >> 7) & 0x1,0 1 2 4 6 7 8
+0x1004,DistanceToServiceValidData,b,2,2,bit 1,(d[2] >> 1) & 0x1,3 5
+0x1004,TyrePressureSystemFailSts,b,2,2,bit 2,(d[2] >> 2) & 0x1,3 5
+0x1004,InflationState_LHF_Tyre,b,4,4,bits 0-2,d[4] & 0x7,3 5
+0x1004,InflationState_LHR_Tyre,b,4,4,bits 3-5,(d[4] >> 3) & 0x7,3 5
+0x1004,InflationState_RHF_Tyre,b,5,5,bits 0-2,d[5] & 0x7,3 5
+0x1004,InflationState_RHR_Tyre,b,5,5,bits 3-5,(d[5] >> 3) & 0x7,3 5
+0x1006,BoostPressureIndication,b,0,0,bits 0-7,d[0] & 0xFF,0 1 2 3 4 5 6 7 8
+0x1006,DriveStyleSts,b,1,1,bits 2-6,(d[1] >> 2) & 0x1F,3 5
+0x1006,GearShiftIndiciation,b,1,1,bits 0-1,d[1] & 0x3,0 1 2 3 4 5 6 7 8
+0x1006,ActualGearForDisplay,b,2,2,bits 0-3,d[2] & 0xF,0 1 2 3 4 5 6 7 8
+0x1006,ShiftLeverPosition,b,2,2,bits 4-6,(d[2] >> 4) & 0x7,0 1 2 4 6 7 8
+0x1006,ShiftModeSts,b,2,2,bit 7,(d[2] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x1006,AlternativeFuelFillingTank,b,3,3,mask 0xEF<<0,d[3] & 0xEF,0 1 2 3 4 5 6 7 8
+0x1006,ExternalTemperatureFailSts,b,3,3,bit 7,(d[3] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0x1006,ExternalTemperatureC,y,4,5,16-bit,d[5]<<8 | d[4],0 1 2 3 4 5 6 7 8
+0x1006,ExternalTemperatureF,y,6,7,16-bit,d[7]<<8 | d[6],0 1 2 3 4 5 6 7 8
+0x1007,DPFSts,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x1007,EngineSpeedValidData,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0x1007,EngineSts,b,0,0,bits 5-6,(d[0] >> 5) & 0x3,0 1 2 3 4 5 6 7 8
+0x1007,EngineWaterTempFailSts,b,0,0,bit 1,(d[0] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0x1007,FuelConsumptionValidData,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0x1007,GPLGasolineMode,b,0,0,bit 0,d[0] & 0x1,0 1 2 3 4 5 6 7 8
+0x1007,CompressorSts,b,1,1,bits 0-1,d[1] & 0x3,0 1 2 3 4 5 6 7 8
+0x1007,OilLifeSts,b,1,1,bits 2-3,(d[1] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0x1007,VehicleSpeedVSOSigFailSts,b,1,1,bit 4,(d[1] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0x1007,EngineWaterTemp,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x1007,EngineSpeed,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 4 6 7 8
+0x1007,FuelConsumption,y,4,5,16-bit,d[5]<<8 | d[4],0 1 2 3 4 5 6 7 8
+0x1007,VehicleSpeedVSOSig,y,6,7,16-bit,d[7]<<8 | d[6],0 1 2 3 4 5 6 7 8
+0x100A,ConsumptionUnit,b,0,0,bits 0-2,d[0] & 0x7,1 2 3 4 5 7 8
+0x100A,CorneringEnable,b,0,0,bit 5,(d[0] >> 5) & 0x1,1 2 3 4 5 7 8
+0x100A,DistanceUnit,b,0,0,bit 6,(d[0] >> 6) & 0x1,2 3 4 5 8
+0x100A,ETMSetupAckCntrl,b,0,0,bits 3-4,(d[0] >> 3) & 0x3,1 2 3 4 5 7 8
+0x100A,SpeedLockDoorEnable,b,0,0,bit 7,(d[0] >> 7) & 0x1,1 2 3 4 5 7 8
+0x100A,EPB_MaintenanceMode,b,1,1,bit 5,(d[1] >> 5) & 0x1,1 2 3 4 5 7 8
+0x100A,ExternalLightSensorLevel,b,1,1,bits 3-4,(d[1] >> 3) & 0x3,1 2 3 4 5 7 8
+0x100A,HeadlightsOffDelay,b,1,1,bits 6-7,(d[1] >> 6) & 0x3,1 2 3 4 5 7 8
+0x100A,RainSensorLevel,b,1,1,bits 0-1,d[1] & 0x3,1 2 3 4 5 7 8
+0x100A,TemperatureUnit,b,1,1,bit 2,(d[1] >> 2) & 0x1,1 2 3 4 5 7 8
+0x100A,AFSEnable,b,2,2,bit 0,d[2] & 0x1,1 2 3 4 5 7 8
+0x100A,AutomaticResetTripB,b,2,2,bits 4-5,(d[2] >> 4) & 0x3,1 2 3 4 5 7 8
+0x100A,BSDEnable,b,2,2,bits 6-7,(d[2] >> 6) & 0x3,1 2 3 4 5 7 8
+0x100A,GreetingLightsEnable,b,2,2,bit 1,(d[2] >> 1) & 0x1,1 2 3 4 5 7 8
+0x100A,NavRepetition,b,3,3,bit 0,d[3] & 0x1,1 2 3 4 5 7 8
+0x100A,Pam4Ch,b,3,3,bits 1-2,(d[3] >> 1) & 0x3,1 2 3 4 5 7 8
+0x100A,Pam8ChChimeVolume,b,3,3,bits 3-4,(d[3] >> 3) & 0x3,1 2 3 4 5 7 8
+0x100A,PamAlertMode,b,3,3,bits 5-6,(d[3] >> 5) & 0x3,1 2 3 4 5 7 8
+0x100A,PhoneRepetition,b,3,3,bit 7,(d[3] >> 7) & 0x1,1 2 3 4 5 7 8
+0x100A,AutoParkBrake,b,4,4,bit 5,(d[4] >> 5) & 0x1,1 2 3 4 5 7 8
+0x100A,AutoRelock,b,4,4,bit 6,(d[4] >> 6) & 0x1,1 2 3 4 5 7 8
+0x100A,AutoUnlockDoorExit,b,4,4,bit 7,(d[4] >> 7) & 0x1,1 2 3 4 5 7 8
+0x100A,RemoteDoorUnlock,b,4,4,bit 4,(d[4] >> 4) & 0x1,1 2 3 4 5 7 8
+0x100A,Sdw,b,4,4,bits 0-1,d[4] & 0x3,1 2 3 4 5 7 8
+0x100A,SdwChimeVolume,b,4,4,bits 2-3,(d[4] >> 2) & 0x3,1 2 3 4 5 7 8
+0x100A,FlashLightWLock,b,5,5,bit 0,d[5] & 0x1,1 2 3 4 5 7 8
+0x100A,LDW_Intensity,b,5,5,bits 1-2,(d[5] >> 1) & 0x3,1 2 3 4 5 7 8
+0x100A,LDW_Sensibility,b,5,5,bits 3-4,(d[5] >> 3) & 0x3,1 2 3 4 5 7 8
+0x100A,Trip_B_Enable,b,5,5,bit 7,(d[5] >> 7) & 0x1,1 2 3 4 5 7 8
+0x100A,TyrePressureUnit,b,5,5,bits 5-6,(d[5] >> 5) & 0x3,1 2 3 4 5 7 8
+0x100A,AutoHighBeamEnable,b,6,6,bit 0,d[6] & 0x1,3 5
+0x100A,EPB_Maintenance_Fdbk,b,6,6,bits 1-5,(d[6] >> 1) & 0x1F,3 5
+0x100A,FSFCWPlusActivationMode,b,6,6,bits 6-7,(d[6] >> 6) & 0x3,3 5
+0x100A,FSFCWPlusSetting,b,7,7,bits 0-2,d[7] & 0x7,3 5
+0x100A,RKEMemoryLinkEnable,b,7,7,bit 7,(d[7] >> 7) & 0x1,5
+0x100A,RemStNrmlStEnbl,b,7,7,bits 5-6,(d[7] >> 5) & 0x3,5
+0x100A,Units,b,7,7,bits 3-4,(d[7] >> 3) & 0x3,3 5
+0x100B,Day1,b,0,0,bits 0-3,d[0] & 0xF,0 1 2 3 4 5 6 7 8
+0x100B,Day2,b,0,0,bits 4-7,(d[0] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x100B,Hour1,b,1,1,bits 0-3,d[1] & 0xF,0 1 2 3 4 5 6 7 8
+0x100B,Hour2,b,1,1,bits 4-7,(d[1] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x100B,Minute1,b,2,2,bits 0-3,d[2] & 0xF,0 1 2 3 4 5 6 7 8
+0x100B,Minute2,b,2,2,bits 4-7,(d[2] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x100B,Month1,b,3,3,bits 0-3,d[3] & 0xF,0 1 2 3 4 5 6 7 8
+0x100B,Month2,b,3,3,bits 4-7,(d[3] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x100B,Year1,b,4,4,bits 0-3,d[4] & 0xF,0 1 2 3 4 5 6 7 8
+0x100B,Year2,b,4,4,bits 4-7,(d[4] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x100B,Year3,b,5,5,bits 0-3,d[5] & 0xF,0 1 2 3 4 5 6 7 8
+0x100B,Year4,b,5,5,bits 4-7,(d[5] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0x100B,HourMode,b,6,6,bit 0,d[6] & 0x1,0 1 2 3 4 5 6 7 8
+0x12A0,ETC_IND_LMP,b,0,0,bits 2-3,(d[0] >> 2) & 0x3,0 6
+0x12A0,MIL_OnRq,b,0,0,bit 0,d[0] & 0x1,0 6
+0x12A0,MZR_MODE_ACT,b,0,0,bits 4-5,(d[0] >> 4) & 0x3,0
+0x12A0,MZR_MODE_ACT,b,0,0,bit 4,(d[0] >> 4) & 0x1,6
+0x12A0,ChkFuelCap,b,1,1,bit 7,(d[1] >> 7) & 0x1,0 6
+0x12A0,EngOilIndLmp_On_Rq,b,1,1,bit 2,(d[1] >> 2) & 0x1,0 6
+0x12A0,OIL_TEMP_CHM_RQ,b,1,1,bits 5-6,(d[1] >> 5) & 0x3,0 6
+0x12A0,OIL_TEMP_IND_RQ,b,1,1,bits 3-4,(d[1] >> 3) & 0x3,0 6
+0x12A0,OIL_PRESS,b,2,2,bits 0-7,d[2] & 0xFF,0 6
+0x12A0,EngRun_Stat,b,3,3,bits 0-2,d[3] & 0x7,6
+0x12E0,ESP_Off_IndLmp_On_Rq,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7
+0x12E0,ABS_IndLmp_On_Rq,b,1,1,bits 2-3,(d[1] >> 2) & 0x3,0 1 2 3 4 6 7
+0x12E0,BrkIndLmp_On_Rq_ESC,b,1,1,bits 4-5,(d[1] >> 4) & 0x3,0 1 2 3 4 6 7
+0x12E0,ESC_CtrlLmp_Info,b,1,1,bits 0-1,d[1] & 0x3,0 1 2 3 4 6 7
+0x12E0,SelSpdLmp,b,1,1,bits 6-7,(d[1] >> 6) & 0x3,6
+0x1305,TPM_IndLmpOnRq,b,0,0,bits 0-1,d[0] & 0x3,6 7
+0x1305,Tire_FL,b,1,1,bits 0-1,d[1] & 0x3,6 7
+0x1305,Tire_FR,b,1,1,bits 2-3,(d[1] >> 2) & 0x3,6 7
+0x1305,Tire_RL,b,1,1,bits 6-7,(d[1] >> 6) & 0x3,6 7
+0x1305,Tire_RR,b,1,1,bits 4-5,(d[1] >> 4) & 0x3,6 7
+0x1305,TirePrssFL,b,3,3,bits 0-7,d[3] & 0xFF,6 7
+0x1305,TirePrssFR,b,4,4,bits 0-7,d[4] & 0xFF,6 7
+0x1305,TirePrssRL,b,5,5,bits 0-7,d[5] & 0xFF,6 7
+0x1305,TirePrssRR,b,6,6,bits 0-7,d[6] & 0xFF,6 7
+0x13CF,SRT_60mphTmB,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x13CF,SRT_eighthTmB,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x13CF,SRT_quarterTmB,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x13CF,SRT_EthSpdB_M,b,4,4,bits 0-7,d[4] & 0xFF,0 1 2 3 4 5 6 7 8
+0x13CF,SRT_QrtSpdB_M,b,5,5,bits 0-7,d[5] & 0xFF,0 1 2 3 4 5 6 7 8
+0x13CF,SRT_BrkSpdB_M,b,6,6,bits 0-7,d[6] & 0xFF,0 1 2 3 4 5 6 7 8
+0x13CF,SRT_BrkDistB_M,b,7,7,bits 0-7,d[7] & 0xFF,0 1 2 3 4 5 6 7 8
+0x20DE,EPS_Warn_Disp_Rq,b,4,4,bit 7,(d[4] >> 7) & 0x1,5
+0x20FB,EngTrq_Rq_ESC,y,0,0,8-bit,d[0],5
+0x20FC,CHRG_FAIL,b,2,2,bit 1,(d[2] >> 1) & 0x1,5
+0x21F5,ACCFaulted,b,6,6,bit 2,(d[6] >> 2) & 0x1,0 6
+0x21F5,ACConlyNA_DASMSts,b,6,6,bit 0,d[6] & 0x1,0 6
+0x21F8,CCMFailSts,b,0,0,bit 1,(d[0] >> 1) & 0x1,5
+0x2214,IBS_V_BATT,y,0,1,16-bit,d[1]<<8 | d[0],0 6
+0x2214,IBS_T_BATT,b,4,4,bits 0-7,d[4] & 0xFF,0 6
+0x2248,IBS_SOC,b,2,2,bits 0-7,d[2] & 0xFF,0 1 6 7
+0x2248,IBS_SOC_Accuracy,b,7,7,bits 0-1,d[7] & 0x3,0 1 6 7
+0x2256,SRS_LMP_STAT,b,0,0,bits 4-5,(d[0] >> 4) & 0x3,5
+0x2257,SRS_IndLmp_Rq,b,0,0,bits 6-7,(d[0] >> 6) & 0x3,5
+0x2257,DRV_SEATBELT,b,2,2,bits 5-6,(d[2] >> 5) & 0x3,5
+0x2257,PSG_SEATBELT,b,3,3,bits 5-7,(d[3] >> 5) & 0x7,5
+0x228F,EstTimeofChrg_Lv2,y,0,1,16-bit,d[1]<<8 | d[0],6
+0x228F,ChargingLevel,b,1,1,bits 4-7,(d[1] >> 4) & 0xF,6
+0x228F,ChrgSysFault,b,1,1,bit 3,(d[1] >> 3) & 0x1,6
+0x228F,EstTimeofChrg_Lv1,y,2,3,16-bit,d[3]<<8 | d[2],6
+0x228F,PrplsnSysAtv,b,3,3,bit 7,(d[3] >> 7) & 0x1,6
+0x228F,ChargingSysSts,b,5,5,bits 5-7,(d[5] >> 5) & 0x7,6
+0x228F,CabinPreCondReqStat,b,6,6,bits 4-7,(d[6] >> 4) & 0xF,6
+0x22BD,HEV_LMP_RQ,b,0,0,bits 0-1,d[0] & 0x3,6
+0x22BD,HEV_EVT_MD,b,2,2,bit 3,(d[2] >> 3) & 0x1,6
+0x22BD,Est_Range,b,5,5,bits 0-7,d[5] & 0xFF,6
+0x22EF,Gr,b,0,0,bits 4-7,(d[0] >> 4) & 0xF,5
+0x22EF,EngineOilTemp,b,1,1,bits 0-2,d[1] & 0x7,5
+0x22EF,OIL_TEMP_IND_RQ,b,1,1,bits 0-2,d[1] & 0x7,5
+0x230E,Gas_Range,y,0,1,16-bit,d[1]<<8 | d[0],6
+0x230E,Total_Range,y,2,3,16-bit,d[3]<<8 | d[2],6
+0x233A,PTS_FT_SRV,b,0,0,bit 0,d[0] & 0x1,6
+0x233A,PTS_RR_SRV,b,0,0,bit 1,(d[0] >> 1) & 0x1,6
+0x2340,Est_Range_Disp,b,4,4,bits 0-7,d[4] & 0xFF,6
+0x236A,ADS_SrvSys,b,1,1,bit 2,(d[1] >> 2) & 0x1,6
+0x236E,BatPwrUsageDisp,b,1,1,bits 0-7,d[1] & 0xFF,6
+0x236E,HVACPwrUsageDisp,b,3,3,bits 0-6,d[3] & 0x7F,6
+0x236E,HVBatSOC_HC,b,4,4,bits 0-7,d[4] & 0xFF,6
+0x236E,BatPwrUsageDisp_V,b,5,5,bit 4,(d[5] >> 4) & 0x1,6
+0x236E,EngPwrUsageDisp_V,b,5,5,bit 5,(d[5] >> 5) & 0x1,6
+0x236E,HVACPwrUsageDisp_V,b,5,5,bit 6,(d[5] >> 6) & 0x1,6
+0x236E,HVBatSOCV_HCP,b,5,5,bit 7,(d[5] >> 7) & 0x1,6
+0x236E,EngPwrUsageDisp,y,6,7,16-bit,d[7]<<8 | d[6],6
+0x23AA,A_MPG,y,0,1,16-bit,d[1]<<8 | d[0],6
+0x23AA,A_EV_Miles,y,2,4,24-bit,d[4]<<16 | d[3]<<8 | d[2],6
+0x23AA,A_EV_Kilometers,y,6,8,24-bit,d[8]<<16 | d[7]<<8 | d[6],6
+0x23AB,A_KMpL,y,0,1,16-bit,d[1]<<8 | d[0],6
+0x23AB,A_Hybrid_Miles,y,2,4,24-bit,d[4]<<16 | d[3]<<8 | d[2],6
+0x23AB,A_Hybrid_Kilometers,y,6,8,24-bit,d[8]<<16 | d[7]<<8 | d[6],6
+0x23AC,A_Total_Dist_Miles,y,2,4,24-bit,d[4]<<16 | d[3]<<8 | d[2],6
+0x23AC,A_Total_Dist_Kilometers,y,6,8,24-bit,d[8]<<16 | d[7]<<8 | d[6],6
+0x23AD,B_MPG,y,0,1,16-bit,d[1]<<8 | d[0],6
+0x23AD,B_EV_Miles,y,2,4,24-bit,d[4]<<16 | d[3]<<8 | d[2],6
+0x23AD,B_EV_Kilometers,y,6,8,24-bit,d[8]<<16 | d[7]<<8 | d[6],6
+0x23AE,B_KMpL,y,0,1,16-bit,d[1]<<8 | d[0],6
+0x23AE,B_Hybrid_Miles,y,2,4,24-bit,d[4]<<16 | d[3]<<8 | d[2],6
+0x23AE,B_Hybrid_Kilometers,y,6,8,24-bit,d[8]<<16 | d[7]<<8 | d[6],6
+0x23AF,B_Total_Dist_Miles,y,2,4,24-bit,d[4]<<16 | d[3]<<8 | d[2],6
+0x23AF,B_Total_Dist_Kilometers,y,6,8,24-bit,d[8]<<16 | d[7]<<8 | d[6],6
+0x23BE,Electric_Dist_Miles,y,0,1,16-bit,d[1]<<8 | d[0],6
+0x23BE,Hybrid_Dist_Miles,y,2,3,16-bit,d[3]<<8 | d[2],6
+0x23BE,MPG_combined,y,4,5,16-bit,d[5]<<8 | d[4],6
+0x23BF,Electric_Dist_Kilometers,y,0,1,16-bit,d[1]<<8 | d[0],6
+0x23BF,Hybrid_Dist_Kilometers,y,2,3,16-bit,d[3]<<8 | d[2],6
+0x23BF,KMpL_combined,y,4,5,16-bit,d[5]<<8 | d[4],6
+0x23CF,SRT_60mphTmL,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x23CF,SRT_eighthTmL,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x23CF,SRT_quarterTmL,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x23CF,SRT_EthSpdL_M,b,4,4,bits 0-7,d[4] & 0xFF,0 1 2 3 4 5 6 7 8
+0x23CF,SRT_QrtSpdL_M,b,5,5,bits 0-7,d[5] & 0xFF,0 1 2 3 4 5 6 7 8
+0x23CF,SRT_BrkSpdL_M,b,6,6,bits 0-7,d[6] & 0xFF,0 1 2 3 4 5 6 7 8
+0x23CF,SRT_BrkDistL_M,b,7,7,bits 0-7,d[7] & 0xFF,0 1 2 3 4 5 6 7 8
+0x23DE,TravelDistance,b,0,0,bits 0-7,d[0] & 0xFF,3 5
+0x23E6,ShiftLeverPosition,b,0,0,bits 0-3,d[0] & 0xF,5
+0x23E6,EngineSpeed,y,1,2,16-bit,d[2]<<8 | d[1],3 5
+0x23E6,ShiftLeverPosition,y,1,0,0-bit,,3
+0x23E6,EngineSpeedFailSts,b,2,2,bit 6,(d[2] >> 6) & 0x1,3 5
+0x241E,IBS_V_BATT,y,0,1,16-bit,d[1]<<8 | d[0],5
+0x241E,IBS_T_BATT,b,3,3,bits 0-7,d[3] & 0xFF,5
+0x2420,IBS_SOC,b,0,0,bits 0-7,d[0] & 0xFF,5
+0x246A,PTCFailSts,b,0,0,bit 1,(d[0] >> 1) & 0x1,5
+0x24AC,TirePressFL,b,0,0,bits 2-7,(d[0] >> 2) & 0x3F,5
+0x24AC,TirePressRL,b,1,1,bits 2-7,(d[1] >> 2) & 0x3F,5
+0x24AC,TirePressFR,b,2,2,bits 2-7,(d[2] >> 2) & 0x3F,5
+0x24AC,TirePressRR,b,3,3,bits 2-7,(d[3] >> 2) & 0x3F,5
+0x24AC,TPM_IndLmp_On_Rq,b,5,5,bit 1,(d[5] >> 1) & 0x1,5
+0x24AF,ABS_IndLmp_On_Rq,b,0,0,bit 7,(d[0] >> 7) & 0x1,5
+0x24AF,ESC_CtrlLmp_Info,b,0,0,bit 2,(d[0] >> 2) & 0x1,5
+0x24AF,BrkIndLmp_On_Rq_ESC,b,1,1,bit 0,d[1] & 0x1,5
+0x2545,ChkFuelLevelSts,b,0,0,bits 0-2,d[0] & 0x7,5
+0x25A8,MIL_OnRq_TCM,b,1,1,bit 4,(d[1] >> 4) & 0x1,5
+0x25A8,TxTemp_Excess,b,2,2,bit 4,(d[2] >> 4) & 0x1,5
+0x25A8,TransmissionWarnings,b,3,3,bits 0-5,d[3] & 0x3F,5
+0x25AE,ETC_IND_LMP,b,2,2,bits 2-3,(d[2] >> 2) & 0x3,5
+0x25AE,EngOilIndLmp_On_Rq,b,3,3,bit 6,(d[3] >> 6) & 0x1,5
+0x25AE,ChkFuelCap,b,4,4,bit 0,d[4] & 0x1,5
+0x25AE,EngineWaterTempWarningLightSts,b,4,4,bit 5,(d[4] >> 5) & 0x1,5
+0x25AE,FuelWaterPresentFailSts,b,4,4,bit 2,(d[4] >> 2) & 0x1,5
+0x25AE,MIL_OnRq,b,4,4,bits 3-4,(d[4] >> 3) & 0x3,5
+0x25AE,WtrFuelIndLmp_On_Rq,b,4,4,bit 1,(d[4] >> 1) & 0x1,5
+0x25E0,EPBSts,b,0,0,bits 3-6,(d[0] >> 3) & 0xF,5
+0x263A,SD_RS_HCP,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,6
+0x263B,SD_RS_EBCM,j,0,0,? (raw shift=8 mask=0xFF),type j: raw byte 0,6
+0x275C,IgnitionOnCounter,y,0,1,16-bit,d[1]<<8 | d[0],5
+0x33CF,SRT_60mphTm_C,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x33CF,SRT_eighthTm_C,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x33CF,SRT_quarterTm_C,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x33CF,SRT_EthSpdC_US,b,4,4,bits 0-7,d[4] & 0xFF,0 1 2 3 4 5 6 7 8
+0x33CF,SRT_QrtSpdC_US,b,5,5,bits 0-7,d[5] & 0xFF,0 1 2 3 4 5 6 7 8
+0x33CF,SRT_BrkSpdC_US,b,6,6,bits 0-7,d[6] & 0xFF,0 1 2 3 4 5 6 7 8
+0x33CF,SRT_BrkDistC_US,b,7,7,bits 0-7,d[7] & 0xFF,0 1 2 3 4 5 6 7 8
+0x43CF,SRT_60mphTm_B,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x43CF,SRT_eighthTm_B,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x43CF,SRT_quarterTm_B,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x43CF,SRT_EthSpdB_US,b,4,4,bits 0-7,d[4] & 0xFF,0 1 2 3 4 5 6 7 8
+0x43CF,SRT_QrtSpdB_US,b,5,5,bits 0-7,d[5] & 0xFF,0 1 2 3 4 5 6 7 8
+0x43CF,SRT_BrkSpdB_US,b,6,6,bits 0-7,d[6] & 0xFF,0 1 2 3 4 5 6 7 8
+0x43CF,SRT_BrkDistB_US,b,7,7,bits 0-7,d[7] & 0xFF,0 1 2 3 4 5 6 7 8
+0x53CF,SRT_60mphTm_L,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x53CF,SRT_eighthTm_L,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x53CF,SRT_quarterTm_L,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 3 4 5 6 7 8
+0x53CF,SRT_EthSpdL_US,b,4,4,bits 0-7,d[4] & 0xFF,0 1 2 3 4 5 6 7 8
+0x53CF,SRT_QrtSpdL_US,b,5,5,bits 0-7,d[5] & 0xFF,0 1 2 3 4 5 6 7 8
+0x53CF,SRT_BrkSpdL_US,b,6,6,bits 0-7,d[6] & 0xFF,0 1 2 3 4 5 6 7 8
+0x53CF,SRT_BrkDistL_US,b,7,7,bits 0-7,d[7] & 0xFF,0 1 2 3 4 5 6 7 8
+0x63CF,SRT_0C0mphTmC,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x63CF,SRT_BrkTmC,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x63CF,SRT_ReactTmC,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 4 6 7 8
+0x63CF,SRT_60ftTmC,y,4,5,16-bit,d[5]<<8 | d[4],0 6
+0x73CF,SRT_0C0mphTmB,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x73CF,SRT_BrkTmB,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x73CF,SRT_ReactTmB,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 4 6 7 8
+0x73CF,SRT_60ftTmB,y,4,5,16-bit,d[5]<<8 | d[4],0 6
+0x83CF,SRT_0C0mphTmL,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x83CF,SRT_BrkTmL,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x83CF,SRT_ReactTmL,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 4 6 7 8
+0x83CF,SRT_60ftTmL,y,4,5,16-bit,d[5]<<8 | d[4],0 6
+0x93CF,SRT_0C0mphTm_C,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0x93CF,SRT_BrkTm_C,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0x93CF,SRT_ReactTm_C,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 4 6 7 8
+0x93CF,SRT_60ftTm_C,y,4,5,16-bit,d[5]<<8 | d[4],0 6
+0xA3CF,SRT_0C0mphTm_B,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0xA3CF,SRT_BrkTm_B,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0xA3CF,SRT_ReactTm_B,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 4 6 7 8
+0xA3CF,SRT_60ftTm_B,y,4,5,16-bit,d[5]<<8 | d[4],0 6
+0xB3CF,SRT_0C0mphTm_L,b,1,1,bits 0-7,d[1] & 0xFF,0 1 2 3 4 5 6 7 8
+0xB3CF,SRT_BrkTm_L,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0xB3CF,SRT_ReactTm_L,b,3,3,bits 0-7,d[3] & 0xFF,0 1 2 4 6 7 8
+0xB3CF,SRT_60ftTm_L,y,4,5,16-bit,d[5]<<8 | d[4],0 6
+0xC0C0,Audio_System_Type,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0xC0C0,CorneringPresent,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C0,GPS_Presence,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C0,Sdars_Presence,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C0,VC_TwilightSnsrPrsnt,b,0,0,bit 3,(d[0] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C0,AFSMenu,b,1,1,bit 0,d[1] & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C0,AutoCloseMenu,b,1,1,bit 2,(d[1] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C0,BrowsingEnable,b,1,1,bit 5,(d[1] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C0,DeadReckoningEnable,b,1,1,bit 6,(d[1] >> 6) & 0x1,1 2 3 4 5 6 7 8
+0xC0C0,ExternalTempSensor,b,1,1,bit 3,(d[1] >> 3) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C0,InternalLighting,b,1,1,bit 4,(d[1] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C0,NumberOfMics,b,1,1,bit 7,(d[1] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C0,OdoUnitsChange,b,1,1,bit 1,(d[1] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C0,AdditionalLanguages,b,2,2,bits 0-7,d[2] & 0xFF,0 1 2 3 4 5 6 7 8
+0xC0C0,Turbo_Param_Max,b,3,3,bits 0-4,d[3] & 0x1F,0 1 2 3 4 5 6 7 8
+0xC0C0,Turbo_Param_Typ,b,3,3,bits 5-7,(d[3] >> 5) & 0x7,0 1 2 3 4 5 6 7 8
+0xC0C0,GearShiftIndicator,b,4,4,bit 0,d[4] & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C0,GreetingLightsMenu,b,4,4,bit 4,(d[4] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C0,Microphone_Type,b,4,4,bits 2-3,(d[4] >> 2) & 0x3,0 1 2 3 4 5 6 7 8
+0xC0C0,StartAndStop,b,4,4,bit 1,(d[4] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C0,can_node_SDU,b,4,4,bit 5,(d[4] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C0,AcousticConfig,b,5,5,bits 0-7,d[5] & 0xFF,0 1 2 3 4 5 6 7 8
+0xC0C0,ExternalPortType,b,6,6,bits 0-2,d[6] & 0x7,0 1 2 3 4 5 6 7 8
+0xC0C0,MicTuningParam,b,6,6,bits 3-7,(d[6] >> 3) & 0x1F,0 1 2 3 4 5 6 7 8
+0xC0C0,Brand_Configuration_2,b,7,7,bits 4-7,(d[7] >> 4) & 0xF,0 1 2 3 4 5 6 7 8
+0xC0C0,EngineTypeVariant,b,7,7,bits 0-3,d[7] & 0xF,0 1 2 3 4 5 6 7 8
+0xC0C0,AdditionalLanguagesDisplay,b,8,8,bits 0-1,d[8] & 0x3,0 1 2 3 4 5 6 7 8
+0xC0C1,AutoParkBrakeMenu,b,0,0,bit 4,(d[0] >> 4) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C1,CellPresence,b,0,0,bit 3,(d[0] >> 3) & 0x1,1 2 3 4 5 6 7 8
+0xC0C1,NavRepetitionMenu,b,0,0,bit 5,(d[0] >> 5) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C1,PamConfiguration,b,0,0,bits 0-1,d[0] & 0x3,0 1 2 3 4 5 6 7 8
+0xC0C1,PhoneRepetitionMenu,b,0,0,bit 7,(d[0] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C1,RelockStrategy,b,0,0,bit 6,(d[0] >> 6) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C1,VoiceRecActivation,b,0,0,bit 2,(d[0] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C1,ClusterDispType,b,1,1,bits 5-7,(d[1] >> 5) & 0x7,1 2 3 4 5 6 7 8
+0xC0C1,GearBoxTypeVariant,b,1,1,bits 0-4,d[1] & 0x1F,0 1 2 3 4 5 6 7 8
+0xC0C1,AudioRepetitionMenu,b,2,2,bit 1,(d[2] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C1,FuelType520,b,2,2,bits 5-7,(d[2] >> 5) & 0x7,0 1 2 3 4 5 6 7 8
+0xC0C1,GearBoxType,b,2,2,bits 2-4,(d[2] >> 2) & 0x7,0 1 2 3 4 5 6 7 8
+0xC0C1,SideDistWarn,b,2,2,bit 0,d[2] & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C1,AudioCarLayOut,b,3,3,bits 0-3,d[3] & 0xF,0 1 2 3 4 5 6 7 8
+0xC0C1,AudioRepetition,b,3,3,bit 7,(d[3] >> 7) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C1,DriveTypeVariant,b,3,3,bits 4-6,(d[3] >> 4) & 0x7,0 1 2 3 4 5 6 7 8
+0xC0C1,RRMVPxSWCType,b,4,4,bits 0-2,d[4] & 0x7,1 2 3 4 5 6 7 8
+0xC0C1,AudioSystemType,b,5,5,bits 3-5,(d[5] >> 3) & 0x7,0 1 2 3 4 5 6 7 8
+0xC0C1,NavRepetition,b,5,5,bit 0,d[5] & 0x1,3 5
+0xC0C1,NavRepetitionCfg,b,5,5,bit 0,d[5] & 0x1,0 1 2 4 6 7 8
+0xC0C1,PhoneRepetitionCfg,b,5,5,bit 1,(d[5] >> 1) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C1,RemoteDoorUnlockMenu,b,5,5,bit 2,(d[5] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C1,AutoResetTripB,b,6,6,bit 2,(d[6] >> 2) & 0x1,0 1 2 3 4 5 6 7 8
+0xC0C1,SwitchOffTime,b,6,6,bits 0-1,d[6] & 0x3,0 1 2 3 4 5 6 7 8
+0xC0C1,AudioBrand,b,7,7,bits 0-7,d[7] & 0xFF,0 1 2 3 4 5 6 7 8
+0xC0C1,Ambient_Dimmer_Switch,b,8,8,bit 0,d[8] & 0x1,3 5
+0xC0C1,Ambient_Lighting_Function,b,8,8,bit 1,(d[8] >> 1) & 0x1,3 5
+0xC0C2,ClusterDispType,b,0,0,bits 4-6,(d[0] >> 4) & 0x7,0
+0xC0C2,DAB_Disable,b,0,0,bit 3,(d[0] >> 3) & 0x1,0
+0xC0C2,Logistic_Mode,b,0,0,bit 7,(d[0] >> 7) & 0x1,0
+0xC0C2,Main_Ant_Supply_Cfg,b,0,0,bits 1-2,(d[0] >> 1) & 0x3,0
+0xC0C2,Phase_Diversity,b,0,0,bit 0,d[0] & 0x1,0
+0xC0C2,CellPresence,b,1,1,bit 2,(d[1] >> 2) & 0x1,0
+0xC0C2,DeadReckoningEnable,b,1,1,bit 0,d[1] & 0x1,0
+0xC0C2,EC_MIRROR_HK_PRSNT,b,1,1,bit 7,(d[1] >> 7) & 0x1,0 1
+0xC0C2,RRMVPxSWCType,b,1,1,bits 3-5,(d[1] >> 3) & 0x7,0
+0xC0C2,Sky_Slider,b,1,1,bit 6,(d[1] >> 6) & 0x1,0
+0xC0C2,Tip_Start,b,1,1,bit 1,(d[1] >> 1) & 0x1,0
+0xFFFE,DTV_Diag_Cfg,b,0,0,bit 0,d[0] & 0x1,0 1 6 7

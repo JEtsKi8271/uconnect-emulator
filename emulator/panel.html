@@ -17,6 +17,9 @@
   button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   select { background: var(--btn); color: var(--fg); border: 0; border-radius: 6px; padding: 10px; font: inherit; min-width: 0; max-width: 100%; }
   label { display: flex; flex-direction: column; gap: 4px; color: var(--dim); font-size: 12px; }
+  label.check { flex-direction: row; align-items: center; gap: 6px; color: var(--fg); font-size: 14px; }
+  input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--accent); }
+  input:not([type]) { background: var(--btn); color: var(--fg); border: 0; border-radius: 6px; padding: 10px; font: inherit; }
   .hint { color: var(--dim); font-size: 12px; margin: 8px 0 0; }
   textarea { width: 100%; box-sizing: border-box; height: 70px; background: #000; color: var(--fg); border: 1px solid #333; border-radius: 6px; font: 12px ui-monospace, monospace; }
   #status { color: var(--dim); font-size: 12px; min-height: 1em; }
@@ -72,6 +75,57 @@
 </section>
 
 <section>
+  <h2>Vehicle</h2>
+  <div class="row">
+    <label>Car <select id="vModel"></select></label>
+    <label>Transmission <select id="vTrans"><option>Automatic</option><option>Manual</option></select></label>
+  </div>
+  <div class="row" style="margin-top:6px">
+    <label class="check"><input type="checkbox" id="vPerf"> Performance Pages</label>
+    <label class="check"><input type="checkbox" id="vDrive"> SRT Drive Modes</label>
+  </div>
+  <div class="row" style="margin-top:6px">
+    <button id="applyVehicle">Apply vehicle (restarts head unit)</button>
+  </div>
+  <p class="hint">Sets the car's configuration the head unit reads at start-up: brand, Performance Pages pictures and gauges,
+    Hellcat red/black key and supercharger pages, launch dial, and the theme and boot splash for that car. A manual gearbox adds the shift light.</p>
+</section>
+
+<section>
+  <h2>Performance driving (Apps &rsaquo; Performance Pages)</h2>
+  <div class="row">
+    <button data-a="perf" data-v="launch">Launch (full throttle)</button>
+    <button data-a="perf" data-v="cruise">Cruise</button>
+    <button data-a="perf" data-v="brake">Brake hard</button>
+    <button data-a="perf" data-v="idle">Coast / idle</button>
+  </div>
+  <div class="row" style="margin-top:6px">
+    <button data-a="perf" data-v="left">Steer left</button>
+    <button data-a="perf" data-v="straight">Straight</button>
+    <button data-a="perf" data-v="right">Steer right</button>
+    <button data-a="perf" data-v="reset">Reset timers &amp; peaks</button>
+  </div>
+</section>
+
+<section>
+  <h2>SRT Drive Modes</h2>
+  <div class="row">
+    <button data-a="drivemode" data-v="srt" title="Opens Drive Modes; double-press selects Custom">SRT button</button>
+    <button data-a="drivemode" data-v="redkey">Red key</button>
+    <button data-a="drivemode" data-v="blackkey">Black key</button>
+    <button data-a="drivemode" data-v="reset">Factory reset modes</button>
+  </div>
+  <div class="row" style="margin-top:6px" aria-label="Selec-Track dial (Jeep Grand Cherokee SRT)">
+    <button data-a="drivemode" data-v="selec:auto">Selec-Track: Auto</button>
+    <button data-a="drivemode" data-v="selec:sport">Sport</button>
+    <button data-a="drivemode" data-v="selec:track">Track</button>
+    <button data-a="drivemode" data-v="selec:snow">Snow</button>
+    <button data-a="drivemode" data-v="selec:tow">Tow</button>
+  </div>
+  <p class="hint">Selec-Track is the Jeep's console dial; the Challenger/Charger/300 pick modes on the screen.</p>
+</section>
+
+<section>
   <h2>Theme &amp; splash</h2>
   <div class="row">
     <label>Theme <select id="theme"></select></label>
@@ -81,7 +135,30 @@
     <button id="applyTheme">Apply theme (restarts head unit)</button>
     <button data-a="restart" data-v="">Restart head unit</button>
   </div>
-  <p class="hint">The splash shows on the next boot. Themes of the current brand also switch live from the head unit's own Settings theme screen.</p>
+  <p class="hint">The list shows the themes the head unit itself offers for this car (an SRT car gets the SRT themes,
+    the Viper its own, other cars their brand's). Pick another car above for other themes. The splash shows on the next boot.</p>
+</section>
+
+<section>
+  <h2>Language</h2>
+  <div class="row">
+    <label>Market <select id="market"></select></label>
+    <label>Language <select id="language"></select></label>
+  </div>
+  <p class="hint">The market decides which languages Settings &rsaquo; Display &rsaquo; Language offers (changing it restarts the head unit).
+    Picking a language switches it right away.</p>
+</section>
+
+<section>
+  <h2>Phone</h2>
+  <div class="row">
+    <label>Phone name <input id="phoneName" maxlength="40" autocomplete="off"></label>
+    <label>Head unit Bluetooth name <input id="btName" maxlength="40" autocomplete="off"></label>
+  </div>
+  <div class="row" style="margin-top:6px">
+    <button id="applyPhone">Save names</button>
+  </div>
+  <p class="hint">The phone name shows on the Phone screen, the Bluetooth device list and Media &rsaquo; Bluetooth.</p>
 </section>
 
 <section>
@@ -112,24 +189,49 @@
     return o;
   }
   async function loadStatus() {
-    let s;
-    try { s = await (await fetch('/status')).json(); } catch (e) { return; }
-    themeSel.replaceChildren();
-    const groups = {};
-    for (const t of s.themes) {
-      groups[t.brand] ??= themeSel.appendChild(Object.assign(document.createElement('optgroup'), { label: t.brand }));
-      groups[t.brand].appendChild(opt(t.path, t.label, t.path === s.theme));
-    }
+    let s, v;
+    try { [s, v] = await Promise.all([fetch('/status'), fetch('/api/vehicle')].map(p => p.then(r => r.json()))); }
+    catch (e) { return; }
+    // only the themes this car's head unit lists (SettingsThemeScreen), like Settings > Display > Set Theme
+    themeSel.replaceChildren(...s.themes.filter(t => t.brand === v.themeBrand).map(t => opt(t.path, t.label, t.path === s.theme)));
     splashSel.replaceChildren(opt('auto', 'Auto (brand, like the car)', s.splash === 'auto'),
       ...s.splashes.map(f => opt(f, f.replace(/\.png$/, ''), f === s.splash)));
   }
   document.getElementById('applyTheme').addEventListener('click', () => act('theme', themeSel.value));
+  const vModel = document.getElementById('vModel'), vTrans = document.getElementById('vTrans');
+  const vPerf = document.getElementById('vPerf'), vDrive = document.getElementById('vDrive');
+  async function loadVehicle() {
+    let v;
+    try { v = await (await fetch('/api/vehicle')).json(); } catch (e) { return; }
+    vModel.replaceChildren(...Object.entries(v.models).map(([k, name]) => opt(k, name, k === v.settings.model)));
+    vTrans.value = v.settings.trans;
+    vPerf.checked = v.settings.perfPages;
+    vDrive.checked = v.settings.driveModes;
+  }
+  document.getElementById('applyVehicle').addEventListener('click', () => act('vehicle', JSON.stringify(
+    { model: vModel.value, trans: vTrans.value, perfPages: vPerf.checked, driveModes: vDrive.checked }))
+    .then(() => { loadStatus(); loadVehicle(); }));
+  const marketSel = document.getElementById('market'), langSel = document.getElementById('language');
+  async function loadLocale() {
+    let l;
+    try { l = await (await fetch('/api/locale')).json(); } catch (e) { return; }
+    marketSel.replaceChildren(...Object.entries(l.markets).map(([k, name]) => opt(k, name, k === l.market)));
+    langSel.replaceChildren(...Object.entries(l.languages).map(([k, name]) => opt(k, name, k === l.language)));
+  }
+  marketSel.addEventListener('change', () => act('locale', JSON.stringify({ market: marketSel.value })).then(loadLocale));
+  langSel.addEventListener('change', () => act('locale', JSON.stringify({ language: langSel.value })).then(loadLocale));
+  loadLocale();
+  const phoneName = document.getElementById('phoneName'), btName = document.getElementById('btName');
+  fetch('/api/phone').then(r => r.json()).then(p => { phoneName.value = p.name; btName.value = p.btName; }).catch(() => {});
+  document.getElementById('applyPhone').addEventListener('click', () =>
+    act('phone', JSON.stringify({ name: phoneName.value, btName: btName.value })));
+  loadVehicle();
   splashSel.addEventListener('change', () => act('splash', splashSel.value));
   loadStatus();
   const keys = { '+': ['volume', '1'], '=': ['volume', '1'], '-': ['volume', '-1'], 'm': ['key', 'audioOnOff'],
                  'ArrowLeft': ['tune', '-1'], 'ArrowRight': ['tune', '1'], 'Enter': ['key', 'enter'], 'Backspace': ['key', 'back'] };
   document.addEventListener('keydown', e => {
-    if (e.target.tagName === 'TEXTAREA' || !keys[e.key]) return;
+    if (['TEXTAREA', 'INPUT', 'SELECT'].includes(e.target.tagName) || !keys[e.key]) return;
     e.preventDefault();
     act(...keys[e.key]);
   });

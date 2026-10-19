@@ -4,7 +4,7 @@ XMInstantReplay) and SiriusXM Travel Link (XMFuel, XMLandWeather, XMSports, XMMo
 Shapes come from MainSupplement com/nfuzion/moduleLink/SatelliteRadio*.as,
 PresetPersistencyManager.as and TravelLink*.as.
 """
-import threading, time
+import os, sqlite3, threading, time
 
 import handlers as H
 from handlers import on
@@ -104,6 +104,36 @@ SHORT = {1: "Preview", 2: "Hits 1", 3: "Venus", 5: "50s on 5", 6: "60s on 6", 7:
          134: "CHI T/W", 136: "DET T/W", 138: "NYC T/W"}
 
 
+# Stock channel logos (sdars/channelart from the head unit's SiriusXM data, channelart.db): stored per SiriusXM
+# service ID, which is not the channel number; SID of each lineup channel's logo, read off the art itself.
+ART_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "sdars", "channelart")
+LOGO_SID = {1: 1, 2: 13, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 30, 15: 26, 16: 155, 20: 18, 24: 91, 25: 49, 26: 46,
+            27: 40, 32: 25, 34: 54, 36: 34, 37: 48, 39: 41, 40: 42, 44: 65, 45: 66, 46: 67, 48: 62, 51: 81, 52: 80,
+            56: 16, 58: 17, 59: 10, 60: 12, 67: 70, 71: 73, 76: 110, 80: 140, 83: 142, 88: 55, 89: 175, 96: 151,
+            99: 150, 100: 33, 101: 36, 114: 122, 116: 134, 124: 130, 134: 148, 136: 148, 138: 148}
+
+
+def _logo_files():
+    """{service id: native path of its logo} from channelart.db (image type 0 = logo, I<id>T00.png)."""
+    try:
+        db = sqlite3.connect(os.path.join(ART_DIR, "channelart.db"))
+        rows = db.execute("select source, imageId from image_assoc where srcType=0 and imageType=0").fetchall()
+        db.close()
+    except sqlite3.Error:
+        return {}
+    files = {sid: os.path.join(ART_DIR, f"I{img:05d}T00.png") for sid, img in rows}
+    return {sid: f for sid, f in files.items() if os.path.exists(f)}
+
+
+LOGOS = _logo_files()
+
+
+def logo_url(num):
+    # SatHomeScreen loads logoLocation as given when it contains "channelart" and does not start with "/"
+    f = LOGOS.get(LOGO_SID.get(num))
+    return "file:///" + f.replace("\\", "/") if f else "channelart/none.png"
+
+
 def _short(num):
     return SHORT.get(num, CH[num][1][:9])
 
@@ -116,7 +146,7 @@ def station(num, full=False):
           "catNum": CATS[cat], "artist": artist, "program": title, "isSubscribed": True,
           "isSongFavorite": any(f["favoriteType"] == "song" and f["song"] == title for f in favs),
           "isArtistFavorite": any(f["favoriteType"] == "artist" and f["artist"] == artist for f in favs),
-          "logoLocation": f"channelart/{n}.png"}  # relative: no such file, but never a UNC lookup
+          "logoLocation": logo_url(n)}
     if full:
         st["info"] = ""
         st["presetNum"] = XM["presets"].index(n) if n in XM["presets"] else 255

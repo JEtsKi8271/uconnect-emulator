@@ -26,15 +26,38 @@ Also:
 - **Hardware panel** in the browser — volume & tune knobs, faceplate keys, climate knobs, gear shift, theme & splash pickers, restart, raw message injector.
 - **CAN signal map** (`can/`) — 261 CAN message IDs / 1,511 signals (byte, bit, mask, PPS object) extracted from the firmware's `canservice`, for 9 vehicle CAN architectures.
 
+### New in this update
+
+- **SRT Drive Modes** — the head unit's own Drive Modes screens (Default/Sport/Track/Custom, Custom Set-Up, Launch
+  Control, Shift Light, Valet with PIN, Eco), answered by a fake drive-mode controller (`modules/drivemode.py`).
+  Hellcat red/black key with 500 / 700+ hp. Jeep Grand Cherokee SRT with its own screens and the Selec-Track dial
+  (Auto/Sport/Track/Snow/Tow) on the panel.
+- **Performance Control** — non-SRT R/T and Scat Pack cars get the stock "Dodge/Chrysler Performance Control" app
+  (Launch Control, Default/Sport Set-Up).
+- **Performance Pages** — the Java apps can't run off the car, so they are redrawn from their own artwork, fonts and
+  layout (Home, Timers, Gauges 1/2, G-Force, Engine) inside the head-unit window, over the HMI's own app screen.
+  All three stock versions: Challenger/Charger/300 (R/T, SRT, Hellcat), Grand Cherokee SRT, and the Viper's with its
+  Options page (home picture, paint colour). A simulated car (launch, cruise, brake, steer) drives them from the panel.
+- **Vehicle picker** — 19 cars (Challenger, Charger, 300, Grand Cherokee, Viper, R/T, Scat Pack, non-SRT brands).
+  Each sets the car's configuration, theme and boot splash; Settings › Theme lists that car's themes like the car.
+- **SiriusXM channel logos** — the firmware's own channel art (`emulator/sdars/channelart`) on the SiriusXM screen.
+- **Languages** — Settings › Display › Language now lists the market's languages (North America, Europe, Rest of
+  World, Japan, Korea, China…) and switches the whole UI live; market and language are also on the panel.
+- **Phone names** — rename the connected phone and the head unit's Bluetooth name from the panel.
+- **Real Bluetooth audio** — pair a real phone from Phone › Add Device and play its music through the PC
+  (Media › Bluetooth, see *Run it*). Calls and contacts stay simulated.
+- **Climate fixes** — climate turns back on, passenger temperature, sync, metric/US ranges.
+
 ## What can't work
 
 Anything that is native QNX/ARM code in the real car: the **navigation map engine** (NaviServer), the **voice
-recognition** engine and the Java **apps** (xlets). Their menus work; the map surface, speech and Java apps don't.
+recognition** engine and the Java **apps** (xlets). Their menus work; the map surface and speech don't, and of the
+Java apps only Performance Pages is redrawn. Real calls over Bluetooth need a hands-free profile Windows doesn't offer.
 
 ## Next update
 
 - **Radio & SiriusXM sound** — map FM/AM/SXM presets to internet streams.
-- **Bluetooth audio** source with its own playlist; pause music during calls (like the car's audio ducking).
+- **Bluetooth song info** — read title/artist straight from the phone (AVRCP); Windows doesn't pass it on.
 - **Shuffle**, album art from embedded cover images.
 - **Splash animations** — decode the `splash_movies/*.bin` boot animations.
 - **Voice prompts** — play the stock VR beeps/prompts (`start.wav`, `recog_*.wav`).
@@ -52,15 +75,24 @@ mkdir tools\airsdk
 curl.exe -L -o tools\AdobeAIRSDK.zip https://airdownload.adobe.com/air/win/download/32.0/AdobeAIRSDK.zip
 tar -xf tools\AdobeAIRSDK.zip -C tools\airsdk
 pip install mutagen pillow
+pip install winrt-runtime winrt-Windows.Foundation winrt-Windows.Foundation.Collections winrt-Windows.Media.Audio winrt-Windows.Devices.Enumeration winrt-Windows.Devices.Bluetooth winrt-Windows.Media.Control
 emulator\run.bat
 ```
+
+**Bluetooth audio (optional, needs a Bluetooth adapter):** Phone > Settings > Paired Phones > Add Device makes the PC
+discoverable; pick the PC on your phone, confirm the code on both, and the phone plays through the PC as the car's
+Bluetooth audio source (Media > Bluetooth, with play/pause/skip). Calls and contacts stay simulated.
+iPhones only list audio devices, not PCs: run `emulator\bt_car_audio.ps1` once as administrator so the PC announces
+itself as car audio (`-Undo` reverts it). Windows broadcasts the computer name; `emulator\bt_name.ps1 -Name Uconnect`
+(as administrator) makes the phone see "Uconnect" instead.
 
 The boot splash shows, then a 1024x768 head-unit window opens (mouse = touch) and the hardware panel opens at http://127.0.0.1:4401/.
 **Sound:** your music folder (`~/Music`, or `"musicDir"` in `emulator/config.json`) is the USB stick: Media plays
 the real files (mp3/m4a/wma/wav/flac) with their tags, following play/pause/skip/seek, the volume knob and mute.
 Incoming calls ring with the car's own ringtone. Radio and SiriusXM stay silent.
 
-Change brand/theme/language in `emulator/config.json`, vehicle equipment in `emulator/state.json` (`VehicleConfig`).
+Pick the car, theme, splash, market/language and phone names in the panel (http://127.0.0.1:4401/); they're saved in
+`emulator/config.json`. Other vehicle equipment is in `emulator/state.json` (`VehicleConfig`).
 
 ## How we got here
 

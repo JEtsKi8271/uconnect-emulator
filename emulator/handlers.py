@@ -3,7 +3,7 @@
 Each @on(module, command) handler gets (dest, args, conn). Message shapes come from the
 decompiled moduleLink classes in MainSupplement.swf (see schema.json for field paths).
 """
-import json, os, struct, time
+import json, os, struct, sys, time
 
 B = None  # backend module, set by init()
 _pending = []
@@ -139,7 +139,12 @@ def panel_status():
             "hmiReady": hmi_ready(), "canRestart": HMI["managed"]}
 
 
+EMIT_HOOKS = []  # fn(packet) from feature modules, for the HMI's EmitSignal frames
+
+
 def on_emit_signal(packet):
+    for fn in EMIT_HOOKS:
+        fn(packet)
     var = packet.get("new_hmi_var")
     if var and var.get("key") == "last_screen":
         update_config(lastScreen=var["new_hmi_screen"])
@@ -181,19 +186,69 @@ HVAC = {
 FAN_STEPS = ["off", "1", "2", "3", "4", "5", "6", "7"]
 
 
+# Temps are kept in °F; the HMI talks in the user's unit. Automatic climate ranges come from the
+# HVACHomeScreen sliders (US 59..85, metric 13..31; the slider ends are LO/HI).
+RANGE = {False: (60, 84), True: (14, 30)}  # metric? -> (min, max) in that unit
+
+
+def _metric():
+    u = B.prop_store("PersonalConfig").get("temperatureUnits", "US")
+    return str(u.get("temperatureUnits", u) if isinstance(u, dict) else u).upper() == "METRIC"
+
+
+def _to_ui(f):
+    """Stored °F (or lo/hi) -> value in the HMI's unit, clamped to the car's range."""
+    if f in ("lo", "hi"):
+        return f
+    m = _metric()
+    n = round((int(f) - 32) / 1.8) if m else int(f)
+    lo, hi = RANGE[m]
+    return "lo" if n < lo else "hi" if n > hi else str(n)
+
+
+def _from_ui(v):
+    """Value in the HMI's unit ('lo'/'hi'/number) -> stored °F."""
+    v = str(v).lower()
+    if v in ("lo", "hi"):
+        return v
+    try:
+        n = int(float(v))
+    except ValueError:
+        return "72"
+    m = _metric()
+    lo, hi = RANGE[m]
+    if n < lo:
+        return "lo"
+    if n > hi:
+        return "hi"
+    return str(round(n * 1.8 + 32)) if m else str(n)
+
+
 def _temp_step(cur, delta):
-    order = ["lo"] + [str(t) for t in range(60, 91)] + ["hi"]
-    i = order.index(cur) if cur in order else order.index("72")
-    return order[max(0, min(len(order) - 1, i + delta))]
+    lo, hi = RANGE[_metric()]
+    order = ["lo"] + [str(t) for t in range(lo, hi + 1)] + ["hi"]
+    ui = _to_ui(cur)
+    i = order.index(ui) if ui in order else order.index(_to_ui("72"))
+    return _from_ui(order[max(0, min(len(order) - 1, i + delta))])
+
+
+def _ui(controls):
+    return {k: (_to_ui(v) if k == "temp" else v) for k, v in controls.items()}
+
+
+def hvac_publish_temps():
+    """Units changed: the climate module re-reports temps in the new unit."""
+    for z in ("frontLeft", "frontRight"):
+        hvac_emit(z, {"temp": HVAC[z]["temp"]})
 
 
 def hvac_emit(zone, controls, conn=None):
-    B.send("HVAC", {"zone": {"zone": zone, "controls": controls}}, conn)
+    B.send("HVAC", {"zone": {"zone": zone, "controls": _ui(controls)}}, conn)
 
 
 @on("HVAC", "getZoneProperties")
 def hvac_zones(dest, args, conn):
-    zones = [{"zone": z, "controls": c} for z, c in HVAC.items()]
+    zones = [{"zone": z, "controls": _ui(c)} for z, c in HVAC.items()]
     B.send("HVAC", {"getZoneProperties": {"zones": zones}}, conn)
 
 
@@ -202,30 +257,70 @@ def hvac_controls(dest, args, conn):
     z = args.get("zone", "front")
     cur = HVAC.get(z, {})
     wanted = args.get("controls") or list(cur)
-    B.send("HVAC", {"getControlProperties": {"zone": z, "controls": {k: cur[k] for k in wanted if k in cur}}}, conn)
+    B.send("HVAC", {"getControlProperties": {"zone": z, "controls": _ui({k: cur[k] for k in wanted if k in cur})}}, conn)
+
+
+# HVAC.as sends buttons as "press"/"release" events (setControlValue); the climate module owns the state.
+TOGGLES = {"climate", "ac", "maxAC", "recirc", "auto", "rearDefrost", "sync", "lock", "airquality"}
+VENT_MODES = {"vent", "floor", "mix", "defrostMix", "defrost"}
+# Like the car: any of these brings the system back on after OFF.
+WAKES = {"fan", "fanUp", "fanDown", "temp", "tempUp", "tempDown", "ac", "maxAC", "auto"} | VENT_MODES
+
+
+def _on(v):
+    return "on" if v else "off"
 
 
 @on("HVAC", "setControlProperties")
 def hvac_set(dest, args, conn):
     z = args.get("zone", "front")
-    cur = HVAC.setdefault(z, {})
-    changed = {}
+    front = HVAC["front"]
+    zone = HVAC.setdefault(z, {})
+    out = {}  # zone -> changed controls
+
+    def put(zn, k, v):
+        if HVAC.setdefault(zn, {}).get(k) != v:
+            HVAC[zn][k] = v
+            out.setdefault(zn, {})[k] = v
+
     for k, v in args.get("controls", {}).items():
-        if k in ("tempUp", "tempDown"):
-            if v != "release":
-                cur["temp"] = changed["temp"] = _temp_step(cur.get("temp", "72"), 1 if k == "tempUp" else -1)
-        elif k in ("fanUp", "fanDown"):
-            if v != "release":
-                i = FAN_STEPS.index(cur.get("fan", "3")) if cur.get("fan") in FAN_STEPS else 3
-                cur["fan"] = changed["fan"] = FAN_STEPS[max(0, min(7, i + (1 if k == "fanUp" else -1)))]
+        if v == "release":
+            continue
+        if k in WAKES and front.get("climate") != "on" and k != "climate":
+            put("front", "climate", "on")
+            if front.get("fan") == "off":
+                put("front", "fan", "1")
+        if k in TOGGLES:
+            new = front.get(k) != "on"
+            put("front", k, _on(new))
+            if k == "maxAC" and new:
+                put("front", "ac", "on")
+                put("front", "recirc", "on")
+            if k == "auto" and new:
+                put("front", "ac", "on")
+            if k == "sync" and new:
+                put("frontRight", "temp", HVAC["frontLeft"].get("temp", "72"))
+        elif k in VENT_MODES:
+            put("front", "airflowMode", k)
+        elif k in ("tempUp", "tempDown", "temp"):
+            t = _from_ui(v) if k == "temp" else _temp_step(zone.get("temp", "72"), 1 if k == "tempUp" else -1)
+            put(z, "temp", t)
+            if z == "frontRight":
+                put("front", "sync", "off")  # touching the passenger side breaks sync
+            elif z == "frontLeft" and front.get("sync") == "on":
+                put("frontRight", "temp", t)
+        elif k in ("fanUp", "fanDown", "fan"):
+            if k == "fan":
+                f = v
+            else:
+                i = FAN_STEPS.index(front.get("fan")) if front.get("fan") in FAN_STEPS else 3
+                f = FAN_STEPS[max(1, min(7, i + (1 if k == "fanUp" else -1)))]
+            put("front", "fan", f)
+            put("front", "auto", "off")  # manual fan cancels AUTO
         else:
-            cur[k] = changed[k] = v
-    # Dual zone: driver temp change mirrors to passenger while sync is on.
-    if "temp" in changed and z == "frontLeft" and HVAC["front"].get("sync") == "on":
-        HVAC["frontRight"]["temp"] = changed["temp"]
-        hvac_emit("frontRight", {"temp": changed["temp"]}, conn)
-    if changed:
-        hvac_emit(z, changed, conn)
+            put(z, k, v)
+    for zn, controls in out.items():
+        hvac_emit(zn, controls, conn)
 
 
 # ---------------------------------------------------------------- Audio source
@@ -420,7 +515,35 @@ def _msid():
     return DEVICES[MEDIA["device"]]["id"]
 
 
+def bt_remote():
+    """modules/btreal when a real phone streams to the PC and Bluetooth is the media device, else None."""
+    bt = sys.modules.get("modules.btreal")
+    return bt if bt and MEDIA["device"] == "btsa" and bt.STATE["conn"] else None
+
+
+def bt_remote_changed(before):
+    """btreal: the phone's track/position/state changed (AVRCP)."""
+    if MEDIA["device"] != "btsa":
+        return
+    t = sys.modules["modules.btreal"].TRACK
+    MEDIA["playing"] = t["playing"]
+    keys = ["playTime"]
+    if (t["title"], t["artist"], t["album"]) != (before["title"], before["artist"], before["album"]):
+        keys += ["nowPlaying", "trackState"]
+    if t["playing"] != before["playing"]:
+        keys.append("playState")
+    media_publish(tuple(keys))
+
+
 def media_track_payloads():
+    bt = bt_remote()
+    if bt:  # the phone's own track over AVRCP
+        t, m = bt.TRACK, _msid()
+        return {"nowPlaying": {"title": t["title"], "artist": t["artist"], "album": t["album"], "genre": "", "year": "",
+                               "composer": "", "filename": "", "msid": m},
+                "trackState": {"totalTracks": 1, "fid": 0, "track": 1, "msid": m},
+                "playTime": {"time": t["time"], "duration": t["duration"], "msid": m},
+                "playState": {"state": "playing" if t["playing"] else "paused", "msid": m, "handle": 0}}
     title, artist, album, genre, year, dur, path = LIBRARY[MEDIA["track"]]
     if audio_active():
         dur = AUDIO["length"] or dur  # tags can lie; the decoder knows
@@ -494,6 +617,8 @@ for _cmd, _fn in {
 }.items():
     def _transport(dest, args, conn, _cmd=_cmd, _fn=_fn):
         _fn()
+        if bt_remote():  # real phone: AVRCP play/pause
+            bt_remote().control("pause" if _cmd in ("pause", "stop") else "play")
         _media_reply(_cmd, conn)
         media_publish(("playState",))
     _pending.append(("Media", _cmd, _transport))
@@ -508,12 +633,16 @@ def media_deselect(dest, args, conn):
 @on("Media", "next")
 def media_next(dest, args, conn):
     _media_reply("next", conn)
+    if bt_remote():
+        return bt_remote().control("next")
     media_skip(1)
 
 
 @on("Media", "previous")
 def media_prev(dest, args, conn):
     _media_reply("previous", conn)
+    if bt_remote():
+        return bt_remote().control("previous")
     # Like the real unit: restart the song unless we are in its first seconds.
     if MEDIA["time"] > 3:
         media_seek(0)
@@ -694,19 +823,42 @@ def audio_active():
     return path is not None and AUDIO["path"] == path
 
 
-def _ringing():
+TONE_DIR = os.path.join(_INSTANCE, "tones")
+
+
+def _call_states():
     phone = __import__("sys").modules.get("modules.phone")
-    return phone is not None and any(c.get("callState") == "ringing" for c in getattr(phone, "CALLS", {}).values())
+    return {c.get("callState") for c in getattr(phone, "CALLS", {}).values()} if phone else set()
+
+
+def _volumes(muted):
+    """(left, right) MCI volumes from the volume knob and the Audio > Balance setting (-10 left .. +10 right)."""
+    if muted:
+        return 0, 0
+    v = 1000 * VOLUME["level"] / VOLUME["cap"]
+    settings = __import__("sys").modules.get("modules.settings")
+    b = max(-10, min(10, int(settings.AUDIO.get("balance", 0)))) if settings else 0
+    return round(v * (1 if b <= 0 else (10 - b) / 10)), round(v * (1 if b >= 0 else (10 + b) / 10))
 
 
 def audio_want():
     a = B.mod("Audio")
-    on_usb = a.get("audioSource", {}).get("source") == MEDIA["device"] == "usb1"
+    # Bluetooth audio streams "from the phone": emulated with the same library as the USB stick.
+    # (a real phone plays through Windows' own Bluetooth audio instead: nothing to play here)
+    on_media = a.get("audioSource", {}).get("source") == MEDIA["device"] and MEDIA["device"] in DEVICES         and not bt_remote()
+    calls = _call_states()
+    in_call = bool(calls & {"ringing", "dialing", "alerting", "active", "onhold", "waiting"})  # car mutes media
     muted = a.get("userMuteState", {}).get("state") is True
-    return {"path": LIBRARY[MEDIA["track"]][6] if on_usb else None, "playing": on_usb and MEDIA["playing"],
-            "start": MEDIA["time"], "seek": MEDIA["seek"],
-            "volume": 0 if muted else round(1000 * VOLUME["level"] / VOLUME["cap"]),
-            "ring": RINGTONE if _ringing() else None}
+    return {"path": LIBRARY[MEDIA["track"]][6] if on_media else None,
+            "playing": on_media and MEDIA["playing"] and not in_call,
+            "start": MEDIA["time"], "seek": MEDIA["seek"], "volume": _volumes(muted),
+            "ring": RINGTONE if "ringing" in calls else None}
+
+
+@on("AudioMixerManager", "confirmationTone")
+def touch_beep(dest, args, conn):
+    import audio
+    audio.tone(TONE_DIR, args.get("type", "CONF_1"))
 
 
 def audio_report(event, **kw):
@@ -748,6 +900,7 @@ def start_audio():
     import audio, threading
     threading.Thread(target=load_music, daemon=True).start()
     if os.name == "nt":
+        audio.make_tones(TONE_DIR)
         threading.Thread(target=audio.run, args=(audio_want, audio_report), daemon=True).start()
 
 
@@ -759,8 +912,13 @@ def hard_key(key):
     B.send("ICS", {"key": {"key": key, "pressed": False}})
 
 
+PANEL_ACTIONS = {}  # extra panel actions registered by feature modules: name -> fn(value)
+
+
 def panel_action(action, value=None):
-    if action == "key":
+    if action in PANEL_ACTIONS:
+        PANEL_ACTIONS[action](value)
+    elif action == "key":
         hard_key(value)
     elif action == "volume":
         B.send("ICS", {"UpdateVolume": {"vol": int(value)}})

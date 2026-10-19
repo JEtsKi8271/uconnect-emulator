@@ -22,6 +22,29 @@ PHONES = [  # paired devices; HFP/A2DP priority 1 = favourite (listed first)
 CARRIER = {"operatorCode": "311480", "operatorLongName": "Verizon Wireless", "operatorShortName": "Verizon",
            "operatorMode": "automatic", "operatorAccTech": "LTE"}
 SIGNAL, BATTERY = 18, 4  # HMI scales: signal 0..31 (>21 = 5 bars), battery 0..5
+NAMES = {"head": "Uconnect"}  # the head unit's own Bluetooth name (what the phone sees)
+
+
+def set_names(phone=None, head=None, announce=True):
+    """Panel "phone": rename the connected phone and/or the head unit's Bluetooth name; kept in config.json."""
+    if phone:
+        PHONES[0]["name"] = phone[:40]
+    if head:
+        NAMES["head"] = head[:40]
+    _media_device_name()
+    H.update_config(phoneName=PHONES[0]["name"], btName=NAMES["head"])
+    if announce:  # the HMI re-reads the paired list on this signal (Bluetooth.as)
+        H.B.send("BluetoothGAP", {"pairedDeviceList": {}})
+        H.B.send("BluetoothGAP", {"localDeviceName": {"localDeviceName": NAMES["head"]}})
+
+
+def phone_action(value):
+    v = json.loads(value) if isinstance(value, str) else value
+    set_names(str(v.get("name", "")).strip(), str(v.get("btName", "")).strip())
+
+
+def api_phone():
+    return {"name": PHONES[0]["name"], "btName": NAMES["head"]}
 
 # (given, family, mobile, home, work)
 _PEOPLE = [
@@ -116,6 +139,8 @@ def lookup(number):
 def _device(p):
     svcs = [{"service": "HFPGW", "connected": p["hfp"], "priority": p["prio"]},
             {"service": "A2DP_SOURCE", "connected": p["a2dp"], "priority": p["prio"]}]
+    # a real phone is listed as a phone too (Paired Phones), though the PC only takes its audio
+
     return {"address": p["address"], "name": p["name"], "serviceSearchList": svcs}
 
 
@@ -134,7 +159,7 @@ def gap_paired(dest, args, conn):
 
 @on("BluetoothGAP", "getProperties")
 def gap_props(dest, args, conn):
-    vals = {"passkey": {"pin": "1234"}, "localDeviceName": {"localDeviceName": "Uconnect"},
+    vals = {"passkey": {"pin": "1234"}, "localDeviceName": {"localDeviceName": NAMES["head"]},
             "bluetoothAddress": {"address": "00:1E:AE:4C:91:07"}}
     H.B.send("BluetoothGAP", {"getProperties": {p: vals[p] for p in args.get("properties", []) if p in vals}}, conn)
 
@@ -168,12 +193,74 @@ def _media_device_name():
         H.DEVICES["btsa"]["name"] = p["name"]
 
 
+# ---------------------------------------------------------------- real phones (modules/btreal)
+def real_phones_changed(announce=True):
+    """Match PHONES to the phones paired with the PC's Bluetooth (they stream audio only: no HFP)."""
+    from modules import btreal
+    real = btreal.STATE["phones"]
+    for p in [p for p in PHONES if p.get("real") and p["address"] not in real]:
+        PHONES.remove(p)
+    for addr, r in real.items():
+        if not _phone(addr):
+            PHONES.append({"address": addr, "name": r["name"], "hfp": False, "a2dp": False, "prio": 0, "real": True})
+    for i, x in enumerate(PHONES):
+        x["prio"] = i + 1
+    if announce:
+        H.B.send("BluetoothGAP", {"pairedDeviceList": {}})
+
+
+def _real_connect(p):
+    from modules import btreal
+    if btreal.connect(p["address"]):
+        for other in PHONES:
+            if other is not p:
+                _set_service(other, "A2DP_SOURCE", False)
+                _set_service(other, "HFPGW", False)
+        _set_service(p, "A2DP_SOURCE", True)
+        # Windows cannot be a hands-free kit, so calls/contacts/texts stay simulated, but under the real phone,
+        # like the car shows the one connected phone everywhere (Phone screen, status bar).
+        _set_service(p, "HFPGW", True)
+        threading.Timer(0.5, _pim_sync).start()
+        _media_device_name()
+        # like the car when a phone's audio connects: switch to Bluetooth audio, Media shows the phone
+        H.audio_set_source("Audio", {"source": "btsa"}, None)
+    else:
+        H.B.send("BluetoothGAP", {"serviceConnectError": {"address": p["address"], "service": "A2DP_SOURCE",
+                                                          "reason": "connectFailed"}})
+
+
+def connect_real(address):
+    p = _phone(address)
+    if p:
+        threading.Thread(target=_real_connect, args=(p,), daemon=True).start()
+
+
+def real_audio_lost(address):
+    p = _phone(address)
+    if p:
+        _set_service(p, "A2DP_SOURCE", False)
+
+
+def _real_startup():
+    """Like the car at ignition: list the PC's paired phones, reconnect the first one's audio."""
+    from modules import btreal
+    time.sleep(2)  # the WinRT thread is starting
+    if not btreal.refresh():
+        return
+    real_phones_changed()
+    first = next((p for p in PHONES if p.get("real")), None)
+    if first:
+        _real_connect(first)
+
+
 @on("BluetoothGAP", "startServiceConnect")
 def gap_connect(dest, args, conn):
     p, service = _phone(args.get("address")), args.get("service")
     if not p or service not in SERVICE_KEY:
         return _gap("startServiceConnect", conn, description="failure")
     _gap("startServiceConnect", conn)
+    if p.get("real") and service == "A2DP_SOURCE":  # opening the phone's stream takes a few seconds
+        return threading.Thread(target=_real_connect, args=(p,), daemon=True).start()
     for other in PHONES:  # one phone per profile, like the real head unit
         if other is not p:
             _set_service(other, service, False)
@@ -188,6 +275,9 @@ def gap_disconnect(dest, args, conn):
     p, service = _phone(args.get("address")), args.get("service")
     _gap("startServiceDisconnect", conn)
     if p and service in SERVICE_KEY:
+        if p.get("real") and service == "A2DP_SOURCE":
+            from modules import btreal
+            btreal.disconnect()
         _set_service(p, service, False)
 
 
@@ -207,6 +297,9 @@ def gap_unpair(dest, args, conn):
     if p:
         for s in SERVICE_KEY:
             _set_service(p, s, False)
+        if p.get("real"):  # forget it in Windows too
+            from modules import btreal
+            threading.Thread(target=btreal.unpair, args=(p["address"],), daemon=True).start()
         PHONES.remove(p)
         for i, x in enumerate(PHONES):
             x["prio"] = i + 1
@@ -711,7 +804,15 @@ def init(B):
         "sendDtmfTone", "switchBluetoothOff", "setBTChipMode", "getBTChipBTID")})
     replies.setdefault("BluetoothHFP", {}).update({c: {"description": "success", "code": 0} for c in (
         "setVRMode", "startAutoConnect", "setProperties")})
+    c = json.load(open(H.CONFIG_FILE, encoding="utf-8"))
+    PHONES[0]["name"] = c.get("phoneName", PHONES[0]["name"])
+    NAMES["head"] = c.get("btName", NAMES["head"])
     _media_device_name()
+    H.PANEL_ACTIONS["phone"] = phone_action
+    from modules import btreal
+    if btreal.AVAILABLE:
+        threading.Thread(target=_real_startup, daemon=True).start()
+    B.API["/api/phone"] = api_phone
     H.panel_action = _wrap_panel(H.panel_action)
     threading.Thread(target=_ticker, daemon=True).start()
 

@@ -125,6 +125,7 @@ def handle_persistency(dest, packet, conn):
 
 # Per-module hooks: (module, command) -> fn(packet_args, conn). Generic logic covers the rest.
 HOOKS = {}
+API = {}  # panel GET path -> fn() returning JSON-able data (e.g. "/api/perf")
 
 
 def hook(module, command):
@@ -229,6 +230,8 @@ class Panel(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/status":
             self.reply(200, json.dumps(handlers.panel_status()).encode(), "application/json")
+        elif self.path in API:  # data endpoints registered by feature modules
+            self.reply(200, json.dumps(API[self.path]()).encode(), "application/json")
         else:
             self.reply(200, open(os.path.join(HERE, "panel.html"), "rb").read(), "text/html; charset=utf-8")
 
