@@ -5,7 +5,7 @@ running on a Windows PC, straight out of the official USB update files. No head 
 
 ![Radio](docs/screenshots/radio.png)
 
-## What works
+## What works 
 
 Runs at **1024x768** (the 640x480 HMI scaled 1.6x). Every screen below was tapped through in a scripted
 regression tour with **zero script errors** in the HMI log:
