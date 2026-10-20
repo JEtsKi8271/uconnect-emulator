@@ -17,11 +17,18 @@ regression tour with **zero script errors** in the HMI log:
 | ![](docs/screenshots/phone.png) **Phone** — paired "Pixel 8", favorites, incoming calls ringing with the car's own ringtone | ![](docs/screenshots/phonebook.png) **Phonebook** — 22 contacts, favorites |
 | ![](docs/screenshots/climate.png) **Climate** — temp (LO/60-90/HI), fan 0-7, A/C, MAX A/C, recirc, AUTO, defrost, modes | ![](docs/screenshots/controls.png) **Controls** — heated/vented seats, heated wheel |
 | ![](docs/screenshots/settings.png) **Settings** — Display, Units, Voice, Clock, Safety & Driving Assistance, Lights… (15 menus) | ![](docs/screenshots/apps.png) **Apps** — app grid, drag icons to the menu bar |
-| ![](docs/screenshots/nav.png) **Nav menus** — Where To / View Map / Information / Emergency (no map drawing) | ![](docs/screenshots/nav-where-to.png) **Where To?** — Address, Recent, POI, Favorites, Intersection, Go Home |
+| ![](docs/screenshots/nav.png) **Nav menus** — Where To / View Map / Information / Emergency (no map drawing) | ![](docs/screenshots/themes.png) **Themes** — the car's own theme list (here the SRT set on a Hellcat) |
+| ![](docs/screenshots/drive-modes.png) **SRT Drive Modes** — Default/Sport/Track/Custom, Valet, red/black key | ![](docs/screenshots/drive-modes-custom.png) **Custom Mode Set-Up** — power, transmission, paddles, traction, suspension, steering |
+| ![](docs/screenshots/launch-control.png) **Launch Control / Race Options** — launch RPM, the car's own dial | ![](docs/screenshots/drive-modes-jeep.png) **Grand Cherokee SRT** — Selec-Track modes (here Snow) |
+| ![](docs/screenshots/performance-control.png) **Performance Control** — R/T and Scat Pack: Default/Sport Set-Up | ![](docs/screenshots/language.png) **Languages** — the market's language list, switches live |
+| ![](docs/screenshots/perf-home.png) **Performance Pages** — Home (car pictures per model) | ![](docs/screenshots/perf-timers.png) **Timers** — 0-60, 1/8, 1/4 mile, braking; Current/Last/Best |
+| ![](docs/screenshots/perf-gauges1.png) **Gauges 1** — coolant, oil temp/pressure, battery, trans temp | ![](docs/screenshots/perf-gauges2.png) **Gauges 2** — Hellcat boost, air/fuel, intercooler, intake air |
+| ![](docs/screenshots/perf-gforce.png) **G-Force** — the car leans with lateral g, peaks | ![](docs/screenshots/perf-engine.png) **Engine** — speed, horsepower, torque, boost/oil pressure, gear |
+| ![](docs/screenshots/perf-viper.png) **Viper** — its own SRT Performance Pages app (with Options) | |
 
 Also:
 - **Boot splash** — the car's own brand splash images, chosen exactly like the firmware's `splash.lua` (brand + SRT/SiriusXM/Beats flags).
-- **Themes** — all 46 brand themes (Dodge, Jeep, Chrysler, Ram, SRT, Viper, Fiat, Maserati…); switch from the panel or live in the head unit's own Settings.
+- **Themes** — all brand themes (Dodge, Jeep, Chrysler, Ram, SRT, Viper, Fiat, Maserati…); switch from the panel or live in the head unit's own Settings.
 - **Sound** — Media plays real files through Windows (play/pause/skip/seek, volume knob, mute); incoming calls ring.
 - **Hardware panel** in the browser — volume & tune knobs, faceplate keys, climate knobs, gear shift, theme & splash pickers, restart, raw message injector.
 - **CAN signal map** (`can/`) — 261 CAN message IDs / 1,511 signals (byte, bit, mask, PPS object) extracted from the firmware's `canservice`, for 9 vehicle CAN architectures.
