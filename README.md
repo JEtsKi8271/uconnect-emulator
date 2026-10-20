@@ -73,6 +73,13 @@ Java apps only Performance Pages is redrawn. Real calls over Bluetooth need a ha
 
 ## Run it
 
+**Easy way:** download `UconnectEmulatorSetup.exe` from the [latest release](https://github.com/JEtsKi8271/uconnect-emulator/releases/latest)
+and run it. It installs Python (if needed), the emulator, Adobe's AIR runtime and the Python packages into
+`%LOCALAPPDATA%\UconnectEmulator` (no admin rights) and adds a **Uconnect 8.4AN** shortcut to the Desktop and Start menu.
+Windows SmartScreen may warn because the file isn't signed: *More info › Run anyway*. Source: `installer/`.
+
+**Manual way:**
+
 Needs Windows, Python 3, and the free Adobe AIR 32 SDK (the runtime the car's HMI is built on).
 
 ```powershell

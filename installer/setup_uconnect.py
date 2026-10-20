@@ -40,11 +40,12 @@ def download(url, dest):
 
 
 def find_python():
-    """A Python 3.10+ with tkinter (the boot splash uses it): py launcher first, then PATH."""
-    for cmd in (["py", "-3"], ["python"], ["python3"]):
+    """A 64-bit Python 3.10-3.13 with tkinter (the boot splash uses it): PATH first, then the py launcher."""
+    probe = ("import sys, struct, tkinter; "
+             "print((3, 10) <= sys.version_info < (3, 14) and struct.calcsize('P') == 8, sys.executable)")
+    for cmd in (["python"], ["py", "-3.13"], ["py", "-3.12"], ["py", "-3.11"], ["py", "-3.10"]):
         try:
-            out = subprocess.run(cmd + ["-c", "import sys, tkinter; print(sys.version_info >= (3, 10), sys.executable)"],
-                                 capture_output=True, text=True, timeout=30)
+            out = subprocess.run(cmd + ["-c", probe], capture_output=True, text=True, timeout=30)
         except (OSError, subprocess.TimeoutExpired):
             continue
         ok, _, exe = out.stdout.strip().partition(" ")
@@ -107,16 +108,20 @@ def install_air(tmp, target):
 
 def install_packages(py):
     say("[4/5] Installing Python packages ...")
-    subprocess.run([py, "-m", "pip", "install", "--disable-pip-version-check", "-q", "--upgrade"] + PIP, check=True)
+    subprocess.run([py, "-m", "pip", "install", "--disable-pip-version-check", "-q"] + PIP, check=True)
+
+
+def point_run_bat(py, target):
+    """run.bat starts "python": make it the Python the packages went into."""
+    bat = os.path.join(target, "emulator", "run.bat")
+    text = open(bat, encoding="utf-8").read().replace('start "Uconnect backend" /min python ',
+                                                      f'start "Uconnect backend" /min "{py}" ')
+    open(bat, "w", encoding="utf-8").write(text)
 
 
 def shortcuts(py, target):
     say("[5/5] Creating shortcuts ...")
     bat = os.path.join(target, "emulator", "run.bat")
-    # run.bat calls "python": point it at the Python we found/installed
-    text = open(bat, encoding="utf-8").read().replace("start \"Uconnect backend\" /min python ",
-                                                      f"start \"Uconnect backend\" /min \"{py}\" ")
-    open(bat, "w", encoding="utf-8").write(text)
     icon = os.path.join(target, "emulator", "hmi", "icon.ico")
     for folder in (os.path.join(os.environ["USERPROFILE"], "Desktop"),
                    os.path.join(os.environ["APPDATA"], "Microsoft", "Windows", "Start Menu", "Programs")):
@@ -145,6 +150,7 @@ def main():
         install_emulator(tmp, a.dir)
         install_air(tmp, a.dir)
         install_packages(py)
+        point_run_bat(py, a.dir)
         if not a.no_shortcuts:
             shortcuts(py, a.dir)
     finally:
@@ -157,5 +163,8 @@ if __name__ == "__main__":
         main()
     except Exception as e:  # keep the window open so the user can read what went wrong
         print(f"\nSetup failed: {e!r}")
-    if sys.stdin and sys.stdin.isatty():
-        input("\nPress Enter to close.")
+    try:
+        if sys.stdin and sys.stdin.isatty():
+            input("\nPress Enter to close.")
+    except (EOFError, OSError):
+        pass
