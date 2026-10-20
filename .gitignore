@@ -21,3 +21,5 @@ emulator/snap.ps1
 emulator/perfpages/cache/
 emulator/tones/
 *.pdf
+installer/build/
+installer/dist/
